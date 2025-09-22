@@ -42,6 +42,7 @@
     /* CARDS / GRIDS */
     .grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px}
+    .card .cta{margin-top:12px}
     .work{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
     .meta{padding:12px 14px}
     .meta h4{margin:0 0 4px}
@@ -54,6 +55,13 @@
     /* FOOTER */
     footer{padding:24px 0;color:var(--muted)}
     .socials{display:flex;gap:12px;flex-wrap:wrap}
+    /* BOTÓN FLOTANTE */
+    .float-cta{
+      position:fixed;right:16px;bottom:16px;z-index:60;
+      border-radius:999px;padding:12px 16px;font-weight:800;
+      background:linear-gradient(90deg,var(--brand),var(--brand2));color:#051018;border:none;
+      box-shadow:0 12px 30px rgba(0,0,0,.45);cursor:pointer
+    }
     /* RESPONSIVE */
     @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
   </style>
@@ -89,12 +97,12 @@
         </p>
         <div class="cta">
           <a class="btn primary" href="#contact" data-i18n="cta_primary">¡Hablemos!</a>
-          <a class="btn" href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="mailto:cinzia_marketing_design@hotmail.com">Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Behance</a>
         </div>
       </div>
       <div class="hero-art">
-        <!-- Tu banner actual -->
         <img src="branner.jpg" alt="CB Marketing & Design - Banner" loading="eager" decoding="async"/>
       </div>
     </div>
@@ -115,6 +123,10 @@
         <div class="card">Social Media</div>
         <div class="card">Contenido con IA</div>
       </div>
+      <div class="cta" style="margin-top:14px">
+        <a class="btn primary" href="#contact">Solicita propuesta</a>
+        <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Ver portfolio completo</a>
+      </div>
     </div>
   </section>
 
@@ -128,16 +140,31 @@
           <h3 data-i18n="s1_title">Branding & Identidad</h3>
           <p data-i18n="s1_text">Logos, guías de estilo y piezas para redes.</p>
           <img src="Logo Fresco Fit.svg" alt="Logo Fresco Fit" loading="lazy" decoding="async"/>
+          <div class="cta">
+            <a class="btn primary" href="#contact">Quiero mi logo</a>
+            <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Ver casos</a>
+          </div>
         </article>
+
         <article class="card">
           <h3 data-i18n="s2_title">Landing Pages & Web</h3>
           <p data-i18n="s2_text">Páginas rápidas, responsive y enfocadas en conversión.</p>
-          <img src="Banner KeysHome.png" alt="Banner KeysHome" loading="lazy" decoding="async"/>
+          <!-- Usa tu imagen renombrada como landingpage.jpg (o ajusta el src) -->
+          <img src="landingpage.jpg" alt="Ejemplo Landing Page" loading="lazy" decoding="async"/>
+          <div class="cta">
+            <a class="btn primary" href="#contact">Necesito una landing</a>
+            <a class="btn" href="mailto:cinzia_marketing_design@hotmail.com">Pedir presupuesto</a>
+          </div>
         </article>
+
         <article class="card">
           <h3 data-i18n="s3_title">Social Media + IA</h3>
           <p data-i18n="s3_text">Reels, banners, carruseles y copys asistidos por IA.</p>
-          <img src="Sabor ibérico.jpg" alt="Sabor Ibérico" loading="lazy" decoding="async"/>
+          <img src="Banner KeysHome.png" alt="Banner KeysHome" loading="lazy" decoding="async"/>
+          <div class="cta">
+            <a class="btn primary" href="#contact">Plan de contenidos</a>
+            <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Ver ejemplos</a>
+          </div>
         </article>
       </div>
     </div>
@@ -160,25 +187,32 @@
           <div class="meta"><h4>DJ Kora</h4><p class="tag" data-i18n="w_dj">Flyer evento musical</p></div>
         </article>
 
+        <!-- Nuevo: GIF mockup portada/contraportada -->
         <article class="work">
-          <img src="Logo Fresco Fit.svg" alt="Logo Fresco Fit" loading="lazy" decoding="async"/>
-          <div class="meta"><h4>Fresco Fit</h4><p class="tag" data-i18n="w_logo">Logo & Branding</p></div>
+          <img src="20250922_214839_0001.gif" alt="Mockup portada y contraportada" loading="lazy" decoding="async"/>
+          <div class="meta"><h4>Editorial Mockup</h4><p class="tag">Animación GIF (portada/contraportada)</p></div>
         </article>
 
+        <!-- Nuevo: Menú vegetariano -->
         <article class="work">
-          <img src="Sabor ibérico.jpg" alt="Banner restaurante español" loading="lazy" decoding="async"/>
-          <div class="meta"><h4>Sabor Ibérico</h4><p class="tag" data-i18n="w_food">Banner restaurante español</p></div>
-        </article>
-
-        <article class="work">
-          <img src="Banner KeysHome.png" alt="Banner inmobiliaria Keys Home" loading="lazy" decoding="async"/>
-          <div class="meta"><h4>KeysHome</h4><p class="tag" data-i18n="w_realestate">Logo y banner inmobiliaria</p></div>
+          <img src="menu-vegetariano.jpg" alt="Menú Comida Vegetariana" loading="lazy" decoding="async"/>
+          <div class="meta"><h4>Menú Vegetariano</h4><p class="tag">Diseño menú restaurante</p></div>
         </article>
 
         <article class="work">
           <img src="LOGO keys Home.svg" alt="Logo Keys Home" loading="lazy" decoding="async"/>
           <div class="meta"><h4>KeysHome</h4><p class="tag">Logo</p></div>
         </article>
+
+        <article class="work">
+          <img src="branner.jpg" alt="CB Banner" loading="lazy" decoding="async"/>
+          <div class="meta"><h4>CB Marketing & Design</h4><p class="tag">Banner creativo personal</p></div>
+        </article>
+      </div>
+
+      <div class="cta" style="margin-top:16px">
+        <a class="btn primary" href="#contact">Quiero algo así para mi marca</a>
+        <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Ver más en Behance</a>
       </div>
     </div>
   </section>
@@ -196,13 +230,14 @@
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CTA FINAL con Behance visible -->
   <section id="contact">
     <div class="wrap cta-box">
       <p data-i18n="cta_text">¿Impulsamos tu marca con IA y buen diseño?</p>
       <div class="cta">
         <a class="btn primary" href="mailto:cinzia_marketing_design@hotmail.com">Email</a>
         <a class="btn" href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Behance</a>
       </div>
     </div>
   </section>
@@ -221,11 +256,13 @@
     </div>
   </footer>
 
+  <button class="float-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+    Contactar
+  </button>
+
   <script>
-    // Año
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // i18n
     const i18n = {
       es:{nav_about:"Sobre mí",nav_services:"Servicios",nav_portfolio:"Portafolio",nav_contact:"Contacto",
           hero_title:"Marketing & Design Expert | KI-powered Strategies",
@@ -238,7 +275,7 @@
           s2_title:"Landing Pages & Web",s2_text:"Páginas rápidas, responsive y enfocadas en conversión.",
           s3_title:"Social Media + IA",s3_text:"Reels, banners, carruseles y copys asistidos por IA.",
           port_title:"Portafolio / Proyectos",port_kicker:"Selección de piezas creativas y académicas.",
-          w_travel:"Banner cartel de agencia de viajes",w_dj:"Flyer evento musical",w_logo:"Logo & Branding",w_food:"Banner restaurante español",w_realestate:"Logo y banner inmobiliaria",
+          w_travel:"Banner cartel de agencia de viajes",w_dj:"Flyer evento musical",
           testi_title:"Testimonios",testi_kicker:"Lo que dicen sobre mi trabajo.",
           t1:"“Cinzia tiene un gran ojo para el diseño y domina la integración de IA.”",
           t2:"“Rápida, organizada y creativa. La landing superó expectativas.”",
@@ -256,7 +293,6 @@
           s2_title:"Landing Pages & Web",s2_text:"Fast, responsive and conversion-focused pages.",
           s3_title:"Social Media + AI",s3_text:"Reels, banners, carousels and AI-assisted copy.",
           port_title:"Portfolio",port_kicker:"A selection of creative and academic pieces.",
-          w_travel:"Travel agency banner",w_dj:"Music event flyer",w_logo:"Logo & Branding",w_food:"Spanish restaurant banner",w_realestate:"Real-estate logo & banner",
           testi_title:"Testimonials",testi_kicker:"What people say.",
           t1:"“Great design eye and strong AI integration.”",t2:"“Fast, organized and creative.”",t3:"“Excellent balance of creativity and performance.”",
           cta_text:"Ready to boost your brand with AI & design?"
@@ -271,8 +307,7 @@
           s1_title:"Branding & Identità",s1_text:"Loghi, brand book e asset social.",
           s2_title:"Landing Pages & Web",s2_text:"Pagine veloci, responsive e focalizzate sulla conversione.",
           s3_title:"Social Media + IA",s3_text:"Reel, banner, caroselli e copy assistiti dall’IA.",
-          port_title:"Portfolio",port_kicker:"Selezione di lavori creativi e accademici.",
-          w_travel:"Banner agenzia viaggi",w_dj:"Flyer evento musicale",w_logo:"Logo & Branding",w_food:"Banner ristorante spagnolo",w_realestate:"Logo e banner immobiliare",
+          port_title:"Portfolio",port_kicker:"Selezione di progetti creativi e accademici.",
           testi_title:"Testimonianze",testi_kicker:"Cosa dicono del mio lavoro.",
           t1:"“Grande occhio per il design e integrazione dell’IA.”",t2:"“Veloce, organizzata e creativa.”",t3:"“Ottimo equilibrio tra creatività e performance.”",
           cta_text:"Potenziare il tuo brand con IA & design?"
@@ -288,7 +323,6 @@
           s2_title:"Landingpages & Web",s2_text:"Schnell, responsiv, conversion-fokussiert.",
           s3_title:"Social Media + KI",s3_text:"Reels, Banner, Karussells und KI-Texte.",
           port_title:"Portfolio",port_kicker:"Auswahl kreativer und akademischer Arbeiten.",
-          w_travel:"Reiseagentur-Banner",w_dj:"Musik-Event-Flyer",w_logo:"Logo & Branding",w_food:"Spanisches Restaurant-Banner",w_realestate:"Immobilien-Logo & Banner",
           testi_title:"Referenzen",testi_kicker:"Das sagt man über meine Arbeit.",
           t1:"„Sehr gutes Design-Auge und KI-Integration.“",t2:"„Schnell, strukturiert und kreativ.“",t3:"„Tolle Balance zwischen Kreativität und Performance.“",
           cta_text:"Bereit für mehr mit KI & Design?"
