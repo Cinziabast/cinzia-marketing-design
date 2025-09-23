@@ -1,344 +1,304 @@
-<!doctype html>
+    <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Cinzia Bastoni | Marketing & Design + KI</title>
-  <meta name="description" content="Marketing & Design Expert | KI-powered Strategies. Branding, landing pages, social media y contenidos con IA."/>
-  <link rel="preload" as="image" href="branner.jpg"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CB Marketing & Design</title>
+  <meta name="description" content="CB Marketing & Design - Creatividad en movimiento. Especialista en Marketing, Diseño y KI Manager.">
+  <link rel="stylesheet" href="styles.css">
   <style>
-    :root{
-      --bg:#0b0b14; --ink:#edf1ff; --muted:#a9b2d6;
-      --card:#121228; --brand:#9b5cff; --brand2:#22d3ee;
-      --max:1200px; --r:18px; --shadow:0 10px 35px rgba(0,0,0,.45);
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0c10;
+      color: #fff;
+      line-height: 1.5;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:linear-gradient(180deg,#0b0b14 0%,#0d0d1f 60%,#10102a 100%);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;scroll-behavior:smooth}
-    a{color:inherit;text-decoration:none}
-    img,video{max-width:100%;display:block}
-    .wrap{width:min(100%,var(--max));margin-inline:auto;padding:clamp(16px,2.5vw,28px)}
-    header.nav{position:sticky;top:0;z-index:50;background:rgba(11,11,20,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav-row{display:flex;align-items:center;gap:16px;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
-    .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(45deg,var(--brand),var(--brand2))}
-    .links{display:flex;gap:14px;flex-wrap:wrap}
-    .flags{display:flex;gap:8px}
-    .flag{font-size:22px;cursor:pointer;transition:.2s transform}
-    .flag:hover{transform:translateY(-2px)}
-    /* HERO */
-    .hero{padding-block:clamp(24px,5vw,60px)}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(18px,3vw,32px);align-items:center}
-    .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.07);padding:8px 12px;border-radius:999px;font-size:.95rem}
-    h1{font-size:clamp(28px,5vw,50px);line-height:1.05;margin:.5rem 0 .25rem}
-    .sub{color:var(--muted);font-size:clamp(15px,1.6vw,18px);max-width:65ch}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-    .btn{padding:12px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));font-weight:700}
-    .btn.primary{background:linear-gradient(90deg,var(--brand) 0%,var(--brand2) 100%);border-color:transparent;color:#061016}
-    .hero-art{border-radius:20px;overflow:hidden;box-shadow:var(--shadow);outline:1px solid rgba(255,255,255,.08)}
-    /* SECTIONS */
-    section{padding-block:clamp(32px,6vw,80px);border-top:1px solid rgba(255,255,255,.06)}
-    .title{font-size:clamp(22px,3.2vw,34px);margin:0 0 10px}
-    .kicker{color:var(--muted);margin:0 0 22px}
-    /* CARDS / GRIDS */
-    .grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px}
-    .card .cta{margin-top:12px}
-    .work{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
-    .meta{padding:12px 14px}
-    .meta h4{margin:0 0 4px}
-    .tag{color:var(--muted);font-size:.95rem;margin:0}
-    /* TESTIMONIOS */
-    .testi{display:grid;grid-auto-flow:column;gap:14px;overflow:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
-    .t{min-width:300px;scroll-snap-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px}
-    /* CTA FINAL */
-    .cta-box{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:linear-gradient(90deg,rgba(155,92,255,.15),rgba(34,211,238,.12));border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:18px}
-    /* FOOTER */
-    footer{padding:24px 0;color:var(--muted)}
-    .socials{display:flex;gap:12px;flex-wrap:wrap}
-    /* BOTÓN FLOTANTE */
-    .float-cta{
-      position:fixed;right:16px;bottom:16px;z-index:60;
-      border-radius:999px;padding:12px 16px;font-weight:800;
-      background:linear-gradient(90deg,var(--brand),var(--brand2));color:#051018;border:none;
-      box-shadow:0 12px 30px rgba(0,0,0,.45);cursor:pointer
+
+    header {
+      background: #0b0c10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    /* RESPONSIVE */
-    @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
+
+    header h1 {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+
+    nav img {
+      width: 24px;
+      margin: 0 4px;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: url("branner.jpg") no-repeat center/cover;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+
+    .hero p {
+      margin: 1rem 0;
+      font-size: 1.2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      background: #1f51ff;
+      color: #fff;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #3a6bff;
+    }
+
+    section {
+      padding: 4rem 2rem;
+    }
+
+    h2.title {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    p.kicker {
+      text-align: center;
+      opacity: 0.8;
+      margin-bottom: 2rem;
+    }
+
+    /* === Servicios === */
+    .grid-auto {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    /* === Masonry (Pinterest) para Portafolio === */
+    .masonry {
+      column-count: 3;
+      column-gap: 1rem;
+    }
+
+    .masonry-item {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 1rem;
+      break-inside: avoid;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .masonry-item img,
+    .masonry-item video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .masonry-item .meta {
+      padding: 12px 14px;
+    }
+
+    .masonry-item .meta h4 {
+      margin: 0 0 4px;
+    }
+
+    .masonry-item .tag {
+      margin: 0;
+      opacity: .85;
+    }
+
+    @media (max-width: 1024px){
+      .masonry { column-count: 2; }
+    }
+    @media (max-width: 640px){
+      .masonry { column-count: 1; }
+    }
+
+    /* === Contacto === */
+    footer {
+      background: #0b0c10;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer a {
+      color: #1f9aff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
   </style>
 </head>
 <body>
-  <!-- NAV -->
-  <header class="nav">
-    <div class="wrap nav-row">
-      <div class="brand"><span class="dot"></span><span>CB Marketing & Design</span></div>
-      <nav class="links" aria-label="main">
-        <a href="#about" data-i18n="nav_about">Sobre mí</a>
-        <a href="#services" data-i18n="nav_services">Servicios</a>
-        <a href="#portfolio" data-i18n="nav_portfolio">Portafolio</a>
-        <a href="#contact" data-i18n="nav_contact">Contacto</a>
-      </nav>
-      <div class="flags" title="Idioma">
-        <span class="flag" data-lang="es" aria-label="Español">🇪🇸</span>
-        <span class="flag" data-lang="en" aria-label="English">🇬🇧</span>
-        <span class="flag" data-lang="it" aria-label="Italiano">🇮🇹</span>
-        <span class="flag" data-lang="de" aria-label="Deutsch">🇩🇪</span>
-      </div>
-    </div>
+
+  <!-- Header -->
+  <header>
+    <h1>CB Marketing & Design</h1>
+    <nav>
+      <a href="#about">Sobre mí</a>
+      <a href="#services">Servicios</a>
+      <a href="#portfolio">Portafolio</a>
+      <a href="#contact">Contacto</a>
+      <span>
+        <img src="https://flagcdn.com/w20/es.png" alt="Español">
+        <img src="https://flagcdn.com/w20/gb.png" alt="English">
+        <img src="https://flagcdn.com/w20/it.png" alt="Italiano">
+        <img src="https://flagcdn.com/w20/de.png" alt="Deutsch">
+      </span>
+    </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="badge">KI • Marketing • Design</span>
-        <h1 data-i18n="hero_title">Marketing & Design Expert | KI-powered Strategies</h1>
-        <p class="sub" data-i18n="hero_sub">
-          Ayudo a negocios y emprendedores a destacar con estrategias creativas, diseño innovador y flujos con inteligencia artificial que convierten.
-        </p>
-        <div class="cta">
-          <a class="btn primary" href="#contact" data-i18n="cta_primary">¡Hablemos!</a>
-          <a class="btn" href="mailto:cinzia_marketing_design@hotmail.com">Email</a>
-          <a class="btn" href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Behance</a>
-        </div>
-      </div>
-      <div class="hero-art">
-        <img src="branner.jpg" alt="CB Marketing & Design - Banner" loading="eager" decoding="async"/>
-      </div>
-    </div>
+    <h2>Creatividad en movimiento</h2>
+    <p>Marketing • Diseño • Inteligencia Artificial</p>
+    <a href="#contact" class="btn">¡Hablemos!</a>
+    <a href="https://www.behance.net/cinzia_design" class="btn" target="_blank">Ver Behance</a>
   </section>
 
-  <!-- ABOUT -->
+  <!-- Sobre mí -->
   <section id="about">
-    <div class="wrap">
-      <h2 class="title" data-i18n="about_title">Sobre mí</h2>
-      <p class="kicker" data-i18n="about_text">
-        Soy Cinzia Bastoni, profesional del marketing, la inteligencia artificial (KI) y el diseño. Certificada en Marketing Management e IHK KI Manager. Combino estrategia, creatividad y automatización para construir marcas con identidad fuerte y campañas que convierten.
-      </p>
-      <div class="grid-auto">
-        <div class="card">Marketing Management</div>
-        <div class="card">IHK KI Manager</div>
-        <div class="card">Branding & Visual</div>
-        <div class="card">Landing Pages</div>
-        <div class="card">Social Media</div>
-        <div class="card">Contenido con IA</div>
-      </div>
-      <div class="cta" style="margin-top:14px">
-        <a class="btn primary" href="#contact">Solicita propuesta</a>
-        <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Ver portfolio completo</a>
-      </div>
-    </div>
+    <h2 class="title">Sobre mí</h2>
+    <p class="kicker">Soy profesional en Marketing, Diseño y KI Manager. Me apasiona crear experiencias visuales únicas que combinan creatividad con estrategia digital.</p>
   </section>
 
-  <!-- SERVICES -->
+  <!-- Servicios -->
   <section id="services">
-    <div class="wrap">
-      <h2 class="title" data-i18n="services_title">Servicios que ofrezco</h2>
-      <p class="kicker" data-i18n="services_kicker">Soluciones orientadas a resultados.</p>
-      <div class="grid-auto">
-        <article class="card">
-          <h3 data-i18n="s1_title">Branding & Identidad</h3>
-          <p data-i18n="s1_text">Logos, guías de estilo y piezas para redes.</p>
-          <img src="Logo Fresco Fit.svg" alt="Logo Fresco Fit" loading="lazy" decoding="async"/>
-          <div class="cta">
-            <a class="btn primary" href="#contact">Quiero mi logo</a>
-            <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Ver casos</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3 data-i18n="s2_title">Landing Pages & Web</h3>
-          <p data-i18n="s2_text">Páginas rápidas, responsive y enfocadas en conversión.</p>
-          <!-- Usa tu imagen renombrada como landingpage.jpg (o ajusta el src) -->
-          <img src="landingpage.jpg" alt="Ejemplo Landing Page" loading="lazy" decoding="async"/>
-          <div class="cta">
-            <a class="btn primary" href="#contact">Necesito una landing</a>
-            <a class="btn" href="mailto:cinzia_marketing_design@hotmail.com">Pedir presupuesto</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3 data-i18n="s3_title">Social Media + IA</h3>
-          <p data-i18n="s3_text">Reels, banners, carruseles y copys asistidos por IA.</p>
-          <img src="Banner KeysHome.png" alt="Banner KeysHome" loading="lazy" decoding="async"/>
-          <div class="cta">
-            <a class="btn primary" href="#contact">Plan de contenidos</a>
-            <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Ver ejemplos</a>
-          </div>
-        </article>
+    <h2 class="title">Servicios</h2>
+    <p class="kicker">Soluciones digitales para marcas que quieren destacar.</p>
+    <div class="grid-auto">
+      <div class="card">
+        <h3>Landing Pages & Web</h3>
+        <p>Páginas rápidas, responsive y enfocadas en conversión.</p>
+        <a class="btn" href="#contact">Necesito una landing</a>
+      </div>
+      <div class="card">
+        <h3>Social Media + IA</h3>
+        <p>Reels, banners, carruseles y copys asistidos por IA.</p>
+        <a class="btn" href="#contact">Quiero mi pack</a>
+      </div>
+      <div class="card">
+        <h3>Branding & Logos</h3>
+        <p>Identidad visual única para negocios que quieren crecer.</p>
+        <a class="btn" href="#contact">Diseñar mi logo</a>
       </div>
     </div>
   </section>
 
-  <!-- PORTFOLIO -->
+  <!-- Portafolio -->
   <section id="portfolio">
     <div class="wrap">
-      <h2 class="title" data-i18n="port_title">Portafolio / Proyectos</h2>
-      <p class="kicker" data-i18n="port_kicker">Selección de piezas creativas y académicas.</p>
+      <h2 class="title">Portafolio / Proyectos</h2>
+      <p class="kicker">Selección de piezas creativas y académicas.</p>
 
-      <div class="grid-auto">
-        <article class="work">
-          <img src="Yellow and Green Modern Travel Agency Facebook Event Cover.jpg" alt="Banner agencia de viajes" loading="lazy" decoding="async"/>
-          <div class="meta"><h4>VIAJARTE</h4><p class="tag" data-i18n="w_travel">Banner cartel de agencia de viajes</p></div>
+      <div class="masonry">
+
+        <article class="masonry-item">
+          <img src="Yellow and Green Modern Travel Agency Facebook Event Cover.jpg" alt="Banner agencia de viajes">
+          <div class="meta">
+            <h4>VIAJARTE</h4>
+            <p class="tag">Banner cartel de agencia de viajes</p>
+          </div>
         </article>
 
-        <article class="work">
-          <img src="flyer imagen.jpg" alt="Flyer DJ Kora" loading="lazy" decoding="async"/>
-          <div class="meta"><h4>DJ Kora</h4><p class="tag" data-i18n="w_dj">Flyer evento musical</p></div>
+        <article class="masonry-item">
+          <img src="flyer imagen.jpg" alt="Flyer DJ Kora">
+          <div class="meta">
+            <h4>DJ Kora</h4>
+            <p class="tag">Flyer evento musical</p>
+          </div>
         </article>
 
-        <!-- Nuevo: GIF mockup portada/contraportada -->
-        <article class="work">
-          <img src="20250922_214839_0001.gif" alt="Mockup portada y contraportada" loading="lazy" decoding="async"/>
-          <div class="meta"><h4>Editorial Mockup</h4><p class="tag">Animación GIF (portada/contraportada)</p></div>
+        <article class="masonry-item">
+          <img src="20250922_214839_0001.gif" alt="Mockup portada y contraportada">
+          <div class="meta">
+            <h4>Editorial Mockup</h4>
+            <p class="tag">Animación GIF (portada/contraportada)</p>
+          </div>
         </article>
 
-        <!-- Nuevo: Menú vegetariano -->
-        <article class="work">
-          <img src="menu-vegetariano.jpg" alt="Menú Comida Vegetariana" loading="lazy" decoding="async"/>
-          <div class="meta"><h4>Menú Vegetariano</h4><p class="tag">Diseño menú restaurante</p></div>
+        <article class="masonry-item">
+          <img src="menu-vegetariano.jpg" alt="Menú Comida Vegetariana">
+          <div class="meta">
+            <h4>Menú Vegetariano</h4>
+            <p class="tag">Diseño menú restaurante</p>
+          </div>
         </article>
 
-        <article class="work">
-          <img src="LOGO keys Home.svg" alt="Logo Keys Home" loading="lazy" decoding="async"/>
-          <div class="meta"><h4>KeysHome</h4><p class="tag">Logo</p></div>
+        <article class="masonry-item">
+          <img src="LOGO keys Home.svg" alt="Logo Keys Home">
+          <div class="meta">
+            <h4>KeysHome</h4>
+            <p class="tag">Logo</p>
+          </div>
         </article>
 
-        <article class="work">
-          <img src="branner.jpg" alt="CB Banner" loading="lazy" decoding="async"/>
-          <div class="meta"><h4>CB Marketing & Design</h4><p class="tag">Banner creativo personal</p></div>
+        <article class="masonry-item">
+          <img src="branner.jpg" alt="CB Banner">
+          <div class="meta">
+            <h4>CB Marketing & Design</h4>
+            <p class="tag">Banner creativo personal</p>
+          </div>
         </article>
+
       </div>
 
-      <div class="cta" style="margin-top:16px">
-        <a class="btn primary" href="#contact">Quiero algo así para mi marca</a>
-        <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Ver más en Behance</a>
+      <div class="cta" style="margin-top:16px;text-align:center">
+        <a class="btn" href="#contact">Quiero algo así para mi marca</a>
+        <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank">Ver más en Behance</a>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIOS -->
-  <section id="testimonials">
-    <div class="wrap">
-      <h2 class="title" data-i18n="testi_title">Testimonios</h2>
-      <p class="kicker" data-i18n="testi_kicker">Lo que dicen sobre mi trabajo.</p>
-      <div class="testi" aria-label="opiniones">
-        <div class="t"><strong>Laura G.</strong><span data-i18n="t1">“Cinzia tiene un gran ojo para el diseño y domina la integración de IA.”</span></div>
-        <div class="t"><strong>Mario P.</strong><span data-i18n="t2">“Rápida, organizada y creativa. La landing superó expectativas.”</span></div>
-        <div class="t"><strong>Andrés R.</strong><span data-i18n="t3">“Excelente equilibrio entre creatividad y performance.”</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL con Behance visible -->
+  <!-- Contacto -->
   <section id="contact">
-    <div class="wrap cta-box">
-      <p data-i18n="cta_text">¿Impulsamos tu marca con IA y buen diseño?</p>
-      <div class="cta">
-        <a class="btn primary" href="mailto:cinzia_marketing_design@hotmail.com">Email</a>
-        <a class="btn" href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Behance</a>
-      </div>
+    <h2 class="title">Contacto</h2>
+    <p class="kicker">Trabajemos juntos en tu próximo proyecto 🚀</p>
+    <div style="text-align:center">
+      <p><strong>Email:</strong> <a href="mailto:cinzia_marketing_design@hotmail.com">cinzia_marketing_design@hotmail.com</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank">linkedin.com/in/cinzia-bastoni</a></p>
+      <p><strong>Behance:</strong> <a href="https://www.behance.net/cinzia_design" target="_blank">behance.net/cinzia_design</a></p>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
-    <div class="wrap" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;align-items:center">
-      <div>© <span id="y"></span> Cinzia Bastoni</div>
-      <div class="socials">
-        <a href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Behance</a>
-        <span>•</span>
-        <a href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">LinkedIn</a>
-        <span>•</span>
-        <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Top ↑</a>
-      </div>
-    </div>
+    <p>© 2025 CB Marketing & Design | Diseñado por Cinzia Bastoni</p>
   </footer>
 
-  <button class="float-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-    Contactar
-  </button>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    const i18n = {
-      es:{nav_about:"Sobre mí",nav_services:"Servicios",nav_portfolio:"Portafolio",nav_contact:"Contacto",
-          hero_title:"Marketing & Design Expert | KI-powered Strategies",
-          hero_sub:"Ayudo a negocios y emprendedores a destacar con estrategias creativas, diseño innovador y flujos con inteligencia artificial que convierten.",
-          cta_primary:"¡Hablemos!",
-          about_title:"Sobre mí",
-          about_text:"Soy Cinzia Bastoni, profesional del marketing, la inteligencia artificial (KI) y el diseño. Certificada en Marketing Management e IHK KI Manager. Combino estrategia, creatividad y automatización para construir marcas con identidad fuerte y campañas que convierten.",
-          services_title:"Servicios que ofrezco",services_kicker:"Soluciones orientadas a resultados.",
-          s1_title:"Branding & Identidad",s1_text:"Logos, guías de estilo y piezas para redes.",
-          s2_title:"Landing Pages & Web",s2_text:"Páginas rápidas, responsive y enfocadas en conversión.",
-          s3_title:"Social Media + IA",s3_text:"Reels, banners, carruseles y copys asistidos por IA.",
-          port_title:"Portafolio / Proyectos",port_kicker:"Selección de piezas creativas y académicas.",
-          w_travel:"Banner cartel de agencia de viajes",w_dj:"Flyer evento musical",
-          testi_title:"Testimonios",testi_kicker:"Lo que dicen sobre mi trabajo.",
-          t1:"“Cinzia tiene un gran ojo para el diseño y domina la integración de IA.”",
-          t2:"“Rápida, organizada y creativa. La landing superó expectativas.”",
-          t3:"“Excelente equilibrio entre creatividad y performance.”",
-          cta_text:"¿Impulsamos tu marca con IA y buen diseño?"
-      },
-      en:{nav_about:"About",nav_services:"Services",nav_portfolio:"Portfolio",nav_contact:"Contact",
-          hero_title:"Marketing & Design Expert | AI-powered Strategies",
-          hero_sub:"I help businesses stand out with creative strategy, bold design and AI workflows that convert.",
-          cta_primary:"Let's talk!",
-          about_title:"About me",
-          about_text:"I'm Cinzia Bastoni, a marketing, AI and design professional. Certified in Marketing Management and IHK KI Manager. I blend strategy, creativity and automation to build strong brands and campaigns that convert.",
-          services_title:"Services",services_kicker:"Results-driven solutions.",
-          s1_title:"Branding & Identity",s1_text:"Logos, style guides and social assets.",
-          s2_title:"Landing Pages & Web",s2_text:"Fast, responsive and conversion-focused pages.",
-          s3_title:"Social Media + AI",s3_text:"Reels, banners, carousels and AI-assisted copy.",
-          port_title:"Portfolio",port_kicker:"A selection of creative and academic pieces.",
-          testi_title:"Testimonials",testi_kicker:"What people say.",
-          t1:"“Great design eye and strong AI integration.”",t2:"“Fast, organized and creative.”",t3:"“Excellent balance of creativity and performance.”",
-          cta_text:"Ready to boost your brand with AI & design?"
-      },
-      it:{nav_about:"Chi sono",nav_services:"Servizi",nav_portfolio:"Portfolio",nav_contact:"Contatto",
-          hero_title:"Esperta di Marketing & Design | Strategie con KI",
-          hero_sub:"Aiuto aziende e professionisti a distinguersi con creatività, design e flussi IA orientati alla conversione.",
-          cta_primary:"Parliamo!",
-          about_title:"Chi sono",
-          about_text:"Sono Cinzia Bastoni, professionista di marketing, KI e design. Certificata in Marketing Management e IHK KI Manager. Unisco strategia, creatività e automazione per creare brand forti e campagne che convertono.",
-          services_title:"Servizi",services_kicker:"Soluzioni orientate ai risultati.",
-          s1_title:"Branding & Identità",s1_text:"Loghi, brand book e asset social.",
-          s2_title:"Landing Pages & Web",s2_text:"Pagine veloci, responsive e focalizzate sulla conversione.",
-          s3_title:"Social Media + IA",s3_text:"Reel, banner, caroselli e copy assistiti dall’IA.",
-          port_title:"Portfolio",port_kicker:"Selezione di progetti creativi e accademici.",
-          testi_title:"Testimonianze",testi_kicker:"Cosa dicono del mio lavoro.",
-          t1:"“Grande occhio per il design e integrazione dell’IA.”",t2:"“Veloce, organizzata e creativa.”",t3:"“Ottimo equilibrio tra creatività e performance.”",
-          cta_text:"Potenziare il tuo brand con IA & design?"
-      },
-      de:{nav_about:"Über mich",nav_services:"Leistungen",nav_portfolio:"Portfolio",nav_contact:"Kontakt",
-          hero_title:"Marketing- & Design-Expertin | KI-gestützte Strategien",
-          hero_sub:"Ich helfe Unternehmen mit kreativen Strategien, starkem Design und KI-Workflows, die konvertieren.",
-          cta_primary:"Lass uns sprechen!",
-          about_title:"Über mich",
-          about_text:"Ich bin Cinzia Bastoni – Marketing-, KI- und Design-Profi. Zertifiziert in Marketing Management und IHK KI Manager. Ich kombiniere Strategie, Kreativität und Automatisierung für starke Marken und performante Kampagnen.",
-          services_title:"Leistungen",services_kicker:"Ergebnisorientierte Lösungen.",
-          s1_title:"Branding & Identität",s1_text:"Logos, Styleguides und Social Assets.",
-          s2_title:"Landingpages & Web",s2_text:"Schnell, responsiv, conversion-fokussiert.",
-          s3_title:"Social Media + KI",s3_text:"Reels, Banner, Karussells und KI-Texte.",
-          port_title:"Portfolio",port_kicker:"Auswahl kreativer und akademischer Arbeiten.",
-          testi_title:"Referenzen",testi_kicker:"Das sagt man über meine Arbeit.",
-          t1:"„Sehr gutes Design-Auge und KI-Integration.“",t2:"„Schnell, strukturiert und kreativ.“",t3:"„Tolle Balance zwischen Kreativität und Performance.“",
-          cta_text:"Bereit für mehr mit KI & Design?"
-      }
-    };
-
-    function setLang(lang){
-      const d=i18n[lang]||i18n.es;
-      document.documentElement.lang=lang;
-      document.querySelectorAll("[data-i18n]").forEach(el=>{
-        const k=el.getAttribute("data-i18n"); if(d[k]) el.textContent=d[k];
-      });
-      localStorage.setItem("lang",lang);
-    }
-    document.querySelectorAll(".flag").forEach(f=>f.addEventListener("click",()=>setLang(f.dataset.lang)));
-    setLang(localStorage.getItem("lang")||"es");
-  </script>
 </body>
 </html>
