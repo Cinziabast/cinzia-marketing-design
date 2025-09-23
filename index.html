@@ -18,16 +18,78 @@ html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,
 img{max-width:100%;display:block;height:auto}
 
 /* ===== NAV ===== */
-header{position:sticky;top:0;z-index:1000;background:rgba(14,14,14,.92);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid #191919}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px}
-.brand{font-weight:700;white-space:nowrap}
-.menu{display:flex;gap:16px;flex-wrap:wrap}
-.menu a{color:var(--text);text-decoration:none;opacity:.9}
-.menu a:hover{opacity:1}
-.lang{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
-.lang a{display:inline-flex}
-.lang img{height:22px;width:auto;border-radius:3px;box-shadow:0 0 0 1px #222}
-.lang a.active img{box-shadow:0 0 0 2px var(--accent)}
+header{
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(14,14,14,.92);
+  backdrop-filter: saturate(120%) blur(8px);
+  border-bottom: 1px solid #191919;
+}
+
+/* NAV con grid: marca | menú | banderas */
+.nav{
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+}
+
+/* Marca / logo */
+.brand{
+  font-weight: 700;
+  white-space: nowrap;
+}
+.brand img{
+  height: 28px; width: auto; display: inline-block; margin-right: 8px;
+}
+@media (min-width:768px){
+  .brand img{ height: 32px; }
+}
+
+/* Menú */
+.menu{
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.menu a{
+  color: var(--text);
+  text-decoration: none;
+  opacity: .9;
+}
+.menu a:hover{ opacity: 1; }
+
+/* Banderas */
+.lang{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-self: end;
+}
+.lang a{ display:inline-flex; }
+.lang img{
+  height: 22px; width: auto;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px #222;
+  background:#111;
+}
+.lang a.active img{ box-shadow: 0 0 0 2px var(--accent); }
+@media (min-width:768px){
+  .lang img{ height: 24px; }
+}
+
+/* En móviles: scroll horizontal si no caben */
+@media (max-width:520px){
+  .lang{
+    max-width: 55vw;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .lang::-webkit-scrollbar{ display: none; }
+}
+
 
 /* En móviles, deja que el grupo de banderas tenga scroll sin romper el header */
 @media (max-width: 520px){
@@ -94,7 +156,12 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-of
 
 <header>
   <div class="nav">
-    <div class="brand">CB Marketing & Design</div>
+    <div class="brand">
+      <!-- Si tienes logo, úsalo -->
+      <img class="brand-logo" src="img/logo-cb.svg" alt="CB Marketing & Design" />
+      <!-- Si no tienes logo, deja solo este span -->
+      <span>CB Marketing & Design</span>
+    </div>
 
     <nav class="menu" aria-label="Main">
       <a href="#about" data-i18n="nav_about">Sobre mí</a>
@@ -103,11 +170,12 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-of
       <a href="#contact" data-i18n="nav_contact">Contacto</a>
     </nav>
 
+    <!-- IMPORTANTE: pon las banderas en /img/flags/ con estos nombres -->
     <div class="lang" aria-label="Language selector">
-      <a href="?lang=es" data-lang="es" title="Español"><img src="es.png" alt="ES"></a>
-      <a href="?lang=en" data-lang="en" title="English"><img src="gb.png" alt="EN"></a>
-      <a href="?lang=it" data-lang="it" title="Italiano"><img src="it.png" alt="IT"></a>
-      <a href="?lang=de" data-lang="de" title="Deutsch"><img src="de.png" alt="DE"></a>
+      <a href="?lang=es" data-lang="es" title="Español"><img src="img/flags/es.png" alt="ES"></a>
+      <a href="?lang=en" data-lang="en" title="English"><img src="img/flags/gb.png" alt="EN"></a>
+      <a href="?lang=it" data-lang="it" title="Italiano"><img src="img/flags/it.png" alt="IT"></a>
+      <a href="?lang=de" data-lang="de" title="Deutsch"><img src="img/flags/de.png" alt="DE"></a>
     </div>
   </div>
 </header>
@@ -185,7 +253,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-of
     <!-- ViajArte -->
     <article class="tile">
       <div class="media">
-        <img src="flyer imagen.jpg" alt="VIAJARTE" loading="lazy">
+        <img src="Yellow and Green Modern Travel Agency Facebook Event Cover.jpg" alt="VIAJARTE" loading="lazy">
       </div>
       <div class="cap">
         <h4>VIAJARTE</h4>
@@ -196,7 +264,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-of
     <!-- DJ -->
     <article class="tile">
       <div class="media">
-        <img src="branner.jpg" alt="DJ Kora" loading="lazy">
+        <img src="flyer imagen.jpg" alt="DJ Kora" loading="lazy">
       </div>
       <div class="cap">
         <h4>DJ Kora</h4>
@@ -229,7 +297,7 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-of
     <!-- CB Banner -->
     <article class="tile">
       <div class="media">
-        <img src="Banner KeysHome.png" alt="CB Marketing & Design banner" loading="lazy">
+        <img src="branner.jpg" alt="CB Marketing & Design banner" loading="lazy">
       </div>
       <div class="cap">
         <h4>CB Marketing & Design</h4>
