@@ -1,185 +1,436 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="meta-title">CB Marketing & Design</title>
-  <meta id="meta-desc" name="description" content="Marketing, Diseño e IA para marcas que quieren destacar.">
-  <style>
-    body{
-      margin:0;font-family:Arial,sans-serif;background:#111;color:#fff;line-height:1.6;
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CB Marketing & Design</title>
+<meta name="description" content="Marketing, Diseño e IA. Landing pages, branding, social media y más." />
+
+<style>
+  :root{
+    --bg:#0f0f12;
+    --card:#15161b;
+    --text:#e9ecf1;
+    --muted:#b8beca;
+    --brand1:#6ea2ff;
+    --brand2:#a96bff;
+    --pill:#1e2330;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+    --radius:18px;
+    --radius-sm:12px;
+  }
+
+  /* Reset suave */
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Helvetica,Arial,sans-serif;scroll-behavior:smooth}
+  img{max-width:100%;height:auto;display:block}
+
+  /* Topbar */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(1.2) blur(6px);
+    background:rgba(10,10,14,.75);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .nav-inner{
+    margin:auto;max-width:1200px;padding:12px 18px;
+    display:flex;gap:16px;align-items:center;justify-content:space-between;
+  }
+  .brand{font-weight:700;letter-spacing:.2px}
+  .menu{display:flex;gap:18px;align-items:center}
+  .menu a{color:var(--muted);text-decoration:none}
+  .menu a:hover{color:var(--text)}
+  .flags{display:flex;gap:10px;align-items:center}
+  .flag{cursor:pointer;font-size:20px;filter:saturate(.85);transition:.15s}
+  .flag.active{filter:none;transform:scale(1.06)}
+  .flag:focus{outline:2px solid #ffffff33;outline-offset:2px;border-radius:6px}
+
+  /* HERO – fondo por CSS para poder “reencuadrar” en móvil */
+  .hero{
+    position:relative;isolation:isolate;
+    min-height:72vh;display:grid;place-items:center;
+    background:#111 url("Creatividad en movimiento.png") center / cover no-repeat;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:linear-gradient(to bottom, rgba(15,15,18,.1) 0%, rgba(15,15,18,.65) 100%);
+  }
+  .hero-inner{
+    position:relative;z-index:1;text-align:center;max-width:1000px;padding:24px 16px 32px;
+  }
+  .hero h1{font-size:clamp(28px,5vw,48px);margin:0 0 10px}
+  .hero p{margin:0 0 18px;color:var(--muted)}
+  .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    border:0;border-radius:999px;padding:12px 18px;
+    color:#fff;cursor:pointer;box-shadow:var(--shadow);
+    background:linear-gradient(90deg,var(--brand1),var(--brand2));
+    transition:.2s;min-width:150px;font-weight:600
+  }
+  .btn.secondary{background:#2a2f3e}
+  .btn:hover{transform:translateY(-2px)}
+
+  /* Secciones */
+  .section{padding:56px 18px}
+  .wrap{max-width:1200px;margin:auto}
+  h2{font-size:clamp(26px,4vw,34px);margin:0 0 8px;text-align:center}
+  .lead{color:var(--muted);text-align:center;margin:0 0 26px}
+
+  /* Tarjetas de servicios */
+  .grid{
+    display:grid;gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  }
+  .card{
+    background:var(--card);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow)
+  }
+  .card-media{
+    aspect-ratio:16/9;  /* esto garantiza que NUNCA se deforme */
+    background:#0e0f13;
+  }
+  .card-media img{width:100%;height:100%;object-fit:cover}
+  .card-body{padding:16px 16px 18px}
+  .card h3{margin:0 0 6px}
+  .card p{margin:0 0 12px;color:var(--muted)}
+
+  /* Portafolio – mismas reglas, alturas variables sin deformar */
+  .tiles{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .tile{
+    background:var(--card);border-radius:var(--radius-sm);overflow:hidden;box-shadow:var(--shadow)
+  }
+  .tile-media{background:#0e0f13}
+  .tile-media img{width:100%;height:auto;display:block}
+  /* Si alguna imagen es muy alta (menú), limitamos altura en tarjeta + recorte elegante */
+  .tile-media.is-tall img{height:520px;object-fit:cover}
+
+  .cap{padding:12px 14px 16px}
+  .cap h4{margin:0 0 4px}
+  .cap p{margin:0;color:var(--muted)}
+
+  /* Footer */
+  footer{padding:36px 18px;border-top:1px solid #ffffff14;color:var(--muted)}
+  footer .wrap{display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center}
+
+  /* ===== SOLO móvil: usamos la versión recortada del hero ===== */
+  @media (max-width: 600px){
+    .hero{
+      min-height:64vh;
+      background:#111 url("Creatividad en movimiento - copia.png") center / cover no-repeat;
     }
-
-    /* ===== Header ===== */
-    header{background:#000;position:sticky;top:0;z-index:1000;}
-    .header-wrap{max-width:1200px;margin:0 auto;padding:10px 16px;
-      display:flex;align-items:center;justify-content:space-between;gap:16px;}
-    .brand{font-weight:700;color:#fff;white-space:nowrap;}
-    .menu{display:flex;gap:16px;flex:1;justify-content:center;}
-    .menu a{color:#fff;text-decoration:none;font-size:0.95rem;}
-    .flags{display:flex !important;gap:8px;align-items:center;}
-    .flags button{font-size:20px;cursor:pointer;background:none;border:none;}
-    @media(max-width:820px){.menu{display:none;}}
-
-    /* ===== Hero ===== */
-    .hero{position:relative;text-align:center;color:#fff;min-height:80vh;
-      display:flex;align-items:center;justify-content:center;overflow:hidden;}
-    .hero-media img{width:100%;height:100%;object-fit:cover;display:block;}
-    .hero-inner{position:absolute;text-align:center;}
-    .hero h1{font-size:clamp(26px,5vw,48px);margin-bottom:10px;}
-    .hero p{font-size:18px;margin-bottom:20px;}
-    .cta{display:flex;gap:12px;justify-content:center;}
-    .btn{padding:10px 20px;font-size:1rem;border-radius:8px;border:none;cursor:pointer;
-      background:linear-gradient(to right,#2563eb,#9333ea);color:#fff;}
-    .btn.secondary{background:#222;}
-
-    /* ===== SOLO móvil ===== */
-    @media (max-width:600px){
-      .hero{aspect-ratio:16/9;min-height:auto;padding:0;
-        background:#111 url("Creatividad%20en%20movimiento%20-%20copia.png") center/contain no-repeat;}
-      .hero-media{display:none;}
-      .hero-inner{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);width:92%;}
-      .hero h1{font-size:clamp(18px,5vw,22px);}
-      .hero p{font-size:13px;}
-      .btn{padding:6px 10px;font-size:.85rem;min-width:120px;}
-    }
-
-    /* ===== Sections ===== */
-    section{padding:60px 20px;text-align:center;}
-    h2{margin-bottom:20px;}
-    .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-    .tile img{width:100%;border-radius:8px;display:block;object-fit:contain;background:#222;}
-    .cap{margin-top:10px;}
-    footer{background:#000;color:#ccc;text-align:center;padding:20px;font-size:0.9rem;}
-  </style>
+    .hero h1{font-size:clamp(24px,7vw,34px)}
+    .hero p{font-size:14px}
+    .btn{padding:10px 14px;min-width:130px}
+  }
+</style>
 </head>
 <body>
 
-  <!-- ===== Header ===== -->
-  <header>
-    <div class="header-wrap">
+  <!-- NAV -->
+  <nav class="nav" aria-label="Main">
+    <div class="nav-inner">
       <div class="brand">CB Marketing & Design</div>
-      <nav class="menu">
+      <div class="menu">
         <a href="#about" data-i18n="nav_about">Sobre mí</a>
         <a href="#services" data-i18n="nav_services">Servicios</a>
         <a href="#portfolio" data-i18n="nav_portfolio">Portafolio</a>
         <a href="#contact" data-i18n="nav_contact">Contacto</a>
-      </nav>
-      <div class="flags">
-        <button onclick="setLang('es')">🇪🇸</button>
-        <button onclick="setLang('en')">🇬🇧</button>
-        <button onclick="setLang('it')">🇮🇹</button>
-        <button onclick="setLang('de')">🇩🇪</button>
+        <div class="flags" aria-label="Language">
+          <button class="flag" data-lang="es" title="Español">🇪🇸</button>
+          <button class="flag" data-lang="en" title="English">🇬🇧</button>
+          <button class="flag" data-lang="it" title="Italiano">🇮🇹</button>
+          <button class="flag" data-lang="de" title="Deutsch">🇩🇪</button>
+        </div>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero">
-    <div class="hero-media">
-      <img src="hero-escritorio.png" alt="Creatividad en movimiento">
-    </div>
+  <!-- HERO -->
+  <header class="hero" id="home" role="banner" aria-label="Hero">
     <div class="hero-inner">
       <h1 data-i18n="hero_title">Creatividad en movimiento</h1>
       <p data-i18n="hero_sub">Marketing • Diseño • Inteligencia Artificial</p>
       <div class="cta">
-        <a class="btn" href="#contact" data-i18n="cta_talk">¡Hablemos!</a>
-        <a class="btn secondary" href="https://behance.net/cinzia_design" target="_blank" data-i18n="cta_behance">Ver Behance</a>
+        <a class="btn" href="#contact" data-i18n="cta_contact">¡Hablemos!</a>
+        <a class="btn secondary" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener noreferrer" data-i18n="cta_behance">Ver Behance</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SOBRE MI -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <h2 data-i18n="about_title">Sobre mí</h2>
+      <p class="lead" data-i18n="about_text">
+        Soy profesional en Marketing, Diseño e IA Manager. Me apasiona crear experiencias visuales únicas que combinan creatividad con estrategia digital.
+      </p>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <h2 data-i18n="services_title">Servicios</h2>
+      <p class="lead" data-i18n="services_sub">Soluciones digitales para marcas que quieren destacar.</p>
+
+      <div class="grid">
+        <!-- Servicio 1 -->
+        <article class="card">
+          <div class="card-media">
+            <img src="landingpage.jpg" alt="Ejemplo Landing Page" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3 data-i18n="srv1_title">Landing Pages & Web</h3>
+            <p data-i18n="srv1_desc">Páginas rápidas, responsive y orientadas a conversión.</p>
+            <a class="btn" href="#contact" data-i18n="srv1_cta">Necesito una landing</a>
+          </div>
+        </article>
+
+        <!-- Servicio 2 -->
+        <article class="card">
+          <div class="card-media">
+            <img src="Banner KeysHome.png" alt="Ejemplo Social Media + IA" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3 data-i18n="srv2_title">Social Media + IA</h3>
+            <p data-i18n="srv2_desc">Reels, banners, carruseles y copys asistidos por IA.</p>
+            <a class="btn" href="#contact" data-i18n="srv2_cta">Quiero mi plan</a>
+          </div>
+        </article>
+
+        <!-- Servicio 3 -->
+        <article class="card">
+          <div class="card-media">
+            <img src="Logo Fresco Fit.svg" alt="Branding & logos" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3 data-i18n="srv3_title">Branding & Logos</h3>
+            <p data-i18n="srv3_desc">Identidad visual para negocios que quieren crecer.</p>
+            <a class="btn" href="#contact" data-i18n="srv3_cta">Diseñar mi logo</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ===== Sobre mí ===== -->
-  <section id="about">
-    <h2 data-i18n="about_title">Sobre mí</h2>
-    <p data-i18n="about_text">
-      Soy profesional en Marketing, Diseño e IA Manager. Me apasiona crear experiencias visuales únicas que combinan creatividad con estrategia digital.
-    </p>
-  </section>
+  <!-- PORTAFOLIO -->
+  <section class="section" id="portfolio">
+    <div class="wrap">
+      <h2 data-i18n="port_title">Portafolio / Proyectos</h2>
+      <p class="lead" data-i18n="port_sub">Selección de piezas creativas y académicas.</p>
 
-  <!-- ===== Servicios ===== -->
-  <section id="services">
-    <h2 data-i18n="services_title">Servicios</h2>
-    <p data-i18n="services_text">Soluciones digitales para marcas que quieren destacar.</p>
-  </section>
+      <div class="tiles">
+        <!-- ViajArte -->
+        <article class="tile">
+          <div class="tile-media">
+            <img src="branner.jpg" alt="VIAJARTE" loading="lazy" />
+          </div>
+          <div class="cap">
+            <h4>VIAJARTE</h4>
+            <p data-i18n="p1_desc">Banner cartel de agencia de viajes</p>
+          </div>
+        </article>
 
-  <!-- ===== Portafolio ===== -->
-  <section id="portfolio">
-    <h2 data-i18n="portfolio_title">Portafolio</h2>
-    <p data-i18n="portfolio_sub">Selección de piezas creativas y académicas.</p>
-    <div class="tiles">
-      <article class="tile">
-        <img src="menu-vegetariano.jpg" alt="Menú Vegetariano">
-        <div class="cap">
-          <h4 data-i18n="p1_title">Menú Vegetariano</h4>
-          <p data-i18n="p1_desc">Diseño menú restaurante</p>
-        </div>
-      </article>
-      <!-- más proyectos -->
+        <!-- DJ Kora -->
+        <article class="tile">
+          <div class="tile-media">
+            <img src="flyer imagen.jpg" alt="DJ Kora" loading="lazy" />
+          </div>
+          <div class="cap">
+            <h4>DJ Kora</h4>
+            <p data-i18n="p2_desc">Flyer evento musical</p>
+          </div>
+        </article>
+
+        <!-- Editorial Mockup (gif) -->
+        <article class="tile">
+          <div class="tile-media">
+            <img src="20250922_214839_0001.gif" alt="Editorial mockup" loading="lazy" />
+          </div>
+          <div class="cap">
+            <h4 data-i18n="p3_title">Editorial Mockup</h4>
+            <p data-i18n="p3_desc">Animación GIF (portada/contraportada)</p>
+          </div>
+        </article>
+
+        <!-- Menú Vegetariano (alto) -->
+        <article class="tile">
+          <div class="tile-media is-tall">
+            <img src="menu-vegetariano.jpg" alt="Menú Vegetariano" loading="lazy" />
+          </div>
+          <div class="cap">
+            <h4 data-i18n="p4_title">Menú Vegetariano</h4>
+            <p data-i18n="p4_desc">Diseño menú restaurante</p>
+          </div>
+        </article>
+
+        <!-- Logo inmobiliaria -->
+        <article class="tile">
+          <div class="tile-media">
+            <img src="LOGO keys Home.svg" alt="KeysHome logo" loading="lazy" />
+          </div>
+          <div class="cap">
+            <h4>KeysHome</h4>
+            <p>Logo</p>
+          </div>
+        </article>
+
+        <!-- Banner propio -->
+        <article class="tile">
+          <div class="tile-media">
+            <img src="Creatividad en movimiento.png" alt="CB Marketing & Design banner" loading="lazy" />
+          </div>
+          <div class="cap">
+            <h4>CB Marketing & Design</h4>
+            <p data-i18n="p6_desc">Banner creativo personal</p>
+          </div>
+        </article>
+
+        <!-- Banner restaurante español -->
+        <article class="tile">
+          <div class="tile-media">
+            <img src="Sabor ibérico.jpg" alt="Sabor Ibérico" loading="lazy" />
+          </div>
+          <div class="cap">
+            <h4>Sabor Ibérico</h4>
+            <p data-i18n="p7_desc">Banner restaurante español</p>
+          </div>
+        </article>
+
+        <!-- Banner inmobiliaria -->
+        <article class="tile">
+          <div class="tile-media">
+            <img src="Banner KeysHome.png" alt="Banner KeysHome" loading="lazy" />
+          </div>
+          <div class="cap">
+            <h4>KeysHome</h4>
+            <p data-i18n="p8_desc">Banner inmobiliaria</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ===== Contacto ===== -->
-  <section id="contact">
-    <h2 data-i18n="contact_title">Contacto</h2>
-    <p data-i18n="contact_desc">¿Tienes un proyecto en mente? ¡Hablemos!</p>
-    <p>Email: <a href="mailto:cinzia_marketing_design@hotmail.com">cinzia_marketing_design@hotmail.com</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/cinzia-bastoni" target="_blank">linkedin.com/in/cinzia-bastoni</a></p>
-    <p>Behance: <a href="https://behance.net/cinzia_design" target="_blank">behance.net/cinzia_design</a></p>
+  <!-- CONTACTO -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <h2 data-i18n="contact_title">Contacto</h2>
+      <p class="lead" data-i18n="contact_sub">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+      <p style="text-align:center">
+        <strong>Email:</strong> <a href="mailto:cinzia_marketing_design@hotmail.com">cinzia_marketing_design@hotmail.com</a> ·
+        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">cinzia-bastoni</a> ·
+        <strong>Behance:</strong> <a href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">/cinzia_design</a>
+      </p>
+    </div>
   </section>
 
-  <footer>© <span id="year"></span> CB Marketing & Design</footer>
+  <footer>
+    <div class="wrap">
+      <div>© 2025 CB Marketing & Design</div>
+      <a href="#home" class="btn secondary" style="min-width:auto;padding:8px 14px" data-i18n="back_top">Volver arriba ↑</a>
+    </div>
+  </footer>
 
-  <!-- ===== Traducciones ===== -->
-  <script>
-    const I18N = {
-      es:{nav_about:"Sobre mí",nav_services:"Servicios",nav_portfolio:"Portafolio",nav_contact:"Contacto",
-          hero_title:"Creatividad en movimiento",hero_sub:"Marketing • Diseño • Inteligencia Artificial",
-          cta_talk:"¡Hablemos!",cta_behance:"Ver Behance",
-          about_title:"Sobre mí",about_text:"Soy profesional en Marketing, Diseño e IA Manager. Me apasiona crear experiencias visuales únicas que combinan creatividad con estrategia digital.",
-          services_title:"Servicios",services_text:"Soluciones digitales para marcas que quieren destacar.",
-          portfolio_title:"Portafolio",portfolio_sub:"Selección de piezas creativas y académicas.",
-          p1_title:"Menú Vegetariano",p1_desc:"Diseño menú restaurante",
-          contact_title:"Contacto",contact_desc:"¿Tienes un proyecto en mente? ¡Hablemos!"},
-      en:{nav_about:"About",nav_services:"Services",nav_portfolio:"Portfolio",nav_contact:"Contact",
-          hero_title:"Creativity in Motion",hero_sub:"Marketing • Design • Artificial Intelligence",
-          cta_talk:"Let's talk!",cta_behance:"View Behance",
-          about_title:"About me",about_text:"I'm a professional in Marketing, Design and AI Management. I create unique visual experiences blending creativity with digital strategy.",
-          services_title:"Services",services_text:"Digital solutions for brands that want to stand out.",
-          portfolio_title:"Portfolio",portfolio_sub:"Selection of creative and academic pieces.",
-          p1_title:"Vegetarian Menu",p1_desc:"Restaurant menu design",
-          contact_title:"Contact",contact_desc:"Do you have a project in mind? Let's talk!"},
-      it:{nav_about:"Chi sono",nav_services:"Servizi",nav_portfolio:"Portfolio",nav_contact:"Contatto",
-          hero_title:"Creatività in movimento",hero_sub:"Marketing • Design • Intelligenza Artificiale",
-          cta_talk:"Parliamone!",cta_behance:"Vedi Behance",
-          about_title:"Chi sono",about_text:"Professionista di Marketing, Design e Gestione IA. Creo esperienze visive uniche che uniscono creatività e strategia digitale.",
-          services_title:"Servizi",services_text:"Soluzioni digitali per marchi che vogliono distinguersi.",
-          portfolio_title:"Portfolio",portfolio_sub:"Selezione di lavori creativi e accademici.",
-          p1_title:"Menù Vegetariano",p1_desc:"Design menù ristorante",
-          contact_title:"Contatto",contact_desc:"Hai un progetto in mente? Parliamone!"},
-      de:{nav_about:"Über mich",nav_services:"Leistungen",nav_portfolio:"Portfolio",nav_contact:"Kontakt",
-          hero_title:"Kreativität in Bewegung",hero_sub:"Marketing • Design • Künstliche Intelligenz",
-          cta_talk:"Lass uns sprechen!",cta_behance:"Behance ansehen",
-          about_title:"Über mich",about_text:"Ich bin Profi für Marketing, Design und KI-Management. Ich kreiere einzigartige visuelle Erlebnisse, die Kreativität mit digitaler Strategie verbinden.",
-          services_title:"Leistungen",services_text:"Digitale Lösungen für Marken, die auffallen wollen.",
-          portfolio_title:"Portfolio",portfolio_sub:"Auswahl an kreativen und akademischen Arbeiten.",
-          p1_title:"Vegetarisches Menü",p1_desc:"Restaurant-Menüdesign",
-          contact_title:"Kontakt",contact_desc:"Hast du ein Projekt im Kopf? Lass uns sprechen!"}
-    };
+<script>
+/* ===== i18n SIMPLE (banderas activas) ===== */
+const I18N = {
+  es:{
+    nav_about:"Sobre mí", nav_services:"Servicios", nav_portfolio:"Portafolio", nav_contact:"Contacto",
+    hero_title:"Creatividad en movimiento", hero_sub:"Marketing • Diseño • Inteligencia Artificial",
+    cta_contact:"¡Hablemos!", cta_behance:"Ver Behance",
+    about_title:"Sobre mí",
+    about_text:"Soy profesional en Marketing, Diseño e IA Manager. Me apasiona crear experiencias visuales únicas que combinan creatividad con estrategia digital.",
+    services_title:"Servicios", services_sub:"Soluciones digitales para marcas que quieren destacar.",
+    srv1_title:"Landing Pages & Web", srv1_desc:"Páginas rápidas, responsive y orientadas a conversión.", srv1_cta:"Necesito una landing",
+    srv2_title:"Social Media + IA", srv2_desc:"Reels, banners, carruseles y copys asistidos por IA.", srv2_cta:"Quiero mi plan",
+    srv3_title:"Branding & Logos", srv3_desc:"Identidad visual para negocios que quieren crecer.", srv3_cta:"Diseñar mi logo",
+    port_title:"Portafolio / Proyectos", port_sub:"Selección de piezas creativas y académicas.",
+    p1_desc:"Banner cartel de agencia de viajes",
+    p2_desc:"Flyer evento musical",
+    p3_title:"Editorial Mockup", p3_desc:"Animación GIF (portada/contraportada)",
+    p4_title:"Menú Vegetariano", p4_desc:"Diseño menú restaurante",
+    p6_desc:"Banner creativo personal", p7_desc:"Banner restaurante español", p8_desc:"Banner inmobiliaria",
+    contact_title:"Contacto", contact_sub:"¿Tienes un proyecto en mente? ¡Hablemos!",
+    back_top:"Volver arriba ↑"
+  },
+  en:{
+    nav_about:"About", nav_services:"Services", nav_portfolio:"Portfolio", nav_contact:"Contact",
+    hero_title:"Creativity in Motion", hero_sub:"Marketing • Design • Artificial Intelligence",
+    cta_contact:"Let's talk!", cta_behance:"View Behance",
+    about_title:"About me",
+    about_text:"I'm a Marketing, Design & AI Manager. I create unique visual experiences that blend creativity with digital strategy.",
+    services_title:"Services", services_sub:"Digital solutions for brands that want to stand out.",
+    srv1_title:"Landing Pages & Websites", srv1_desc:"Fast, responsive pages focused on conversion.", srv1_cta:"I need a landing",
+    srv2_title:"Social Media + AI", srv2_desc:"Reels, banners, carousels and AI-assisted copy.", srv2_cta:"Build my plan",
+    srv3_title:"Branding & Logos", srv3_desc:"Visual identity for growing businesses.", srv3_cta:"Design my logo",
+    port_title:"Portfolio / Projects", port_sub:"Selection of creative & academic works.",
+    p1_desc:"Travel agency banner",
+    p2_desc:"Music event flyer",
+    p3_title:"Editorial Mockup", p3_desc:"GIF animation (front/back cover)",
+    p4_title:"Vegetarian Menu", p4_desc:"Restaurant menu design",
+    p6_desc:"Personal creative banner", p7_desc:"Spanish restaurant banner", p8_desc:"Real estate banner",
+    contact_title:"Contact", contact_sub:"Got a project in mind? Let's talk!",
+    back_top:"Back to top ↑"
+  },
+  it:{
+    nav_about:"Chi sono", nav_services:"Servizi", nav_portfolio:"Portfolio", nav_contact:"Contatto",
+    hero_title:"Creatività in movimento", hero_sub:"Marketing • Design • Intelligenza Artificiale",
+    cta_contact:"Parliamone!", cta_behance:"Vedi Behance",
+    about_title:"Chi sono",
+    about_text:"Professionista in Marketing, Design e AI Manager. Creo esperienze visive uniche con strategia digitale.",
+    services_title:"Servizi", services_sub:"Soluzioni digitali per marchi che vogliono distinguersi.",
+    srv1_title:"Landing Page & Siti", srv1_desc:"Pagine veloci, responsive e orientate alla conversione.", srv1_cta:"Mi serve una landing",
+    srv2_title:"Social Media + IA", srv2_desc:"Reel, banner, caroselli e copy assistiti dall'IA.", srv2_cta:"Voglio il mio piano",
+    srv3_title:"Branding & Loghi", srv3_desc:"Identità visiva per aziende in crescita.", srv3_cta:"Progetta il mio logo",
+    port_title:"Portfolio / Progetti", port_sub:"Selezione di lavori creativi e accademici.",
+    p1_desc:"Banner agenzia di viaggi",
+    p2_desc:"Flyer evento musicale",
+    p3_title:"Mockup Editoriale", p3_desc:"Animazione GIF (copertina/retro)",
+    p4_title:"Menù Vegetariano", p4_desc:"Design menù ristorante",
+    p6_desc:"Banner creativo personale", p7_desc:"Banner ristorante spagnolo", p8_desc:"Banner immobiliare",
+    contact_title:"Contatto", contact_sub:"Hai un progetto? Parliamone!",
+    back_top:"Torna su ↑"
+  },
+  de:{
+    nav_about:"Über mich", nav_services:"Leistungen", nav_portfolio:"Portfolio", nav_contact:"Kontakt",
+    hero_title:"Kreativität in Bewegung", hero_sub:"Marketing • Design • Künstliche Intelligenz",
+    cta_contact:"Lass uns reden!", cta_behance:"Behance ansehen",
+    about_title:"Über mich",
+    about_text:"Marketing-, Design- & KI-Managerin. Ich kreiere einzigartige visuelle Erlebnisse mit digitaler Strategie.",
+    services_title:"Leistungen", services_sub:"Digitale Lösungen für Marken, die auffallen wollen.",
+    srv1_title:"Landingpages & Websites", srv1_desc:"Schnelle, responsive Seiten mit Conversion-Fokus.", srv1_cta:"Ich brauche eine Landing",
+    srv2_title:"Social Media + KI", srv2_desc:"Reels, Banner, Karussells und KI-gestützte Texte.", srv2_cta:"Mein Paket",
+    srv3_title:"Branding & Logos", srv3_desc:"Visuelle Identität für wachsende Unternehmen.", srv3_cta:"Logo entwerfen",
+    port_title:"Portfolio / Projekte", port_sub:"Auswahl kreativer und akademischer Arbeiten.",
+    p1_desc:"Reiseagenturbanner",
+    p2_desc:"Flyer Musikevent",
+    p3_title:"Editorial Mockup", p3_desc:"GIF-Animation (Titel/Rückseite)",
+    p4_title:"Vegetarisches Menü", p4_desc:"Restaurant-Menüdesign",
+    p6_desc:"Persönliches Kreativbanner", p7_desc:"Spanisches Restaurantbanner", p8_desc:"Immobilienbanner",
+    contact_title:"Kontakt", contact_sub:"Projekt im Kopf? Lass uns reden!",
+    back_top:"Nach oben ↑"
+  }
+};
 
-    function setLang(lang){
-      const dict = I18N[lang]||I18N.es;
-      document.documentElement.lang=lang;
-      document.querySelectorAll("[data-i18n]").forEach(el=>{
-        const key=el.getAttribute("data-i18n");
-        if(dict[key]) el.textContent=dict[key];
-      });
-      localStorage.setItem("lang",lang);
-    }
+const $ = (sel,ctx=document)=>ctx.querySelector(sel);
+const $$ = (sel,ctx=document)=>Array.from(ctx.querySelectorAll(sel));
 
-    // init
-    document.getElementById("year").textContent=new Date().getFullYear();
-    const saved=localStorage.getItem("lang")||"es";setLang(saved);
-  </script>
+function applyLang(lang){
+  const dict = I18N[lang] || I18N.es;
+  $$("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(dict[key]) el.textContent = dict[key];
+  });
+  // activar bandera
+  $$(".flag").forEach(b=>b.classList.toggle("active", b.dataset.lang===lang));
+  document.documentElement.lang = lang;
+  localStorage.setItem("lang", lang);
+}
+$$(".flag").forEach(btn=>{
+  btn.addEventListener("click", ()=>applyLang(btn.dataset.lang));
+});
+applyLang(localStorage.getItem("lang") || "es");
+</script>
+
 </body>
 </html>
