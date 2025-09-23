@@ -33,7 +33,7 @@
       gap: 16px;
       padding: 10px 16px;
     }
-    "Creatividad en movimiento - copia.png"
+
     .brand{
       grid-area: brand;
       display: inline-flex;
@@ -80,9 +80,7 @@
       box-shadow: 0 0 0 1px #222;
       background: #111;
     }
-    .lang a.active img{
-      box-shadow: 0 0 0 2px var(--accent);
-    }
+    .lang a.active img{ box-shadow: 0 0 0 2px var(--accent); }
 
     /* Tablet */
     @media (min-width: 768px){
@@ -120,7 +118,7 @@
       place-items: center;
       padding: 56px 16px;
       overflow: hidden;
-      background: #111 url("Creatividad en movimiento - copia.png") center/cover no-repeat; /* <– ruta escritorio */
+      background: #111 url("Creatividad en movimiento - copia.png") center/cover no-repeat; /* escritorio */
     }
     .hero::after{
       content:"";
@@ -176,15 +174,15 @@
     .contact a{ color: #8acbff; text-decoration: none; }
     .footer{ font-size:13px; color:var(--muted); border-top:1px solid #222; padding:24px 16px; text-align:center }
 
-    /* ===== Ajuste definitivo móvil: banner completo ===== */
+    /* ===== Móvil: banner completo ===== */
     @media (max-width: 600px){
       .hero{
-        aspect-ratio: 16 / 9; /* mantiene proporción si el alto del viewport es muy bajo */
+        aspect-ratio: 16 / 9;
         min-height: auto;
         padding: 20px 12px;
-        background: #111 url("Creatividad en movimiento - copia.png") center/contain no-repeat; /* <– ruta móvil */
+        background: #111 url("Creatividad en movimiento - copia.png") center/contain no-repeat; /* móvil */
       }
-      .hero::after{ display:none; } /* sin degradado para aprovechar la imagen */
+      .hero::after{ display:none; }
       .hero-inner{
         position: absolute;
         left: 50%; bottom: 10px;
@@ -206,9 +204,7 @@
     <nav class="nav">
       <!-- Marca / logo -->
       <a href="#top" class="brand" aria-label="Inicio">
-        <!-- Si quieres un logo gráfico, descomenta y pon ruta correcta:
-        <"Creatividad en movimiento - copia.png">
-        -->
+        <!-- Si quieres un logo gráfico, añade aquí un <img src="ruta" alt="CB Marketing & Design"> -->
         CB Marketing & Design
       </a>
 
@@ -244,19 +240,10 @@
 
   <!-- ===== SOBRE MÍ ===== -->
   <section id="about" class="section about">
-  <h2 data-i18n="about_title">Sobre mí</h2>
-
-  <p data-i18n="about_p1">
-    Soy Cinzia Bastoni, profesional en Marketing, Diseño e Inteligencia Artificial. Durante los últimos años…
-  </p>
-
-  <p data-i18n="about_p2">
-    Mi enfoque se centra en unir la creatividad con la estrategia…
-  </p>
-
-  <p data-i18n="about_p3">
-    Si buscas a alguien que aporte ideas frescas, soluciones digitales innovadoras…
-  </p>
+    <h2 data-i18n="about_title">Sobre mí</h2>
+    <p data-i18n="about_p1">Soy Cinzia Bastoni, profesional en Marketing, Diseño e Inteligencia Artificial. Durante los últimos años…</p>
+    <p data-i18n="about_p2">Mi enfoque se centra en unir la creatividad con la estrategia…</p>
+    <p data-i18n="about_p3">Si buscas a alguien que aporte ideas frescas, soluciones digitales innovadoras…</p>
   </section>
 
   <!-- ===== SERVICIOS ===== -->
@@ -342,8 +329,11 @@
   <!-- ===== CONTACTO ===== -->
   <section class="section contact" id="contact">
     <h2 data-i18n="contact_title">Contacto</h2>
-    <p data-i18n="contact_sub">¿Tienes un proyecto en mente? <div class="cta">
-        <a class="btn" href="#contact" data-i18n="cta_talk">¡Hablemos!</a></p>
+    <p data-i18n="contact_sub">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+    <div class="cta">
+      <a class="btn" href="mailto:cinzia_marketing_design@hotmail.com" data-i18n="cta_talk">¡Hablemos!</a>
+      <a class="btn is-ghost" href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
     <p>
       <strong>Email:</strong>
       <a href="mailto:cinzia_marketing_design@hotmail.com">cinzia_marketing_design@hotmail.com</a>
