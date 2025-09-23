@@ -1,215 +1,261 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CB Marketing & Design</title>
-  <meta name="description" content="Creatividad en movimiento. Marketing, Diseño y KI Manager. Landing pages, branding y social media con IA."/>
+  <link rel="stylesheet" href="styles.css">
   <style>
-    :root{
-      --bg:#0b0c10; --ink:#f4f7ff; --muted:#b8c0d9;
-      --card:#13141a; --brand:#3b82f6; --brand2:#a855f7;
-      --r:14px; --shadow:0 8px 28px rgba(0,0,0,.45);
-      --max:1200px;
+    /* ==== Tus estilos generales ==== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
     }
-    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{max-width:var(--max);margin-inline:auto;padding:clamp(16px,2.2vw,28px)}
+    header {
+      position: sticky;
+      top: 0;
+      background: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      z-index: 1000;
+    }
+    header .logo {
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .flags {
+      display: flex;
+      gap: 8px;
+    }
+    .hero {
+      background: url("branner.jpg") no-repeat center/cover;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h1 {
+      font-size: 42px;
+      margin: 0;
+    }
+    .cta {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn-primary {
+      background: #3b82f6;
+      color: #fff;
+    }
+    .btn-secondary {
+      background: #9333ea;
+      color: #fff;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h2.title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .services .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .service-card {
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-img {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: cover;
+    }
+    .service-card .content {
+      padding: 16px;
+    }
+    .portfolio {
+      column-count: 3;
+      column-gap: 16px;
+    }
+    .portfolio-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      background: #111;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .portfolio-item .text {
+      padding: 12px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+    }
 
-    /* HEADER */
-    header{position:sticky;top:0;z-index:50;background:rgba(11,12,16,.75);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.07)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{font-weight:800}
-    .links{display:flex;gap:16px;flex-wrap:wrap}
-    .flags{display:flex;gap:8px}
-    .flag{font-size:18px}
+    /* ==== Fix móvil / Android (espacios y tamaños) ==== */
+    :root{ --navH: 64px; }
 
-    /* HERO */
-    .hero{background:url('branner.jpg') center/cover no-repeat}
-    .hero .container{padding-block:clamp(48px,8vw,96px);text-align:center}
-    .hero h1{font-size:clamp(28px,5vw,44px);margin:.25rem 0}
-    .hero p{color:var(--muted);max-width:60ch;margin:0 auto 12px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:12px}
-    .btn{padding:10px 16px;border-radius:999px;font-weight:700;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06)}
-    .btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#061016;border-color:transparent}
+    html{ scroll-padding-top: var(--navH); }
 
-    section{border-top:1px solid rgba(255,255,255,.06)}
-    h2.title{text-align:center;margin:0 0 10px;font-size:clamp(22px,3.2vw,32px)}
-    p.kicker{text-align:center;color:var(--muted);margin:0 0 22px}
+    header{ min-height: var(--navH); }
+    .hero{ margin-top: var(--navH); }
 
-    /* SERVICIOS */
-    .services{padding-block:clamp(28px,6vw,64px)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
-    .card .body{padding:14px}
-    .service-img{height:180px;object-fit:cover;width:100%}
-    .card .body h3{margin:0 0 6px}
-    .card .body p{margin:0 0 10px;color:var(--muted)}
-    .card .body .cta{justify-content:flex-start}
+    .hero h1{ font-size: clamp(26px, 6vw, 38px); line-height: 1.15; }
+    .hero p{ font-size: clamp(14px, 3.6vw, 17px); margin-top: 8px; }
 
-    /* PORTAFOLIO - Masonry controlado */
-    .portfolio{padding-block:clamp(28px,6vw,64px)}
-    /* Usamos column-width para que no crezcan gigantes en pantallas muy anchas */
-    .masonry{column-width:320px; column-gap:16px}
-    .item{display:inline-block;width:100%;margin:0 0 16px;background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);overflow:hidden;break-inside:avoid}
-    .thumb{width:100%;height:auto;display:block;max-height:420px;object-fit:cover} /* tope de altura */
-    .meta{padding:12px 14px}
-    .meta h4{margin:0 0 4px}
-    .meta .tag{margin:0;color:var(--muted)}
-    @media (max-width:900px){ .masonry{column-width:280px} }
-    @media (max-width:640px){ .masonry{column-width:100%} }
+    @media (max-width: 640px){
+      .nav{ flex-wrap: wrap; gap: 8px; }
+      .links{ flex: 1 1 100%; gap: 10px; justify-content: space-between; }
+      .flags{ margin-left: auto; gap: 6px; }
 
-    /* CONTACTO / FOOTER */
-    .contact{padding-block:clamp(24px,6vw,48px)}
-    footer{border-top:1px solid rgba(255,255,255,.08)}
-    footer .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted)}
+      .hero .container{ padding-block: 36px 42px; }
+      .cta{ flex-direction: column; align-items: stretch; gap: 10px; }
+      .btn{ width: 100%; text-align: center; }
+
+      .service-img{ max-height: 220px; }
+      .services .grid{ gap: 12px; }
+
+      h2.title{ font-size: clamp(20px, 5.5vw, 26px); }
+    }
+
+    @media (min-width: 641px) and (max-width: 1024px){
+      .hero .container{ padding-block: 48px 56px; }
+      .cta{ gap: 12px; flex-wrap: wrap; justify-content: center; }
+    }
+
+    @media (max-width: 640px){
+      .hero .badge, .hero .label, .hero .tagline { display: none !important; }
+    }
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
   <header>
-    <div class="container nav">
-      <div class="brand">CB Marketing & Design</div>
-      <nav class="links">
-        <a href="#about">Sobre mí</a>
-        <a href="#services">Servicios</a>
-        <a href="#portfolio">Portafolio</a>
-        <a href="#contact">Contacto</a>
-      </nav>
-      <div class="flags">
-        <span class="flag">🇪🇸</span><span class="flag">🇬🇧</span><span class="flag">🇮🇹</span><span class="flag">🇩🇪</span>
-      </div>
+    <div class="logo">CB Marketing & Design</div>
+    <nav>
+      <ul>
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#portfolio">Portafolio</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="flags">
+      <span>🇪🇸</span><span>🇬🇧</span><span>🇮🇹</span><span>🇩🇪</span>
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
-    <div class="container">
-      <h1>Creatividad en movimiento</h1>
-      <p>Marketing • Diseño • Inteligencia Artificial</p>
-      <div class="cta">
-        <a class="btn primary" href="#contact">¡Hablemos!</a>
-        <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Ver Behance</a>
-      </div>
+    <h1>Creatividad en movimiento</h1>
+    <p>Marketing • Diseño • Inteligencia Artificial</p>
+    <div class="cta">
+      <button class="btn btn-primary">¡Hablemos!</button>
+      <button class="btn btn-secondary">Ver Behance</button>
     </div>
   </section>
 
-  <!-- SOBRE MÍ -->
   <section id="about">
-    <div class="container">
-      <h2 class="title">Sobre mí</h2>
-      <p class="kicker">Soy profesional en Marketing, Diseño e IA manager. 
-        Me apasiona crear experiencias visuales únicas que combinan creatividad con estrategia digital.</p>
-    </div>
+    <h2 class="title">Sobre mí</h2>
+    <p>Soy profesional en Marketing, Diseño e IA Manager. Me apasiona crear experiencias visuales únicas que combinan creatividad con estrategia digital.</p>
   </section>
 
-  <!-- SERVICIOS -->
   <section id="services" class="services">
-    <div class="container">
-      <h2 class="title">Servicios</h2>
-      <p class="kicker">Soluciones digitales para marcas que quieren destacar.</p>
-
-      <div class="grid">
-        <article class="card">
-          <!-- tu imagen con espacios URL-encoded -->
-          <img class="service-img" src="landingpage.jpg" alt="Ejemplo Landing Page">
-          <div class="body">
-            <h3>Landing Pages & Web</h3>
-            <p>Páginas rápidas, responsive y enfocadas en conversión.</p>
-            <div class="cta"><a class="btn primary" href="#contact">Necesito una landing</a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="service-img" src="Banner%20KeysHome.png" alt="Ejemplo Social Media">
-          <div class="body">
-            <h3>Social Media + IA</h3>
-            <p>Reels, banners, carruseles y copys asistidos por IA.</p>
-            <div class="cta"><a class="btn primary" href="#contact">Quiero mi plan</a></div>
-          </div>
-        </article>
-
-        <article class="card">
-          <img class="service-img" src="Logo%20Fresco%20Fit.svg" alt="Ejemplo Branding">
-          <div class="body">
-            <h3>Branding & Logos</h3>
-            <p>Identidad visual para negocios que quieren crecer.</p>
-            <div class="cta"><a class="btn primary" href="#contact">Diseñar mi logo</a></div>
-          </div>
-        </article>
+    <h2 class="title">Servicios</h2>
+    <p style="text-align:center">Soluciones digitales para marcas que quieren destacar.</p>
+    <div class="grid">
+      <div class="service-card">
+        <img class="service-img" src="landingpage.jpg" alt="Ejemplo Landing Page">
+        <div class="content">
+          <h3>Landing Pages & Web</h3>
+          <p>Páginas rápidas, responsive y enfocadas en conversión.</p>
+          <button class="btn btn-secondary">Necesito una landing</button>
+        </div>
+      </div>
+      <div class="service-card">
+        <img class="service-img" src="Banner KeysHome.png" alt="Ejemplo Social Media">
+        <div class="content">
+          <h3>Social Media + IA</h3>
+          <p>Reels, banners, carruseles y copys asistidos por IA.</p>
+          <button class="btn btn-secondary">Quiero mi plan</button>
+        </div>
+      </div>
+      <div class="service-card">
+        <img class="service-img" src="Logo Fresco Fit.svg" alt="Ejemplo Logo">
+        <div class="content">
+          <h3>Branding & Logos</h3>
+          <p>Identidad visual para negocios que quieren crecer.</p>
+          <button class="btn btn-secondary">Diseñar mi logo</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PORTAFOLIO - Masonry -->
   <section id="portfolio" class="portfolio">
-    <div class="container">
-      <h2 class="title">Portafolio / Proyectos</h2>
-      <p class="kicker">Selección de piezas creativas y académicas.</p>
-
-      <div class="masonry">
-        <article class="item">
-          <img class="thumb" src="Yellow%20and%20Green%20Modern%20Travel%20Agency%20Facebook%20Event%20Cover.jpg" alt="Banner agencia de viajes">
-          <div class="meta"><h4>VIAJARTE</h4><p class="tag">Banner cartel de agencia de viajes</p></div>
-        </article>
-
-        <article class="item">
-          <img class="thumb" src="flyer%20imagen.jpg" alt="Flyer DJ Kora">
-          <div class="meta"><h4>DJ Kora</h4><p class="tag">Flyer evento musical</p></div>
-        </article>
-
-        <article class="item">
-          <img class="thumb" src="20250922_214839_0001.gif" alt="Mockup portada y contraportada">
-          <div class="meta"><h4>Editorial Mockup</h4><p class="tag">Animación GIF (portada/contraportada)</p></div>
-        </article>
-
-        <article class="item">
-          <img class="thumb" src="menu-vegetariano.jpg" alt="Menú Comida Vegetariana">
-          <div class="meta"><h4>Menú Vegetariano</h4><p class="tag">Diseño menú restaurante</p></div>
-        </article>
-
-        <article class="item">
-          <img class="thumb" src="LOGO%20keys%20Home.svg" alt="Logo Keys Home">
-          <div class="meta"><h4>KeysHome</h4><p class="tag">Logo</p></div>
-        </article>
-
-        <article class="item">
-          <img class="thumb" src="branner.jpg" alt="CB Banner creativo">
-          <div class="meta"><h4>CB Marketing & Design</h4><p class="tag">Banner creativo personal</p></div>
-        </article>
-      </div>
-
-      <div class="cta" style="justify-content:center;display:flex;margin-top:12px">
-        <a class="btn primary" href="#contact">Quiero algo así para mi marca</a>
-        <a class="btn" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">Ver más en Behance</a>
-      </div>
+    <div class="portfolio-item">
+      <img src="Yellow and Green Modern Travel Agency Facebook Event Cover.jpg" alt="VIAJARTE">
+      <div class="text"><strong>VIAJARTE</strong><br>Banner cartel de agencia de viajes</div>
+    </div>
+    <div class="portfolio-item">
+      <img src="flyer imagen.jpg" alt="DJ Kora">
+      <div class="text"><strong>DJ Kora</strong><br>Flyer evento musical</div>
+    </div>
+    <div class="portfolio-item">
+      <img src="20250922_214839_0001.gif" alt="Editorial Mockup">
+      <div class="text"><strong>Editorial Mockup</strong><br>Animación GIF (portada/contraportada)</div>
+    </div>
+    <div class="portfolio-item">
+      <img src="Sabor ibérico.jpg" alt="Menú Vegetariano">
+      <div class="text"><strong>Menú Vegetariano</strong><br>Diseño menú restaurante</div>
+    </div>
+    <div class="portfolio-item">
+      <img src="LOGO keys Home.svg" alt="KeysHome">
+      <div class="text"><strong>KeysHome</strong><br>Logo</div>
+    </div>
+    <div class="portfolio-item">
+      <img src="Creatividad en movimiento.png" alt="CB Marketing & Design">
+      <div class="text"><strong>CB Marketing & Design</strong><br>Banner creativo personal</div>
     </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <h2 class="title">Contacto</h2>
-      <p class="kicker">Trabajemos juntos en tu próximo proyecto 🚀</p>
-      <div style="text-align:center">
-        <p><strong>Email:</strong> <a href="mailto:cinzia_marketing_design@hotmail.com">cinzia_marketing_design@hotmail.com</a></p>
-        <p><strong>LinkedIn:</strong> <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/cinzia-bastoni">linkedin.com/in/cinzia-bastoni</a></p>
-        <p><strong>Behance:</strong> <a target="_blank" rel="noopener" href="https://www.behance.net/cinzia_design">behance.net/cinzia_design</a></p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div>© <span id="y"></span> CB Marketing & Design</div>
-      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Volver arriba ↑</a>
-    </div>
+  <footer id="contact">
+    <p>📧 cinzia_marketing_design@hotmail.com | 🔗 
+      <a href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank">LinkedIn</a> | 
+      <a href="https://www.behance.net/cinzia_design" target="_blank">Behance</a>
+    </p>
+    <p>&copy; 2025 CB Marketing & Design</p>
   </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
