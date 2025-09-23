@@ -4,258 +4,249 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CB Marketing & Design</title>
-  <link rel="stylesheet" href="styles.css">
   <style>
-    /* ==== Tus estilos generales ==== */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0a0a0a;
-      color: #fff;
+      background: #111;
+      color: white;
     }
     header {
-      position: sticky;
-      top: 0;
-      background: #000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 20px;
+      padding: 15px 5%;
+      background: #000;
+      position: sticky;
+      top: 0;
       z-index: 1000;
     }
-    header .logo {
+    header h1 {
+      font-size: 18px;
       font-weight: bold;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-      gap: 20px;
     }
     nav a {
-      color: #fff;
+      color: white;
+      margin: 0 10px;
       text-decoration: none;
     }
-    .flags {
-      display: flex;
-      gap: 8px;
+    nav img {
+      width: 24px;
+      margin-left: 5px;
     }
+
+    /* HERO */
     .hero {
-      background: url("branner.jpg") no-repeat center/cover;
+      background: url('banner.jpg') no-repeat center/cover;
       text-align: center;
-      padding: 80px 20px;
+      padding: 60px 20px;
     }
     .hero h1 {
-      font-size: 42px;
-      margin: 0;
-    }
-    .cta {
-      margin-top: 20px;
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
-    .btn {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      font-size: clamp(28px, 6vw, 42px);
       font-weight: bold;
     }
-    .btn-primary {
-      background: #3b82f6;
-      color: #fff;
+    .hero p {
+      font-size: clamp(14px, 3.5vw, 18px);
+      margin: 10px 0 20px;
     }
-    .btn-secondary {
-      background: #9333ea;
-      color: #fff;
+    .cta {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-    section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    h2.title {
+    .btn {
+      padding: 8px 14px;
+      font-size: 0.95rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      width: auto;
+      min-width: 140px;
       text-align: center;
+    }
+
+    /* Secciones */
+    section {
+      padding: 50px 5%;
+      text-align: center;
+    }
+    section h2 {
       margin-bottom: 20px;
     }
-    .services .grid {
-      display: grid;
+
+    /* Servicios */
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     .service-card {
-      background: #111;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 15px;
+      max-width: 300px;
+      flex: 1 1 250px;
     }
-    .service-img {
+    .service-card img {
       width: 100%;
-      height: auto;
-      max-height: 250px;
-      object-fit: cover;
+      border-radius: 8px;
     }
-    .service-card .content {
-      padding: 16px;
+    .service-card h3 {
+      margin: 10px 0 5px;
     }
+    .service-card p {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    /* Portafolio estilo Pinterest */
     .portfolio {
       column-count: 3;
-      column-gap: 16px;
+      column-gap: 15px;
     }
     .portfolio-item {
-      break-inside: avoid;
-      margin-bottom: 16px;
-      background: #111;
-      border-radius: 12px;
-      overflow: hidden;
+      background: #1a1a1a;
+      border-radius: 10px;
+      margin: 0 0 15px;
+      display: inline-block;
+      width: 100%;
     }
     .portfolio-item img {
       width: 100%;
-      height: auto;
-      display: block;
+      border-radius: 10px 10px 0 0;
     }
-    .portfolio-item .text {
-      padding: 12px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #000;
+    .portfolio-item h3, .portfolio-item p {
+      padding: 10px;
+      margin: 0;
     }
 
-    /* ==== Fix móvil / Android (espacios y tamaños) ==== */
-    :root{ --navH: 64px; }
-
-    html{ scroll-padding-top: var(--navH); }
-
-    header{ min-height: var(--navH); }
-    .hero{ margin-top: var(--navH); }
-
-    .hero h1{ font-size: clamp(26px, 6vw, 38px); line-height: 1.15; }
-    .hero p{ font-size: clamp(14px, 3.6vw, 17px); margin-top: 8px; }
-
-    @media (max-width: 640px){
-      .nav{ flex-wrap: wrap; gap: 8px; }
-      .links{ flex: 1 1 100%; gap: 10px; justify-content: space-between; }
-      .flags{ margin-left: auto; gap: 6px; }
-
-      .hero .container{ padding-block: 36px 42px; }
-      .cta{ flex-direction: column; align-items: stretch; gap: 10px; }
-      .btn{ width: 100%; text-align: center; }
-
-      .service-img{ max-height: 220px; }
-      .services .grid{ gap: 12px; }
-
-      h2.title{ font-size: clamp(20px, 5.5vw, 26px); }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .portfolio {
+        column-count: 2;
+      }
     }
-
-    @media (min-width: 641px) and (max-width: 1024px){
-      .hero .container{ padding-block: 48px 56px; }
-      .cta{ gap: 12px; flex-wrap: wrap; justify-content: center; }
-    }
-
-    @media (max-width: 640px){
-      .hero .badge, .hero .label, .hero .tagline { display: none !important; }
+    @media (max-width: 600px) {
+      .portfolio {
+        column-count: 1;
+      }
+      .hero {
+        padding: 40px 15px;
+      }
+      .hero h1 {
+        font-size: 24px;
+      }
+      .hero p {
+        font-size: 14px;
+      }
+      .btn {
+        font-size: 14px;
+        min-width: 120px;
+        padding: 6px 10px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">CB Marketing & Design</div>
+    <h1>CB Marketing & Design</h1>
     <nav>
-      <ul>
-        <li><a href="#about">Sobre mí</a></li>
-        <li><a href="#services">Servicios</a></li>
-        <li><a href="#portfolio">Portafolio</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#contacto">Contacto</a>
+      <img src="flag-es.png" alt="Español">
+      <img src="flag-en.png" alt="English">
+      <img src="flag-it.png" alt="Italiano">
+      <img src="flag-de.png" alt="Deutsch">
     </nav>
-    <div class="flags">
-      <span>🇪🇸</span><span>🇬🇧</span><span>🇮🇹</span><span>🇩🇪</span>
-    </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <h1>Creatividad en movimiento</h1>
     <p>Marketing • Diseño • Inteligencia Artificial</p>
     <div class="cta">
-      <button class="btn btn-primary">¡Hablemos!</button>
-      <button class="btn btn-secondary">Ver Behance</button>
+      <a href="#contacto" class="btn">¡Hablemos!</a>
+      <a href="https://behance.net" target="_blank" class="btn">Ver Behance</a>
     </div>
   </section>
 
-  <section id="about">
-    <h2 class="title">Sobre mí</h2>
+  <!-- SOBRE MI -->
+  <section id="sobre-mi">
+    <h2>Sobre mí</h2>
     <p>Soy profesional en Marketing, Diseño e IA Manager. Me apasiona crear experiencias visuales únicas que combinan creatividad con estrategia digital.</p>
   </section>
 
-  <section id="services" class="services">
-    <h2 class="title">Servicios</h2>
-    <p style="text-align:center">Soluciones digitales para marcas que quieren destacar.</p>
-    <div class="grid">
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <p>Soluciones digitales para marcas que quieren destacar.</p>
+    <div class="services">
       <div class="service-card">
-        <img class="service-img" src="landingpage.jpg" alt="Ejemplo Landing Page">
-        <div class="content">
-          <h3>Landing Pages & Web</h3>
-          <p>Páginas rápidas, responsive y enfocadas en conversión.</p>
-          <button class="btn btn-secondary">Necesito una landing</button>
-        </div>
+        <img src="landingpage.jpg" alt="Ejemplo Landing Page">
+        <h3>Landing Pages & Web</h3>
+        <p>Páginas rápidas, responsive y enfocadas en conversión.</p>
       </div>
       <div class="service-card">
-        <img class="service-img" src="Banner KeysHome.png" alt="Ejemplo Social Media">
-        <div class="content">
-          <h3>Social Media + IA</h3>
-          <p>Reels, banners, carruseles y copys asistidos por IA.</p>
-          <button class="btn btn-secondary">Quiero mi plan</button>
-        </div>
+        <img src="keyshome.jpg" alt="Social Media + IA">
+        <h3>Social Media + IA</h3>
+        <p>Reels, banners, carruseles y copys asistidos por IA.</p>
       </div>
       <div class="service-card">
-        <img class="service-img" src="Logo Fresco Fit.svg" alt="Ejemplo Logo">
-        <div class="content">
-          <h3>Branding & Logos</h3>
-          <p>Identidad visual para negocios que quieren crecer.</p>
-          <button class="btn btn-secondary">Diseñar mi logo</button>
-        </div>
+        <img src="frescofit.jpg" alt="Branding & Logos">
+        <h3>Branding & Logos</h3>
+        <p>Identidad visual para negocios que quieren crecer.</p>
       </div>
     </div>
   </section>
 
-  <section id="portfolio" class="portfolio">
-    <div class="portfolio-item">
-      <img src="Yellow and Green Modern Travel Agency Facebook Event Cover.jpg" alt="VIAJARTE">
-      <div class="text"><strong>VIAJARTE</strong><br>Banner cartel de agencia de viajes</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="flyer imagen.jpg" alt="DJ Kora">
-      <div class="text"><strong>DJ Kora</strong><br>Flyer evento musical</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="20250922_214839_0001.gif" alt="Editorial Mockup">
-      <div class="text"><strong>Editorial Mockup</strong><br>Animación GIF (portada/contraportada)</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="Sabor ibérico.jpg" alt="Menú Vegetariano">
-      <div class="text"><strong>Menú Vegetariano</strong><br>Diseño menú restaurante</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="LOGO keys Home.svg" alt="KeysHome">
-      <div class="text"><strong>KeysHome</strong><br>Logo</div>
-    </div>
-    <div class="portfolio-item">
-      <img src="Creatividad en movimiento.png" alt="CB Marketing & Design">
-      <div class="text"><strong>CB Marketing & Design</strong><br>Banner creativo personal</div>
+  <!-- PORTAFOLIO -->
+  <section id="portafolio">
+    <h2>Portafolio / Proyectos</h2>
+    <div class="portfolio">
+      <div class="portfolio-item">
+        <img src="viajarte.jpg" alt="VIAJARTE">
+        <h3>VIAJARTE</h3>
+        <p>Banner cartel de agencia de viajes</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="dj_kora.jpg" alt="DJ Kora">
+        <h3>DJ Kora</h3>
+        <p>Flyer evento musical</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="editorial_mockup.jpg" alt="Editorial Mockup">
+        <h3>Editorial Mockup</h3>
+        <p>Animación GIF (portada/contraportada)</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="menu.jpg" alt="Menú Vegetariano">
+        <h3>Menú Vegetariano</h3>
+        <p>Diseño menú restaurante</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="keyshome.jpg" alt="KeysHome">
+        <h3>KeysHome</h3>
+        <p>Logo</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="cb_marketing.jpg" alt="CB Marketing">
+        <h3>CB Marketing & Design</h3>
+        <p>Banner creativo personal</p>
+      </div>
     </div>
   </section>
 
-  <footer id="contact">
-    <p>📧 cinzia_marketing_design@hotmail.com | 🔗 
-      <a href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank">LinkedIn</a> | 
-      <a href="https://www.behance.net/cinzia_design" target="_blank">Behance</a>
-    </p>
-    <p>&copy; 2025 CB Marketing & Design</p>
-  </footer>
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Tienes un proyecto en mente? ¡Hablemos!</p>
+    <a href="mailto:tuemail@correo.com" class="btn">Escríbeme</a>
+  </section>
 </body>
 </html>
