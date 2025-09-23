@@ -59,16 +59,33 @@ p.kicker{text-align:center;color:var(--muted);margin:0 0 22px}
 /* FOOTER */
 footer{border-top:1px solid var(--b);padding:20px;text-align:center;color:var(--muted)}
 
-/* ===== SOLO móvil ===== */
-@media (max-width:600px){
-  .hero{min-height:70vh;padding:20px 0 32px}
-  /* Mover encuadre para que se vea más “círculo” */
-  .hero-media img{object-position:68% 40%}
-  .hero-inner h1{font-size:clamp(22px,6.2vw,28px);margin-bottom:6px}
-  .hero-inner p {font-size:14px;margin-bottom:12px}
-  .btn{padding:8px 12px;font-size:.9rem;min-width:140px}
-  .masonry{column-width:100%}
+/* ====== AJUSTE DEFINITIVO PARA MÓVIL (banner completo) ====== */
+@media (max-width: 600px){
+  .hero{
+    aspect-ratio: 16 / 9;     /* Mantiene proporción */
+    min-height: auto;
+    padding: 0;
+    background: #111 url("Creatividad%20en%20movimiento%20-%20copia.png")
+                center / contain no-repeat;
+  }
+
+  .hero-media{ display: none; }   /* Oculta la <img> del hero */
+  .hero::after{ display: none; }  /* Oculta el degradado */
+
+  .hero-inner{
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    width: 92%;
+    text-align: center;
+  }
+
+  .hero-inner h1{ font-size: clamp(18px,5.2vw,22px); margin-bottom: 6px; }
+  .hero-inner p { font-size: 13px; margin-bottom: 10px; }
+  .btn{ padding: 6px 10px; font-size: .85rem; min-width: 120px; }
 }
+
 </style>
 </head>
 <body>
