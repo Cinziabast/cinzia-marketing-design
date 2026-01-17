@@ -1,9 +1,16 @@
 <!doctype html>
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CB Marketing & Design</title>
-  <meta name="description" content="Marketing, Diseño e IA. Landing pages, social media y branding." />
+  <meta name="description" content="Marketing y Diseño Digital. Landing pages, diseño para redes, branding, eBooks y campañas Ads." />
+
+  <!-- Open Graph (para que se vea bonito al compartir) -->
+  <meta property="og:title" content="CB Marketing & Design" />
+  <meta property="og:description" content="Marketing y Diseño Digital para emprendedores y negocios. Servicios desde $25.000 COP." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cinziamarketingdesign.com/" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0T3TLFVCVM"></script>
@@ -16,429 +23,575 @@
 
   <style>
     :root{
-      --bg:#0e0e0e; --bg2:#111; --text:#e9e9e9; --muted:#9b9b9b;
-      --card:#171717; --card2:#1c1c1c; --brand1:#6ab0ff; --brand2:#7b4dff;
-      --accent:#8ad6ff;
+      --bg:#0e0e0e; --bg2:#111; --text:#eaeaea; --muted:#a5a5a5;
+      --card:#151515; --card2:#1b1b1b; --line:#232323;
+      --brand1:#6ab0ff; --brand2:#7b4dff; --accent:#8ad6ff;
+      --ok:#2dd4bf;
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    img{max-width:100%;display:block;height:auto}
     a{color:inherit}
+    img{max-width:100%;display:block;height:auto}
+    .container{max-width:1120px;margin-inline:auto;padding:0 16px}
 
     /* ===== NAV ===== */
     header{
       position: sticky; top: 0; z-index: 1000;
       background: rgba(14,14,14,.92);
-      backdrop-filter: saturate(120%) blur(8px);
-      border-bottom: 1px solid #191919;
+      backdrop-filter: saturate(120%) blur(10px);
+      border-bottom: 1px solid var(--line);
     }
-    /* Grid: brand | menu | flags (desktop) */
     .nav{
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      grid-template-areas: "brand menu lang";
-      align-items: center;
-      gap: 16px;
-      padding: 10px 16px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:12px 0;
     }
-
     .brand{
-      grid-area: brand;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      white-space: nowrap;
-      color: var(--text);
-      text-decoration: none;
-      opacity: .95;
+      display:inline-flex; align-items:center; gap:10px;
+      text-decoration:none; font-weight:800; letter-spacing:.2px;
+      white-space:nowrap;
     }
-    .brand:hover{ opacity: 1; }
-    .brand img{ height: 28px; width: auto; display: inline-block; }
-
-    /* Menú */
+    .brand small{display:block;font-weight:600;color:var(--muted);font-size:12px;letter-spacing:.3px}
     .menu{
-      grid-area: menu;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
+      display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:center;
     }
     .menu a{
-      color: var(--text);
-      text-decoration: none;
-      opacity: .9;
+      text-decoration:none; opacity:.9; color:var(--text);
+      padding:8px 10px; border-radius:10px;
     }
-    .menu a:hover{ opacity: 1; }
+    .menu a:hover{opacity:1;background:#ffffff0f}
 
-    /* Banderas */
-    .lang{
-      grid-area: lang;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 12px;
-    }
-    .lang a{ display: inline-flex; }
+    .lang{display:flex; align-items:center; gap:10px}
+    .lang a{display:inline-flex}
     .lang img{
-      height: 22px;
-      width: auto;
-      border-radius: 3px;
-      box-shadow: 0 0 0 1px #222;
-      background: #111;
+      height:22px; width:auto; border-radius:4px;
+      box-shadow: 0 0 0 1px #242424; background:#111;
     }
     .lang a.active img{ box-shadow: 0 0 0 2px var(--accent); }
 
-    /* Tablet */
-    @media (min-width: 768px){
-      .brand img{ height: 32px; }
-      .lang img{ height: 24px; }
+    @media (max-width: 760px){
+      .nav{flex-wrap:wrap}
+      .menu{width:100%; justify-content:space-between; overflow-x:auto; padding-bottom:2px; gap:10px}
+      .menu::-webkit-scrollbar{display:none}
     }
 
-    /* Móvil: brand|flags arriba, menú debajo */
-    @media (max-width: 640px){
-      .nav{
-        grid-template-columns: 1fr auto;
-        grid-template-areas:
-          "brand lang"
-          "menu  menu";
-        gap: 10px 12px;
-      }
-      .menu{
-        justify-content: space-between;
-        gap: 12px;
-        overflow-x: auto;
-        padding-bottom: 2px;
-        scrollbar-width: none;
-      }
-      .menu::-webkit-scrollbar{ display: none; }
-      .lang{ gap: 10px; }
-      .lang img{ height: 22px; }
+    /* ===== BUTTONS ===== */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:11px 16px; border-radius:14px;
+      background: linear-gradient(90deg, var(--brand1), var(--brand2));
+      color:#fff; text-decoration:none; font-weight:700;
+      border:1px solid #00000055;
+      min-width: 170px;
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btn.ghost{
+      background:#ffffff10; border:1px solid #2a2a2a; color:var(--text);
+    }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:7px 12px; border-radius:999px;
+      background:#ffffff10; border:1px solid #2a2a2a;
+      color:var(--muted); font-size:13px;
     }
 
     /* ===== HERO ===== */
-    .section{max-width:1200px;margin-inline:auto;padding:56px 16px}
     .hero{
-      position: relative;
-      min-height: 72vh;
-      display: grid;
-      place-items: center;
-      padding: 56px 16px;
-      overflow: hidden;
-      background: #111 url("Creatividad en movimiento - copia.png") center/cover no-repeat; /* escritorio */
-    }
-    .hero::after{
-      content:"";
-      position:absolute;inset:0;
-      background: linear-gradient(to bottom, rgba(17,17,17,.0) 0%, rgba(17,17,17,.35) 50%, rgba(17,17,17,.85) 100%);
-      pointer-events:none;
+      position:relative; overflow:hidden;
+      background: radial-gradient(1200px 700px at 10% 10%, rgba(106,176,255,.20), transparent 55%),
+                  radial-gradient(900px 600px at 90% 30%, rgba(123,77,255,.18), transparent 55%),
+                  linear-gradient(to bottom, #111, #0e0e0e);
+      border-bottom:1px solid var(--line);
     }
     .hero-inner{
-      position: relative;
-      z-index: 1;
-      width: min(92%, 950px);
-      margin-inline:auto;
-      text-align: center;
+      padding: 56px 0 44px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 26px;
+      align-items:center;
     }
-    .hero h1{ font-size: clamp(28px, 4vw, 46px); margin: 0 0 10px; }
-    .hero p{ font-size: 16px; margin: 0 0 16px; color: var(--muted); }
-    .cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-    .btn{
-      background: linear-gradient(90deg, var(--brand1), var(--brand2));
-      color:#fff; border:none; border-radius: 12px;
-      padding: 10px 18px; font-weight:600; cursor:pointer;
-      text-decoration:none; display:inline-block; min-width: 150px; text-align:center;
+    .hero h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height:1.05;
+      letter-spacing:-.4px;
     }
-    .btn.is-ghost{ background:#00000055; border:1px solid #2a2a2a; }
+    .hero p{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:60ch;
+    }
+    .hero .cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    .hero .mini{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
 
-    /* ===== Servicios ===== */
-    .cards{ display:grid; grid-template-columns: repeat(3,1fr); gap:16px; }
-    .card{ background:var(--card); border-radius:16px; overflow:hidden; border:1px solid #222; }
-    .card .cap{ padding:16px; }
-    .card h3{ margin:0 0 6px; }
-    .card p{ margin:0; color:var(--muted) }
+    .hero-card{
+      background: linear-gradient(180deg, #161616, #121212);
+      border:1px solid #262626;
+      border-radius:18px;
+      padding:18px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    }
+    .hero-card h3{margin:0 0 10px; font-size:16px}
+    .hero-card ul{margin:0; padding-left:18px; color:var(--muted)}
+    .hero-card li{margin:8px 0}
+    .price-note{
+      margin-top:12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      color:var(--muted); font-size:13px;
+    }
+    .price-note b{color:var(--text)}
 
-    @media (max-width:900px){
-      .cards{ grid-template-columns: 1fr; }
+    @media (max-width: 900px){
+      .hero-inner{grid-template-columns:1fr}
     }
 
-    /* ===== Portafolio tipo Pinterest ===== */
+    /* ===== SECTIONS ===== */
+    section{scroll-margin-top:86px}
+    .section{padding:48px 0}
+    .section h2{margin:0 0 10px; font-size:28px}
+    .section p.lead{margin:0 0 18px; color:var(--muted); max-width:80ch}
+
+    /* ===== SERVICES GRID ===== */
+    .services-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .service-card{
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+      min-height: 160px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .service-card h3{margin:0; font-size:16px}
+    .service-card p{margin:0; color:var(--muted); font-size:14px; line-height:1.35}
+    .service-meta{
+      margin-top:auto;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .price{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      background: #0b0b0b;
+      border:1px solid #2a2a2a;
+      color:var(--text);
+      font-weight:800;
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .tag{
+      font-size:12px; color:var(--muted);
+      padding:6px 10px; border-radius:999px;
+      background:#ffffff10; border:1px solid #2a2a2a;
+      white-space:nowrap;
+    }
+    .more-services{
+      margin-top:14px;
+      color:var(--muted);
+    }
+
+    @media (max-width: 980px){
+      .services-grid{grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 620px){
+      .services-grid{grid-template-columns: 1fr;}
+    }
+
+    /* ===== PORTFOLIO (optional masonry) ===== */
     .masonry{ column-width: 320px; column-gap: 14px; }
     .tile{
-      background:var(--card);
-      border-radius:16px;
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border:1px solid var(--line);
+      border-radius:18px;
       overflow:hidden;
-      border:1px solid #222;
       break-inside: avoid;
       margin:0 0 14px;
     }
-    .tile img{ width:100%; height:auto; display:block; }
-    .tile .cap{ padding:14px; }
-    .tile h4{ margin:0 0 6px; }
-    .tile p{ margin:0; color:var(--muted) }
+    .tile img{width:100%; height:auto}
+    .tile .cap{padding:14px}
+    .tile h4{margin:0 0 6px}
+    .tile p{margin:0; color:var(--muted); font-size:14px}
 
-    /* ===== Contacto & Footer ===== */
-    .contact a{ color: #8acbff; text-decoration: none; }
-    .footer{ font-size:13px; color:var(--muted); border-top:1px solid #222; padding:24px 16px; text-align:center }
-
-    /* ===== Móvil: banner completo ===== */
-    @media (max-width: 600px){
-      .hero{
-        aspect-ratio: 16 / 9;
-        min-height: auto;
-        padding: 20px 12px;
-        background: #111 url("Creatividad en movimiento - copia.png") center/contain no-repeat; /* móvil */
-      }
-      .hero::after{ display:none; }
-      .hero-inner{
-        position: absolute;
-        left: 50%; bottom: 10px;
-        transform: translateX(-50%);
-        width: 92%;
-        text-align: center;
-      }
-      .hero h1{ font-size: clamp(22px, 6.2vw, 28px); margin-bottom: 6px; }
-      .hero p{ font-size:14px; margin-bottom:10px; }
-      .cta{ gap: 8px; }
-      .btn{ padding: 8px 12px; font-size: .9rem; min-width: 120px; }
+    /* ===== CONTACT ===== */
+    .contact-box{
+      background: linear-gradient(180deg, #161616, #121212);
+      border:1px solid #262626;
+      border-radius:18px;
+      padding:18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:center;
     }
+    .contact-box p{margin:0;color:var(--muted)}
+    .contact-actions{display:flex; gap:12px; justify-content:flex-end; flex-wrap:wrap}
+    @media (max-width: 900px){
+      .contact-box{grid-template-columns:1fr}
+      .contact-actions{justify-content:flex-start}
+    }
+
+    /* ===== FOOTER ===== */
+    footer{
+      border-top:1px solid var(--line);
+      padding:24px 0;
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
+    footer a{color:var(--accent); text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa-float{
+      position:fixed; right:16px; bottom:16px; z-index:9999;
+      display:inline-flex; align-items:center; justify-content:center;
+      width:52px; height:52px; border-radius:16px;
+      background: #25D366;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      border:1px solid rgba(0,0,0,.25);
+      text-decoration:none;
+    }
+    .wa-float svg{width:26px;height:26px;fill:#fff}
+    .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
   </style>
 </head>
-<body>
+
+<body id="top">
 
   <!-- ===== HEADER ===== -->
   <header>
-    <nav class="nav">
-      <!-- Marca / logo -->
-      <a href="#top" class="brand" aria-label="Inicio">
-        <!-- Si quieres un logo gráfico, añade aquí un <img src="ruta" alt="CB Marketing & Design"> -->
-        CB Marketing & Design
-      </a>
+    <div class="container">
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#top" class="brand" aria-label="Inicio">
+          <div>
+            CB Marketing & Design
+            <small data-i18n="brand_sub">Marketing • Diseño • Ads</small>
+          </div>
+        </a>
 
-      <!-- Banderas -->
-      <div class="lang" aria-label="Seleccionar idioma">
-        <a href="?lang=es" class="active" title="Español" aria-label="Español"><img src="es.png" alt="ES"></a>
-        <a href="?lang=en" title="English" aria-label="English"><img src="gb.png" alt="EN"></a>
-        <a href="?lang=it" title="Italiano" aria-label="Italiano"><img src="it.png" alt="IT"></a>
-        <a href="?lang=de" title="Deutsch" aria-label="Deutsch"><img src="de.png" alt="DE"></a>
-      </div>
+        <div class="lang" aria-label="Seleccionar idioma">
+          <a href="?lang=es" class="active" title="Español" aria-label="Español"><img src="es.png" alt="ES"></a>
+          <a href="?lang=en" title="English" aria-label="English"><img src="gb.png" alt="EN"></a>
+          <a href="?lang=it" title="Italiano" aria-label="Italiano"><img src="it.png" alt="IT"></a>
+          <a href="?lang=de" title="Deutsch" aria-label="Deutsch"><img src="de.png" alt="DE"></a>
+        </div>
 
-      <!-- Menú -->
-      <div class="menu">
-        <a href="#about"     data-i18n="nav_about">Sobre mí</a>
-        <a href="#services"  data-i18n="nav_services">Servicios</a>
-        <a href="#portfolio" data-i18n="nav_portfolio">Portafolio</a>
-        <a href="#contact"   data-i18n="nav_contact">Contacto</a>
-      </div>
-    </nav>
+        <div class="menu">
+          <a href="#services" data-i18n="nav_services">Servicios</a>
+          <a href="#portfolio" data-i18n="nav_portfolio">Portafolio</a>
+          <a href="#contact" data-i18n="nav_contact">Contacto</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
-    <div class="hero-inner">
-      <h1 data-i18n="hero_title">Creatividad en movimiento</h1>
-      <p data-i18n="hero_sub">Marketing • Diseño • Inteligencia Artificial</p>
-      <div class="cta">
-        <a class="btn" href="#contact" data-i18n="cta_talk">¡Hablemos!</a>
-        <a class="btn is-ghost" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener" data-i18n="cta_behance">Ver Behance</a>
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="pill" style="margin-bottom:12px;">
+            <span style="color:var(--ok);font-weight:800;">●</span>
+            <span data-i18n="hero_pill">Disponible para proyectos (Colombia · online)</span>
+          </div>
+
+          <h1 data-i18n="hero_title">Marketing y Diseño Digital para Emprendedores y Negocios</h1>
+          <p data-i18n="hero_sub">
+            Te ayudo a verte profesional y vender más en internet con diseño, contenido y campañas publicitarias.
+          </p>
+
+          <div class="cta">
+            <!-- IMPORTANTE: cambia 57TUNUMERO -->
+            <a class="btn" href="https://wa.me/57TUNUMERO" target="_blank" rel="noopener" data-i18n="cta_whatsapp">Escríbeme por WhatsApp</a>
+            <a class="btn ghost" href="#services" data-i18n="cta_services">Ver servicios</a>
+          </div>
+
+          <div class="mini">
+            <span class="pill" data-i18n="mini_1">✨ Servicios desde <b>$25.000 COP</b></span>
+            <span class="pill" data-i18n="mini_2">📌 Entrega rápida</span>
+            <span class="pill" data-i18n="mini_3">🤝 Atención personalizada</span>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Resumen de servicios">
+          <h3 data-i18n="hero_card_title">Lo más solicitado</h3>
+          <ul>
+            <li data-i18n="hero_card_li1">Landing pages enfocadas en conversión</li>
+            <li data-i18n="hero_card_li2">Diseño para redes (posts, flyers, banners)</li>
+            <li data-i18n="hero_card_li3">Branding y logos (crear o mejorar)</li>
+            <li data-i18n="hero_card_li4">eBooks listos para vender</li>
+            <li data-i18n="hero_card_li5">Campañas Ads (Facebook & Instagram)</li>
+          </ul>
+          <div class="price-note">
+            <span data-i18n="hero_card_note"><b>¿Hablamos?</b> Te orientaré sin compromiso.</span>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- ===== SOBRE MÍ ===== -->
-  <section id="about" class="section about">
-    <h2 data-i18n="about_title">Sobre mí</h2>
-    <p data-i18n="about_p1">Soy Cinzia Bastoni, profesional en Marketing, Diseño e Inteligencia Artificial. Durante los últimos años…</p>
-    <p data-i18n="about_p2">Mi enfoque se centra en unir la creatividad con la estrategia…</p>
-    <p data-i18n="about_p3">Si buscas a alguien que aporte ideas frescas, soluciones digitales innovadoras…</p>
-  </section>
-
   <!-- ===== SERVICIOS ===== -->
   <section class="section" id="services">
-    <h2 data-i18n="services_title">Servicios</h2>
-    <p data-i18n="services_sub">Soluciones digitales para marcas que quieren destacar.</p>
+    <div class="container">
+      <h2 data-i18n="services_title">Servicios</h2>
+      <p class="lead" data-i18n="services_sub">
+        Algunos de los servicios más solicitados. Si necesitas algo distinto, también puedo ayudarte.
+      </p>
 
-    <div class="cards">
-      <article class="card">
-        <img src="landingpage.jpg" alt="Landing Pages" loading="lazy">
-        <div class="cap">
-          <h3 data-i18n="s1_title">Landing Pages & Web</h3>
-          <p data-i18n="s1_desc">Páginas rápidas, responsive y enfocadas en conversión.</p>
-        </div>
-      </article>
+      <div class="services-grid">
 
-      <article class="card">
-        <img src="Banner KeysHome.png" alt="Social Media + IA" loading="lazy">
-        <div class="cap">
-          <h3 data-i18n="s2_title">Social Media + IA</h3>
-          <p data-i18n="s2_desc">Reels, banners, carruseles y copys asistidos por IA.</p>
+        <div class="service-card">
+          <h3 data-i18n="srv_lp_t">🌐 Landing pages</h3>
+          <p data-i18n="srv_lp_d">Diseño de landing pages enfocadas en conversión (responsive).</p>
+          <div class="service-meta">
+            <span class="price" data-i18n="srv_lp_p">Desde $250.000 COP</span>
+            <span class="tag" data-i18n="tag_conv">Conversión</span>
+          </div>
         </div>
-      </article>
 
-      <article class="card">
-        <img src="Logo Fresco Fit.svg" alt="Branding & Logos" loading="lazy">
-        <div class="cap">
-          <h3 data-i18n="s3_title">Branding & Logos</h3>
-          <p data-i18n="s3_desc">Identidad visual para negocios que quieren crecer.</p>
+        <div class="service-card">
+          <h3 data-i18n="srv_digital_t">🎨 Diseño digital</h3>
+          <p data-i18n="srv_digital_d">Diseño gráfico para redes, web y material promocional.</p>
+          <div class="service-meta">
+            <span class="price" data-i18n="srv_digital_p">Desde $25.000 COP</span>
+            <span class="tag" data-i18n="tag_brand">Marca</span>
+          </div>
         </div>
-      </article>
+
+        <div class="service-card">
+          <h3 data-i18n="srv_post_t">📱 Posts</h3>
+          <p data-i18n="srv_post_d">Diseño de posts estáticos y animados para redes sociales.</p>
+          <div class="service-meta">
+            <span class="price" data-i18n="srv_post_p">Desde $25.000 COP</span>
+            <span class="tag" data-i18n="tag_social">Redes</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 data-i18n="srv_logo_t">🧩 Diseño de logo</h3>
+          <p data-i18n="srv_logo_d">Creación o mejora de logo profesional.</p>
+          <div class="service-meta">
+            <span class="price" data-i18n="srv_logo_p">Desde $80.000 COP</span>
+            <span class="tag" data-i18n="tag_id">Identidad</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 data-i18n="srv_banner_t">🖼️ Banners</h3>
+          <p data-i18n="srv_banner_d">Banners para web, WhatsApp y redes sociales.</p>
+          <div class="service-meta">
+            <span class="price" data-i18n="srv_banner_p">Desde $25.000 COP</span>
+            <span class="tag" data-i18n="tag_ads">Promos</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 data-i18n="srv_menu_t">🍽️ Diseño de menú</h3>
+          <p data-i18n="srv_menu_d">Menús digitales o para impresión.</p>
+          <div class="service-meta">
+            <span class="price" data-i18n="srv_menu_p">Desde $80.000 COP</span>
+            <span class="tag" data-i18n="tag_rest">Restaurantes</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 data-i18n="srv_flyer_t">📄 Flyer</h3>
+          <p data-i18n="srv_flyer_d">Flyers publicitarios digitales o impresos.</p>
+          <div class="service-meta">
+            <span class="price" data-i18n="srv_flyer_p">Desde $30.000 COP</span>
+            <span class="tag" data-i18n="tag_print">Digital/Impreso</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 data-i18n="srv_cover_t">📘 Portada de libro</h3>
+          <p data-i18n="srv_cover_d">Diseño de portada y contraportada profesional.</p>
+          <div class="service-meta">
+            <span class="price" data-i18n="srv_cover_p">Desde $150.000 COP</span>
+            <span class="tag" data-i18n="tag_editorial">Editorial</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 data-i18n="srv_ebook_t">📕 eBook listo para la venta</h3>
+          <p data-i18n="srv_ebook_d">Diseño y maquetación de eBooks (PDF listo para vender).</p>
+          <div class="service-meta">
+            <span class="price" data-i18n="srv_ebook_p">Desde $250.000 COP</span>
+            <span class="tag" data-i18n="tag_product">Producto digital</span>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <h3 data-i18n="srv_ads_t">📢 Campañas Ads (Meta)</h3>
+          <p data-i18n="srv_ads_d">Creación y gestión de campañas en Facebook e Instagram.</p>
+          <div class="service-meta">
+            <span class="price" data-i18n="srv_ads_p">Desde $80.000 COP</span>
+            <span class="tag" data-i18n="tag_meta">Meta</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="more-services" data-i18n="services_more">Y muchos más… (cuéntame qué necesitas y te lo cotizo).</p>
     </div>
   </section>
 
-  <!-- ===== PORTAFOLIO (MASONRY) ===== -->
+  <!-- ===== PORTFOLIO (puedes dejarlo o quitarlo) ===== -->
   <section class="section" id="portfolio">
-    <h2 data-i18n="portfolio_title">Portafolio / Proyectos</h2>
-    <p data-i18n="portfolio_sub">Selección de piezas creativas y académicas.</p>
+    <div class="container">
+      <h2 data-i18n="portfolio_title">Portafolio</h2>
+      <p class="lead" data-i18n="portfolio_sub">Una selección de piezas y proyectos recientes.</p>
 
-    <div class="masonry">
-      <article class="tile">
-        <img src="menu-vegetariano.jpg" alt="Menú Vegetariano" loading="lazy">
-        <div class="cap">
-          <h4 data-i18n="p1_title">Menú Vegetariano</h4>
-          <p data-i18n="p1_desc">Diseño menú restaurante</p>
-        </div>
-      </article>
+      <!-- Usa tus imágenes actuales (las que ya tienes en tu repo) -->
+      <div class="masonry">
+        <article class="tile">
+          <img src="menu-vegetariano.jpg" alt="Menú restaurante" loading="lazy">
+          <div class="cap">
+            <h4>Menú</h4>
+            <p data-i18n="pf1">Diseño de menú para restaurante</p>
+          </div>
+        </article>
 
-      <article class="tile">
-        <img src="LOGO keys Home.svg" alt="KeysHome Logo" loading="lazy">
-        <div class="cap">
-          <h4>KeysHome</h4>
-          <p data-i18n="p2_desc">Logo</p>
-        </div>
-      </article>
+        <article class="tile">
+          <img src="LOGO keys Home.svg" alt="Logo" loading="lazy">
+          <div class="cap">
+            <h4>Logo</h4>
+            <p data-i18n="pf2">Diseño / mejora de logo</p>
+          </div>
+        </article>
 
-      <article class="tile">
-        <img src="Sabor ibérico.jpg" alt="Sabor Ibérico" loading="lazy">
-        <div class="cap">
-          <h4>Sabor Ibérico</h4>
-          <p data-i18n="p3_desc">Banner restaurante español</p>
-        </div>
-      </article>
+        <article class="tile">
+          <img src="Sabor ibérico.jpg" alt="Banner" loading="lazy">
+          <div class="cap">
+            <h4>Banner</h4>
+            <p data-i18n="pf3">Banner promocional</p>
+          </div>
+        </article>
 
-      <article class="tile">
-        <img src="flyer imagen.jpg" alt="DJ Kora flyer" loading="lazy">
-        <div class="cap">
-          <h4>DJ Kora</h4>
-          <p data-i18n="p4_desc">Flyer evento musical</p>
-        </div>
-      </article>
+        <article class="tile">
+          <img src="flyer imagen.jpg" alt="Flyer" loading="lazy">
+          <div class="cap">
+            <h4>Flyer</h4>
+            <p data-i18n="pf4">Flyer publicitario</p>
+          </div>
+        </article>
 
-      <article class="tile">
-        <img src="20250922_214839_0001.gif" alt="Editorial Mockup" loading="lazy">
-        <div class="cap">
-          <h4 data-i18n="p5_title">Editorial Mockup</h4>
-          <p data-i18n="p5_desc">Animación GIF (portada/contraportada)</p>
-        </div>
-      </article>
+        <article class="tile">
+          <img src="20250922_214839_0001.gif" alt="Portada/Contraportada" loading="lazy">
+          <div class="cap">
+            <h4>Editorial</h4>
+            <p data-i18n="pf5">Portada / contraportada (mockup)</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <!-- ===== CONTACTO ===== -->
-  <section class="section contact" id="contact">
-    <h2 data-i18n="contact_title">Contacto</h2>
-    <p data-i18n="contact_sub">¿Tienes un proyecto en mente? ¡Hablemos!</p>
-    <div class="cta">
-      <a class="btn" href="mailto:cinzia_marketing_design@hotmail.com" data-i18n="cta_talk">¡Hablemos!</a>
-      <a class="btn is-ghost" href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">LinkedIn</a>
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 data-i18n="contact_title">Contacto</h2>
+      <p class="lead" data-i18n="contact_sub">¿Tienes un proyecto en mente? Cuéntame qué necesitas y te orientaré sin compromiso.</p>
+
+      <div class="contact-box">
+        <div>
+          <p><b data-i18n="contact_line1">Respuesta rápida por WhatsApp.</b></p>
+          <p style="margin-top:8px">
+            <span style="color:var(--muted)" data-i18n="contact_line2">También puedes escribirme por email o ver mi portafolio.</span>
+          </p>
+          <p style="margin-top:12px; color:var(--muted)">
+            <b>Email:</b>
+            <a href="mailto:cinzia_marketing_design@hotmail.com">cinzia_marketing_design@hotmail.com</a>
+            &nbsp;·&nbsp;
+            <b>Behance:</b>
+            <a href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">/cinzia_design</a>
+            &nbsp;·&nbsp;
+            <b>LinkedIn:</b>
+            <a href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">/cinzia-bastoni</a>
+          </p>
+        </div>
+
+        <div class="contact-actions">
+          <!-- IMPORTANTE: cambia 57TUNUMERO -->
+          <a class="btn" href="https://wa.me/57TUNUMERO" target="_blank" rel="noopener" data-i18n="cta_whatsapp_2">Escríbeme por WhatsApp</a>
+          <a class="btn ghost" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener" data-i18n="cta_behance_2">Ver Behance</a>
+        </div>
+      </div>
     </div>
-    <p>
-      <strong>Email:</strong>
-      <a href="mailto:cinzia_marketing_design@hotmail.com">cinzia_marketing_design@hotmail.com</a>
-      &nbsp;·&nbsp;
-      <strong>LinkedIn:</strong>
-      <a href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">/cinzia-bastoni</a>
-      &nbsp;·&nbsp;
-      <strong>Behance:</strong>
-      <a href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">/cinzia_design</a>
-    </p>
   </section>
 
-  <footer class="footer">
-    © 2025 CB Marketing & Design
+  <footer>
+    © <span id="year"></span> CB Marketing & Design ·
+    <a href="#top" data-i18n="back_top">Volver arriba</a>
   </footer>
 
-  <!-- ===== i18n simple ===== -->
+  <!-- WhatsApp floating button -->
+  <a class="wa-float" href="https://wa.me/57TUNUMERO" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <span class="sr-only">WhatsApp</span>
+    <!-- simple WhatsApp icon -->
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M19.11 17.41c-.24-.12-1.39-.69-1.61-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.39-.57 1.58-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28zM16 3C8.83 3 3 8.83 3 16c0 2.32.62 4.57 1.8 6.56L3 29l6.61-1.73A12.9 12.9 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.5c-2.2 0-4.35-.6-6.22-1.74l-.45-.27-3.92 1.03 1.04-3.82-.29-.47A10.97 10.97 0 0 1 5 16C5 9.93 9.93 5 16 5s11 4.93 11 11-4.93 10.5-11 10.5z"/>
+    </svg>
+  </a>
+
+  <!-- ===== i18n (mínimo, puedes ampliar luego) ===== -->
   <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     const $ = (sel, ctx=document) => ctx.querySelector(sel);
     const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
 
     const dict = {
-      es:{
-        nav_about:"Sobre mí", nav_services:"Servicios", nav_portfolio:"Portafolio", nav_contact:"Contacto",
-        hero_title:"Creatividad en movimiento",
-        hero_sub:"Marketing • Diseño • Inteligencia Artificial",
-        cta_talk:"¡Hablemos!", cta_behance:"Ver Behance",
-        about_title:"Sobre mí",
-        about_p1:"Soy Cinzia Bastoni, profesional en Marketing, Diseño e Inteligencia Artificial. Durante los últimos años he combinado mi formación con proyectos reales que abarcan desde la creación de marcas y diseño de identidad visual hasta la optimización de campañas digitales y el desarrollo de landing pages.",
-        about_p2:"Mi enfoque une creatividad y estrategia: no solo diseño piezas visuales atractivas, también me aseguro de que cada proyecto esté alineado con los objetivos de negocio. Me apasiona explorar cómo la IA puede potenciar el marketing, automatizar procesos y abrir nuevas oportunidades creativas.",
-        about_p3:"Si buscas ideas frescas, soluciones digitales y un acompañamiento cercano en cada etapa de tu proyecto, estaré encantada de trabajar contigo.",
-        services_title:"Servicios", services_sub:"Soluciones digitales para marcas que quieren destacar.",
-        s1_title:"Landing Pages & Web", s1_desc:"Páginas rápidas, responsive y enfocadas en conversión.",
-        s2_title:"Social Media + IA", s2_desc:"Reels, banners, carruseles y copys asistidos por IA.",
-        s3_title:"Branding & Logos", s3_desc:"Identidad visual para negocios que quieren crecer.",
-        portfolio_title:"Portafolio / Proyectos", portfolio_sub:"Selección de piezas creativas y académicas.",
-        p1_title:"Menú Vegetariano", p1_desc:"Diseño menú restaurante",
-        p2_desc:"Logo", p3_desc:"Banner restaurante español", p4_desc:"Flyer evento musical",
-        p5_title:"Editorial Mockup", p5_desc:"Animación GIF (portada/contraportada)",
-        contact_title:"Contacto", contact_sub:"¿Tienes un proyecto en mente? ¡Hablemos!"
-      },
-      en:{
-        nav_about:"About", nav_services:"Services", nav_portfolio:"Portfolio", nav_contact:"Contact",
-        hero_title:"Creativity in Motion",
-        hero_sub:"Marketing • Design • Artificial Intelligence",
-        cta_talk:"Let's talk", cta_behance:"View Behance",
-        about_title:"About me",
-        about_p1:"I’m Cinzia Bastoni, a Marketing, Design and AI professional. Over the past years, I’ve combined education with real projects ranging from brand creation and visual identity design to digital campaign optimization and landing-page development.",
-        about_p2:"My approach blends creativity with strategy: I don’t just design beautiful visuals — I ensure every project aligns with business goals. I’m passionate about how AI can enhance marketing, automate processes and unlock new creative opportunities.",
-        about_p3:"If you’re looking for fresh ideas, digital solutions and close support at every stage of your project, I’d love to work with you.",
-        services_title:"Services", services_sub:"Digital solutions for brands that want to stand out.",
-        s1_title:"Landing Pages & Web", s1_desc:"Fast, responsive pages focused on conversion.",
-        s2_title:"Social Media + AI", s2_desc:"Reels, banners, carousels and AI-assisted copy.",
-        s3_title:"Branding & Logos", s3_desc:"Visual identity for growing businesses.",
-        portfolio_title:"Portfolio / Projects", portfolio_sub:"Selection of creative and academic pieces.",
-        p1_title:"Vegetarian Menu", p1_desc:"Restaurant menu design",
-        p2_desc:"Logo", p3_desc:"Spanish restaurant banner", p4_desc:"Music event flyer",
-        p5_title:"Editorial Mockup", p5_desc:"GIF animation (cover/back cover)",
-        contact_title:"Contact", contact_sub:"Got a project in mind? Let’s talk!"
-      },
-      it:{
-        nav_about:"Chi sono", nav_services:"Servizi", nav_portfolio:"Portfolio", nav_contact:"Contatto",
-        hero_title:"Creatività in movimento",
-        hero_sub:"Marketing • Design • Intelligenza Artificiale",
-        cta_talk:"Parliamo", cta_behance:"Vedi Behance",
-        about_title:"Chi sono",
-        about_p1:"Sono Cinzia Bastoni, professionista di Marketing, Design e Intelligenza Artificiale. Negli ultimi anni ho unito la formazione ad esperienze reali che spaziano dalla creazione di brand e identità visiva all’ottimizzazione di campagne digitali e allo sviluppo di landing page.",
-        about_p2:"Il mio approccio unisce creatività e strategia: non realizzo solo pezzi visivi accattivanti, ma mi assicuro che ogni progetto sia allineato agli obiettivi di business. Mi appassiona capire come l’IA possa potenziare il marketing, automatizzare processi e aprire nuove opportunità creative.",
-        about_p3:"Se cerchi idee fresche, soluzioni digitali e un supporto vicino in ogni fase del progetto, sarò felice di collaborare con te.",
-        services_title:"Servizi", services_sub:"Soluzioni digitali per brand che vogliono distinguersi.",
-        s1_title:"Landing Pages & Web", s1_desc:"Pagine veloci, responsive e orientate alla conversione.",
-        s2_title:"Social Media + IA", s2_desc:"Reel, banner, caroselli e copy assistiti da IA.",
-        s3_title:"Branding & Loghi", s3_desc:"Identità visiva per aziende in crescita.",
-        portfolio_title:"Portfolio / Progetti", portfolio_sub:"Selezione di lavori creativi e accademici.",
-        p1_title:"Menu Vegetariano", p1_desc:"Design menu ristorante",
-        p2_desc:"Logo", p3_desc:"Banner ristorante spagnolo", p4_desc:"Flyer evento musicale",
-        p5_title:"Mockup Editoriale", p5_desc:"Animazione GIF (copertina/retro)",
-        contact_title:"Contatto", contact_sub:"Hai un progetto in mente? Parliamone!"
-      },
-      de:{
-        nav_about:"Über mich", nav_services:"Leistungen", nav_portfolio:"Portfolio", nav_contact:"Kontakt",
-        hero_title:"Kreativität in Bewegung",
-        hero_sub:"Marketing • Design • Künstliche Intelligenz",
-        cta_talk:"Schreib mir", cta_behance:"Behance ansehen",
-        about_title:"Über mich",
-        about_p1:"Ich bin Cinzia Bastoni – Marketing-, Design- und KI-Spezialistin. In den letzten Jahren habe ich Ausbildung und Praxis verbunden: von Markenentwicklung und visueller Identität über die Optimierung digitaler Kampagnen bis hin zur Erstellung von Landingpages.",
-        about_p2:"Mein Ansatz vereint Kreativität und Strategie: Ich entwerfe nicht nur ansprechende Designs, sondern stelle sicher, dass jedes Projekt mit den Geschäfts­zielen übereinstimmt. Besonders spannend finde ich, wie KI Marketing stärken, Prozesse automatisieren und neue kreative Möglichkeiten eröffnen kann.",
-        about_p3:"Wenn du frische Ideen, digitale Lösungen und eine enge Begleitung in jeder Projektphase suchst, freue ich mich auf die Zusammenarbeit.",
-        services_title:"Leistungen", services_sub:"Digitale Lösungen für Marken, die auffallen wollen.",
-        s1_title:"Landingpages & Web", s1_desc:"Schnelle, responsive Seiten mit Conversion-Fokus.",
-        s2_title:"Social Media + KI", s2_desc:"Reels, Banner, Karussells und KI-unterstützte Texte.",
-        s3_title:"Branding & Logos", s3_desc:"Visuelle Identität für wachsende Unternehmen.",
-        portfolio_title:"Portfolio / Projekte", portfolio_sub:"Auswahl kreativer und akademischer Arbeiten.",
-        p1_title:"Vegetarische Speisekarte", p1_desc:"Restaurant-Menüdesign",
-        p2_desc:"Logo", p3_desc:"Spanisches Restaurant-Banner", p4_desc:"Flyer Musik-Event",
-        p5_title:"Editorial Mockup", p5_desc:"GIF-Animation (Cover/Rückseite)",
-        contact_title:"Kontakt", contact_sub:"Du hast ein Projekt im Kopf? Schreib mir!"
+      es: {},
+      en: {
+        brand_sub:"Marketing • Design • Ads",
+        nav_services:"Services", nav_portfolio:"Portfolio", nav_contact:"Contact",
+        hero_pill:"Available for projects (Colombia · online)",
+        hero_title:"Digital Marketing & Design for Businesses",
+        hero_sub:"I help you look professional and sell more online with design, content and ad campaigns.",
+        cta_whatsapp:"Message me on WhatsApp",
+        cta_services:"View services",
+        mini_1:"✨ Services from <b>$25.000 COP</b>",
+        mini_2:"📌 Fast delivery",
+        mini_3:"🤝 Personalized support",
+        hero_card_title:"Most requested",
+        hero_card_li1:"Landing pages focused on conversion",
+        hero_card_li2:"Social design (posts, flyers, banners)",
+        hero_card_li3:"Branding & logos (create or improve)",
+        hero_card_li4:"eBooks ready to sell",
+        hero_card_li5:"Ads campaigns (Facebook & Instagram)",
+        hero_card_note:"<b>Shall we talk?</b> I’ll guide you with no commitment.",
+        services_title:"Services",
+        services_sub:"Some of the most requested services. If you need something different, I can help too.",
+        services_more:"And much more… (tell me what you need and I’ll quote it).",
+        portfolio_title:"Portfolio",
+        portfolio_sub:"A selection of recent pieces and projects.",
+        pf1:"Restaurant menu design", pf2:"Logo design / upgrade", pf3:"Promotional banner", pf4:"Advertising flyer", pf5:"Cover/back cover (mockup)",
+        contact_title:"Contact",
+        contact_sub:"Have a project in mind? Tell me what you need and I’ll guide you with no commitment.",
+        contact_line1:"Fast reply on WhatsApp.",
+        contact_line2:"You can also email me or view my portfolio.",
+        cta_whatsapp_2:"Message me on WhatsApp",
+        cta_behance_2:"View Behance",
+        back_top:"Back to top",
+
+        srv_lp_t:"🌐 Landing pages", srv_lp_d:"Landing pages focused on conversion (responsive).", srv_lp_p:"From $250.000 COP",
+        srv_digital_t:"🎨 Digital design", srv_digital_d:"Design for social, web and promos.", srv_digital_p:"From $25.000 COP",
+        srv_post_t:"📱 Posts", srv_post_d:"Static and animated posts for social media.", srv_post_p:"From $25.000 COP",
+        srv_logo_t:"🧩 Logo design", srv_logo_d:"Create or improve a professional logo.", srv_logo_p:"From $80.000 COP",
+        srv_banner_t:"🖼️ Banners", srv_banner_d:"Banners for web, WhatsApp and social.", srv_banner_p:"From $25.000 COP",
+        srv_menu_t:"🍽️ Menu design", srv_menu_d:"Digital or print-ready menus.", srv_menu_p:"From $80.000 COP",
+        srv_flyer_t:"📄 Flyers", srv_flyer_d:"Digital or print advertising flyers.", srv_flyer_p:"From $30.000 COP",
+        srv_cover_t:"📘 Book cover", srv_cover_d:"Professional cover + back cover.", srv_cover_p:"From $150.000 COP",
+        srv_ebook_t:"📕 eBook ready to sell", srv_ebook_d:"Design + layout (PDF ready to sell).", srv_ebook_p:"From $250.000 COP",
+        srv_ads_t:"📢 Ads campaigns (Meta)", srv_ads_d:"Create and manage Facebook & Instagram campaigns.", srv_ads_p:"From $80.000 COP",
+
+        tag_conv:"Conversion", tag_brand:"Brand", tag_social:"Social", tag_id:"Identity", tag_ads:"Promos", tag_rest:"Restaurants", tag_print:"Digital/Print", tag_editorial:"Editorial", tag_product:"Digital product", tag_meta:"Meta"
       }
     };
 
@@ -448,24 +601,30 @@
     }
 
     function applyLang(lang){
-      // textos
-      $$('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(dict[lang][key]) el.textContent = dict[lang][key];
-      });
-      // activa bandera
+      // activa bandera (visual)
       $$('.lang a').forEach(a=>{
         a.classList.toggle('active', a.search.includes(`lang=${lang}`));
       });
+
+      // textos
+      const t = dict[lang] || {};
+      $$('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(t[key]){
+          // permite <b> en algunos textos
+          if(String(t[key]).includes('<')) el.innerHTML = t[key];
+          else el.textContent = t[key];
+        }
+      });
+
       document.documentElement.lang = lang;
     }
 
-    // init
     const lang = getLang();
     applyLang(lang);
 
-    // Navegación manteniendo lang al hacer click interno
-    $$('.menu a, .brand').forEach(a=>{
+    // Navegación suave preservando lang
+    $$('.menu a, .brand, footer a[href="#top"]').forEach(a=>{
       a.addEventListener('click', e=>{
         if(a.hash){
           e.preventDefault();
