@@ -1,651 +1,241 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CB Marketing & Design</title>
-  <meta name="description" content="Marketing y Diseño Digital. Landing pages, diseño para redes, branding, eBooks y campañas Ads." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CB Marketing & Design</title>
 
-  <!-- Open Graph (para que se vea bonito al compartir) -->
-  <meta property="og:title" content="CB Marketing & Design" />
-  <meta property="og:description" content="Marketing y Diseño Digital para emprendedores y negocios. Servicios desde $30.000 COP." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://cinziamarketingdesign.com/" />
+<style>
+:root{
+  --bg:#09090b;
+  --text:#f5f7fb;
+  --muted:#a7adbb;
+  --card:#11131a;
+  --line:#262b36;
+  --brand1:#8b5cf6;
+  --brand2:#3b82f6;
+}
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0T3TLFVCVM"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0T3TLFVCVM');
-  </script>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 700px at 0% 0%, rgba(139,92,246,.12), transparent 55%),
+    radial-gradient(900px 600px at 100% 10%, rgba(59,130,246,.10), transparent 45%),
+    linear-gradient(180deg, #09090b 0%, #0d0f14 100%);
+}
 
-  <style>
-    :root{
-      --bg:#0e0e0e; --bg2:#111; --text:#eaeaea; --muted:#a5a5a5;
-      --card:#151515; --card2:#1b1b1b; --line:#232323;
-      --brand1:#6ab0ff; --brand2:#7b4dff; --accent:#8ad6ff;
-      --ok:#2dd4bf;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
-    a{color:inherit}
-    img{max-width:100%;display:block;height:auto}
-    .container{max-width:1120px;margin-inline:auto;padding:0 16px}
+.container{max-width:1100px;margin:auto;padding:0 16px}
 
-    /* ===== NAV ===== */
-    header{
-      position: sticky; top: 0; z-index: 1000;
-      background: rgba(14,14,14,.92);
-      backdrop-filter: saturate(120%) blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:12px 0;
-    }
-    .brand{
-      display:inline-flex; align-items:center; gap:10px;
-      text-decoration:none; font-weight:800; letter-spacing:.2px;
-      white-space:nowrap;
-    }
-    .brand small{display:block;font-weight:600;color:var(--muted);font-size:12px;letter-spacing:.3px}
-    .menu{
-      display:flex; align-items:center; gap:16px; flex-wrap:wrap; justify-content:center;
-    }
-    .menu a{
-      text-decoration:none; opacity:.9; color:var(--text);
-      padding:8px 10px; border-radius:10px;
-    }
-    .menu a:hover{opacity:1;background:#ffffff0f}
+header{
+  position:sticky;
+  top:0;
+  background:rgba(9,9,11,.8);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid #222;
+}
 
-    .lang{display:flex; align-items:center; gap:10px}
-    .lang a{display:inline-flex}
-    .lang img{
-      height:22px; width:auto; border-radius:4px;
-      box-shadow: 0 0 0 1px #242424; background:#111;
-    }
-    .lang a.active img{ box-shadow: 0 0 0 2px var(--accent); }
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 0;
+  flex-wrap:wrap;
+}
 
-    @media (max-width: 760px){
-      .nav{flex-wrap:wrap}
-      .menu{width:100%; justify-content:space-between; overflow-x:auto; padding-bottom:2px; gap:10px}
-      .menu::-webkit-scrollbar{display:none}
-    }
+.brand{
+  font-weight:800;
+  font-size:18px;
+}
 
-    /* ===== BUTTONS ===== */
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:11px 16px; border-radius:14px;
-      background: linear-gradient(90deg, var(--brand1), var(--brand2));
-      color:#fff; text-decoration:none; font-weight:700;
-      border:1px solid #00000055;
-      min-width: 170px;
-    }
-    .btn:hover{filter:brightness(1.05)}
-    .btn.ghost{
-      background:#ffffff10; border:1px solid #2a2a2a; color:var(--text);
-    }
-    .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:7px 12px; border-radius:999px;
-      background:#ffffff10; border:1px solid #2a2a2a;
-      color:var(--muted); font-size:13px;
-    }
+.menu a{
+  margin:0 10px;
+  text-decoration:none;
+  color:var(--text);
+}
 
-    /* ===== HERO ===== */
-    .hero{
-      position:relative; overflow:hidden;
-      background: radial-gradient(1200px 700px at 10% 10%, rgba(106,176,255,.20), transparent 55%),
-                  radial-gradient(900px 600px at 90% 30%, rgba(123,77,255,.18), transparent 55%),
-                  linear-gradient(to bottom, #111, #0e0e0e);
-      border-bottom:1px solid var(--line);
-    }
-    .hero-inner{
-      padding: 56px 0 44px;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 26px;
-      align-items:center;
-    }
-    .hero h1{
-      margin:0 0 10px;
-      font-size: clamp(28px, 4vw, 48px);
-      line-height:1.05;
-      letter-spacing:-.4px;
-    }
-    .hero p{
-      margin:0 0 16px;
-      color:var(--muted);
-      font-size:16px;
-      max-width:60ch;
-    }
-    .hero .cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
-    .hero .mini{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+.lang img{
+  height:24px;
+  margin-left:6px;
+  border-radius:4px;
+}
 
-    .hero-card{
-      background: linear-gradient(180deg, #161616, #121212);
-      border:1px solid #262626;
-      border-radius:18px;
-      padding:18px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.35);
-    }
-    .hero-card h3{margin:0 0 10px; font-size:16px}
-    .hero-card ul{margin:0; padding-left:18px; color:var(--muted)}
-    .hero-card li{margin:8px 0}
-    .price-note{
-      margin-top:12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;
-      color:var(--muted); font-size:13px;
-    }
-    .price-note b{color:var(--text)}
+.hero{
+  padding:70px 0;
+}
 
-    @media (max-width: 900px){
-      .hero-inner{grid-template-columns:1fr}
-    }
+.hero h1{
+  font-size:44px;
+  margin-bottom:10px;
+}
 
-    /* ===== SECTIONS ===== */
-    section{scroll-margin-top:86px}
-    .section{padding:48px 0}
-    .section h2{margin:0 0 10px; font-size:28px}
-    .section p.lead{margin:0 0 18px; color:var(--muted); max-width:80ch}
+.hero p{
+  color:var(--muted);
+  max-width:600px;
+}
 
-    /* ===== SERVICES GRID ===== */
-    .services-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .service-card{
-      background: linear-gradient(180deg, var(--card), var(--card2));
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:16px;
-      min-height: 160px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
-    .service-card h3{margin:0; font-size:16px}
-    .service-card p{margin:0; color:var(--muted); font-size:14px; line-height:1.35}
-    .service-meta{
-      margin-top:auto;
-      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
-    }
-    .price{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
-      border-radius:999px;
-      background: #0b0b0b;
-      border:1px solid #2a2a2a;
-      color:var(--text);
-      font-weight:800;
-      font-size:13px;
-      white-space:nowrap;
-    }
-    .tag{
-      font-size:12px; color:var(--muted);
-      padding:6px 10px; border-radius:999px;
-      background:#ffffff10; border:1px solid #2a2a2a;
-      white-space:nowrap;
-    }
-    .more-services{
-      margin-top:14px;
-      color:var(--muted);
-    }
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--brand1),var(--brand2));
+  color:white;
+  text-decoration:none;
+  margin-top:12px;
+}
 
-    @media (max-width: 980px){
-      .services-grid{grid-template-columns: repeat(2, 1fr);}
-    }
-    @media (max-width: 620px){
-      .services-grid{grid-template-columns: 1fr;}
-    }
+.section{
+  padding:60px 0;
+}
 
-    /* ===== PORTFOLIO (optional masonry) ===== */
-    .masonry{ column-width: 320px; column-gap: 14px; }
-    .tile{
-      background: linear-gradient(180deg, var(--card), var(--card2));
-      border:1px solid var(--line);
-      border-radius:18px;
-      overflow:hidden;
-      break-inside: avoid;
-      margin:0 0 14px;
-    }
-    .tile img{width:100%; height:auto}
-    .tile .cap{padding:14px}
-    .tile h4{margin:0 0 6px}
-    .tile p{margin:0; color:var(--muted); font-size:14px}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
 
-    /* ===== CONTACT ===== */
-    .contact-box{
-      background: linear-gradient(180deg, #161616, #121212);
-      border:1px solid #262626;
-      border-radius:18px;
-      padding:18px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:16px;
-      align-items:center;
-    }
-    .contact-box p{margin:0;color:var(--muted)}
-    .contact-actions{display:flex; gap:12px; justify-content:flex-end; flex-wrap:wrap}
-    @media (max-width: 900px){
-      .contact-box{grid-template-columns:1fr}
-      .contact-actions{justify-content:flex-start}
-    }
+.service-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+}
 
-    /* ===== FOOTER ===== */
-    footer{
-      border-top:1px solid var(--line);
-      padding:24px 0;
-      color:var(--muted);
-      font-size:13px;
-      text-align:center;
-    }
-    footer a{color:var(--accent); text-decoration:none}
-    footer a:hover{text-decoration:underline}
+.price{
+  font-weight:bold;
+  margin-top:8px;
+}
 
-    /* ===== WHATSAPP FLOAT ===== */
-    .wa-float{
-      position:fixed; right:16px; bottom:16px; z-index:9999;
-      display:inline-flex; align-items:center; justify-content:center;
-      width:52px; height:52px; border-radius:16px;
-      background: #25D366;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      border:1px solid rgba(0,0,0,.25);
-      text-decoration:none;
-    }
-    .wa-float svg{width:26px;height:26px;fill:#fff}
-    .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
-  </style>
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid #222;
+  color:var(--muted);
+}
+</style>
 </head>
 
-<body id="top">
+<body>
 
-  <!-- ===== HEADER ===== -->
-  <header>
-    <div class="container">
-      <nav class="nav" aria-label="Navegación principal">
-        <a href="#top" class="brand" aria-label="Inicio">
-          <div>
-            CB Marketing & Design
-            <small data-i18n="brand_sub">Marketing • Diseño • Ads</small>
-          </div>
-        </a>
+<header>
+<div class="container">
+<div class="nav">
+<div class="brand">CB Marketing & Design</div>
 
-        <div class="lang" aria-label="Seleccionar idioma">
-          <a href="?lang=es" class="active" title="Español" aria-label="Español"><img src="es.png" alt="ES"></a>
-          <a href="?lang=en" title="English" aria-label="English"><img src="gb.png" alt="EN"></a>
-          <a href="?lang=it" title="Italiano" aria-label="Italiano"><img src="it.png" alt="IT"></a>
-          <a href="?lang=de" title="Deutsch" aria-label="Deutsch"><img src="de.png" alt="DE"></a>
-        </div>
+<div class="lang">
+<a href="?lang=co"><img src="co.png"></a>
+<a href="?lang=es"><img src="es.png"></a>
+<a href="?lang=en"><img src="gb.png"></a>
+<a href="?lang=de"><img src="de.png"></a>
+</div>
 
-        <div class="menu">
-          <a href="#services" data-i18n="nav_services">Servicios</a>
-          <a href="#portfolio" data-i18n="nav_portfolio">Portafolio</a>
-          <a href="#contact" data-i18n="nav_contact">Contacto</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+<div class="menu">
+<a href="#services">Servicios</a>
+<a href="#portfolio">Portafolio</a>
+<a href="#contact">Contacto</a>
+</div>
+</div>
+</div>
+</header>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="hero">
-    <div class="container">
-      <div class="hero-inner">
-        <div>
-          <div class="pill" style="margin-bottom:12px;">
-            <span style="color:var(--ok);font-weight:800;">●</span>
-            <span data-i18n="hero_pill">Disponible para proyectos (Presencial · Online)</span>
-          </div>
+<section class="hero">
+<div class="container">
+<h1>Diseño, Marketing y Presencia Digital</h1>
+<p>Te ayudo a verte profesional y conseguir más clientes online con landing pages, diseño y marketing digital.</p>
+<a class="btn" href="https://wa.me/573182960788">Escríbeme por WhatsApp</a>
+</div>
+</section>
 
-          <h1 data-i18n="hero_title">Marketing y Diseño Digital para Emprendedores y Negocios</h1>
-          <p data-i18n="hero_sub">
-            Te ayudo a verte profesional y vender más en internet con diseño, contenido y campañas publicitarias.
-          </p>
+<section class="section" id="services">
+<div class="container">
+<h2>Servicios</h2>
 
-          <div class="cta">
-            <!-- IMPORTANTE: cambia 57TUNUMERO -->
-            <a class="btn" href="https://wa.me/57TUNUMERO" target="_blank" rel="noopener" data-i18n="cta_whatsapp">Escríbeme por WhatsApp</a>
-            <a class="btn ghost" href="#services" data-i18n="cta_services">Ver servicios</a>
-          </div>
+<div class="services-grid">
 
-          <div class="mini">
-            <span class="pill" data-i18n="mini_1">✨ Servicios desde <b>$30.000 COP</b></span>
-            <span class="pill" data-i18n="mini_2">📌 Entrega rápida</span>
-            <span class="pill" data-i18n="mini_3">🤝 Atención personalizada</span>
-          </div>
-        </div>
+<div class="service-card">
+<h3>Landing pages</h3>
+<p>Páginas de venta enfocadas en conversión.</p>
+<div class="price">Desde $220.000</div>
+</div>
 
-        <aside class="hero-card" aria-label="Resumen de servicios">
-          <h3 data-i18n="hero_card_title">Lo más solicitado</h3>
-          <ul>
-            <li data-i18n="hero_card_li1">Landing pages enfocadas en conversión</li>
-            <li data-i18n="hero_card_li2">Diseño para redes (posts, flyers, banners)</li>
-            <li data-i18n="hero_card_li3">Branding y logos (crear o mejorar)</li>
-            <li data-i18n="hero_card_li4">eBooks listos para vender</li>
-            <li data-i18n="hero_card_li5">Campañas Ads (Facebook & Instagram)</li>
-          </ul>
-          <div class="price-note">
-            <span data-i18n="hero_card_note"><b>¿Hablamos?</b> Te orientaré sin compromiso.</span>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
+<div class="service-card">
+<h3>Diseño digital</h3>
+<p>Diseño para redes sociales, web y publicidad.</p>
+<div class="price">Desde $350.000</div>
+</div>
 
-  <!-- ===== SERVICIOS ===== -->
-  <section class="section" id="services">
-    <div class="container">
-      <h2 data-i18n="services_title">Servicios</h2>
-      <p class="lead" data-i18n="services_sub">
-        Algunos de los servicios más solicitados. Si necesitas algo distinto, también puedo ayudarte.
-      </p>
+<div class="service-card">
+<h3>Posts redes sociales</h3>
+<p>Diseño de publicaciones para Instagram y Facebook.</p>
+<div class="price">Desde $30.000</div>
+</div>
 
-      <div class="services-grid">
+<div class="service-card">
+<h3>Diseño de logo</h3>
+<p>Creación o rediseño de logo profesional.</p>
+<div class="price">Desde $90.000</div>
+</div>
 
-        <div class="service-card">
-          <h3 data-i18n="srv_lp_t">🌐 Landing pages</h3>
-          <p data-i18n="srv_lp_d">Diseño de landing pages enfocadas en conversión (responsive).</p>
-          <div class="service-meta">
-            <span class="price" data-i18n="srv_lp_p">Desde $220.000 COP</span>
-            <span class="tag" data-i18n="tag_conv">Conversión</span>
-          </div>
-        </div>
+<div class="service-card">
+<h3>Banners</h3>
+<p>Banners publicitarios y para redes.</p>
+<div class="price">Desde $35.000</div>
+</div>
 
-        <div class="service-card">
-          <h3 data-i18n="srv_digital_t">🎨 Diseño digital</h3>
-          <p data-i18n="srv_digital_d">Diseño gráfico para redes, web y material promocional.</p>
-          <div class="service-meta">
-            <span class="price" data-i18n="srv_digital_p">Desde $350.000 COP</span>
-            <span class="tag" data-i18n="tag_brand">Marca</span>
-          </div>
-        </div>
+<div class="service-card">
+<h3>Flyers</h3>
+<p>Flyers digitales o para impresión.</p>
+<div class="price">Desde $40.000</div>
+</div>
 
-        <div class="service-card">
-          <h3 data-i18n="srv_post_t">📱 Posts</h3>
-          <p data-i18n="srv_post_d">Diseño de posts estáticos y animados para redes sociales.</p>
-          <div class="service-meta">
-            <span class="price" data-i18n="srv_post_p">Desde $30.000 COP</span>
-            <span class="tag" data-i18n="tag_social">Redes</span>
-          </div>
-        </div>
+<div class="service-card">
+<h3>eBook</h3>
+<p>Diseño y maquetación de eBooks.</p>
+<div class="price">Desde $300.000</div>
+</div>
 
-        <div class="service-card">
-          <h3 data-i18n="srv_logo_t">🧩 Diseño de logo</h3>
-          <p data-i18n="srv_logo_d">Creación o mejora de logo profesional.</p>
-          <div class="service-meta">
-            <span class="price" data-i18n="srv_logo_p">Desde $90.000 COP</span>
-            <span class="tag" data-i18n="tag_id">Identidad</span>
-          </div>
-        </div>
+<div class="service-card">
+<h3>Hojas de vida</h3>
+<p>Diseño profesional de CV.</p>
+<div class="price">Desde $40.000</div>
+</div>
 
-        <div class="service-card">
-          <h3 data-i18n="srv_banner_t">🖼️ Banners</h3>
-          <p data-i18n="srv_banner_d">Banners para web, WhatsApp y redes sociales.</p>
-          <div class="service-meta">
-            <span class="price" data-i18n="srv_banner_p">Desde $35.000 COP</span>
-            <span class="tag" data-i18n="tag_ads">Promos</span>
-          </div>
-        </div>
+<div class="service-card">
+<h3>Portafolio / Catálogo</h3>
+<p>Diseño de portafolios y catálogos.</p>
+<div class="price">Desde $140.000</div>
+</div>
 
-        <div class="service-card">
-          <h3 data-i18n="srv_menu_t">🍽️ Diseño de menú</h3>
-          <p data-i18n="srv_menu_d">Menús digitales o para impresión.</p>
-          <div class="service-meta">
-            <span class="price" data-i18n="srv_menu_p">Desde $90.000 COP</span>
-            <span class="tag" data-i18n="tag_rest">Restaurantes</span>
-          </div>
-        </div>
+<div class="service-card">
+<h3>Campañas Ads</h3>
+<p>Publicidad en Facebook e Instagram.</p>
+<div class="price">Desde $150.000</div>
+</div>
 
-        <div class="service-card">
-          <h3 data-i18n="srv_flyer_t">📄 Flyer</h3>
-          <p data-i18n="srv_flyer_d">Flyers publicitarios digitales o impresos.</p>
-          <div class="service-meta">
-            <span class="price" data-i18n="srv_flyer_p">Desde $40.000 COP</span>
-            <span class="tag" data-i18n="tag_print">Digital/Impreso</span>
-          </div>
-        </div>
+</div>
+</div>
+</section>
 
-        <div class="service-card">
-          <h3 data-i18n="srv_cover_t">📘 Portada de libro</h3>
-          <p data-i18n="srv_cover_d">Diseño de portada y contraportada profesional.</p>
-          <div class="service-meta">
-            <span class="price" data-i18n="srv_cover_p">Desde $160.000 COP</span>
-            <span class="tag" data-i18n="tag_editorial">Editorial</span>
-          </div>
-        </div>
+<section class="section" id="portfolio">
+<div class="container">
+<h2>Portafolio</h2>
+<p>Aquí puedes poner tus trabajos.</p>
+</div>
+</section>
 
-        <div class="service-card">
-          <h3 data-i18n="srv_ebook_t">📕 eBook listo para la venta</h3>
-          <p data-i18n="srv_ebook_d">Diseño y maquetación de eBooks (PDF listo para vender).</p>
-          <div class="service-meta">
-            <span class="price" data-i18n="srv_ebook_p">Desde $300.000 COP</span>
-            <span class="tag" data-i18n="tag_product">Producto digital</span>
-          </div>
-        </div>
+<section class="section" id="contact">
+<div class="container">
+<h2>Contacto</h2>
+<p>¿Tienes un proyecto? Escríbeme.</p>
+<a class="btn" href="https://wa.me/573182960788">WhatsApp</a>
+</div>
+</section>
 
-        <div class="service-card">
-          <h3 data-i18n="srv_ads_t">📢 Campañas Ads (Meta)</h3>
-          <p data-i18n="srv_ads_d">Creación y gestión de campañas en Facebook e Instagram.</p>
-          <div class="service-meta">
-            <span class="price" data-i18n="srv_ads_p">Desde $150.000 COP</span>
-            <span class="tag" data-i18n="tag_meta">Meta</span>
-          </div>
-        </div>
+<footer>
+© 2026 CB Marketing & Design
+</footer>
 
-      </div>
-
-      <p class="more-services" data-i18n="services_more">Y muchos más… (cuéntame qué necesitas y te lo cotizo).</p>
-    </div>
-  </section>
-
-  <!-- ===== PORTFOLIO (puedes dejarlo o quitarlo) ===== -->
-  <section class="section" id="portfolio">
-    <div class="container">
-      <h2 data-i18n="portfolio_title">Portafolio</h2>
-      <p class="lead" data-i18n="portfolio_sub">Una selección de piezas y proyectos recientes.</p>
-
-      <!-- Usa tus imágenes actuales (las que ya tienes en tu repo) -->
-      <div class="masonry">
-        <article class="tile">
-          <img src="Logo de Maquillaje Cosmética Minimalista Rosa.png.png" alt="Diseño de logo" loading="lazy">
-          <div class="cap">
-            <h4>Diseño de logo</h4>
-            <p data-i18n="pf1">Diseño de logo</p>
-          </div>
-        </article>
-
-        <article class="tile">
-          <img src="landingpage KI.png
-" alt="Landingpage" loading="lazy">
-          <div class="cap">
-            <h4>Landingpage curso IA</h4>
-            <p data-i18n="pf2">Landingpage curso IA</p>
-          </div>
-        </article>
-
-        <article class="tile">
-          <img src="Black Esthetic Spa Beauty Salon (Flyer)_20251009_204044_0000.pdf.png"
- alt="Banner" loading="lazy">
-          <div class="cap">
-            <h4>Banner</h4>
-            <p data-i18n="pf3">Banner promocional</p>
-          </div>
-        </article>
-
-        <article class="tile">
-          <img src="Diseño sin título.png
-" alt="Flyer" loading="lazy">
-          <div class="cap">
-            <h4>eBook Renace Mama</h4>
-            <p data-i18n="pf4">eBook listo para la venta</p>
-          </div>
-        </article>
-
- <article class="tile">
-          <img src="branner.png"
- alt="Peronal banner" loading="lazy">
-          <div class="cap">
-            <h4>Personal banner</h4>
-            <p data-i18n="pf4">Personal banner</p>
-          </div>
-        </article>
-        
-        <article class="tile">
-          <img src="20250922_214839_0001.gif" alt="Portada/Contraportada" loading="lazy">
-          <div class="cap">
-            <h4>Editorial</h4>
-            <p data-i18n="pf5">Portada / contraportada (mockup)</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTACTO ===== -->
-  <section class="section" id="contact">
-    <div class="container">
-      <h2 data-i18n="contact_title">Contacto</h2>
-      <p class="lead" data-i18n="contact_sub">¿Tienes un proyecto en mente? Cuéntame qué necesitas y te orientaré sin compromiso.</p>
-
-      <div class="contact-box">
-        <div>
-          <p><b data-i18n="contact_line1">Respuesta rápida por WhatsApp.</b></p>
-          <p style="margin-top:8px">
-            <span style="color:var(--muted)" data-i18n="contact_line2">También puedes escribirme por email o ver mi portafolio.</span>
-          </p>
-          <p style="margin-top:12px; color:var(--muted)">
-            <b>Email:</b>
-            <a href="mailto:cinzia_marketing_design@hotmail.com">cinzia_marketing_design@hotmail.com</a>
-            &nbsp;·&nbsp;
-            <b>Behance:</b>
-            <a href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener">/cinzia_design</a>
-            &nbsp;·&nbsp;
-            <b>LinkedIn:</b>
-            <a href="https://www.linkedin.com/in/cinzia-bastoni" target="_blank" rel="noopener">/cinzia-bastoni</a>
-          </p>
-        </div>
-
-        <div class="contact-actions">
-          <!-- IMPORTANTE: cambia +573182960788 -->
-          <a class="btn" href="https://wa.me/+573182960788" target="_blank" rel="noopener" data-i18n="cta_whatsapp_2">Escríbeme por WhatsApp</a>
-          <a class="btn ghost" href="https://www.behance.net/cinzia_design" target="_blank" rel="noopener" data-i18n="cta_behance_2">Ver Behance</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © <span id="year"></span> CB Marketing & Design ·
-    <a href="#top" data-i18n="back_top">Volver arriba</a>
-  </footer>
-
-  <!-- WhatsApp floating button -->
-  <a class="wa-float" href="https://wa.me/+573182960788" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <span class="sr-only">WhatsApp</span>
-    <!-- simple WhatsApp icon -->
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M19.11 17.41c-.24-.12-1.39-.69-1.61-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.44-1.34-1.68-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.39-.57 1.58-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28zM16 3C8.83 3 3 8.83 3 16c0 2.32.62 4.57 1.8 6.56L3 29l6.61-1.73A12.9 12.9 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16 3zm0 23.5c-2.2 0-4.35-.6-6.22-1.74l-.45-.27-3.92 1.03 1.04-3.82-.29-.47A10.97 10.97 0 0 1 5 16C5 9.93 9.93 5 16 5s11 4.93 11 11-4.93 10.5-11 10.5z"/>
-    </svg>
-  </a>
-
-  <!-- ===== i18n (mínimo, puedes ampliar luego) ===== -->
-  <script>
-    // year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const $ = (sel, ctx=document) => ctx.querySelector(sel);
-    const $$ = (sel, ctx=document) => [...ctx.querySelectorAll(sel)];
-
-    const dict = {
-      es: {},
-      en: {
-        brand_sub:"Marketing • Design • Ads",
-        nav_services:"Services", nav_portfolio:"Portfolio", nav_contact:"Contact",
-        hero_pill:"Available for projects (Colombia · online)",
-        hero_title:"Digital Marketing & Design for Businesses",
-        hero_sub:"I help you look professional and sell more online with design, content and ad campaigns.",
-        cta_whatsapp:"Message me on WhatsApp",
-        cta_services:"View services",
-        mini_1:"✨ Services from <b>$25.000 COP</b>",
-        mini_2:"📌 Fast delivery",
-        mini_3:"🤝 Personalized support",
-        hero_card_title:"Most requested",
-        hero_card_li1:"Landing pages focused on conversion",
-        hero_card_li2:"Social design (posts, flyers, banners)",
-        hero_card_li3:"Branding & logos (create or improve)",
-        hero_card_li4:"eBooks ready to sell",
-        hero_card_li5:"Ads campaigns (Facebook & Instagram)",
-        hero_card_note:"<b>Shall we talk?</b> I’ll guide you with no commitment.",
-        services_title:"Services",
-        services_sub:"Some of the most requested services. If you need something different, I can help too.",
-        services_more:"And much more… (tell me what you need and I’ll quote it).",
-        portfolio_title:"Portfolio",
-        portfolio_sub:"A selection of recent pieces and projects.",
-        pf1:"Restaurant menu design", pf2:"Logo design / upgrade", pf3:"Promotional banner", pf4:"Advertising flyer", pf5:"Cover/back cover (mockup)",
-        contact_title:"Contact",
-        contact_sub:"Have a project in mind? Tell me what you need and I’ll guide you with no commitment.",
-        contact_line1:"Fast reply on WhatsApp.",
-        contact_line2:"You can also email me or view my portfolio.",
-        cta_whatsapp_2:"Message me on WhatsApp",
-        cta_behance_2:"View Behance",
-        back_top:"Back to top",
-
-        srv_lp_t:"🌐 Landing pages", srv_lp_d:"Landing pages focused on conversion (responsive).", srv_lp_p:"From $250.000 COP",
-        srv_digital_t:"🎨 Digital design", srv_digital_d:"Design for social, web and promos.", srv_digital_p:"From $25.000 COP",
-        srv_post_t:"📱 Posts", srv_post_d:"Static and animated posts for social media.", srv_post_p:"From $25.000 COP",
-        srv_logo_t:"🧩 Logo design", srv_logo_d:"Create or improve a professional logo.", srv_logo_p:"From $80.000 COP",
-        srv_banner_t:"🖼️ Banners", srv_banner_d:"Banners for web, WhatsApp and social.", srv_banner_p:"From $25.000 COP",
-        srv_menu_t:"🍽️ Menu design", srv_menu_d:"Digital or print-ready menus.", srv_menu_p:"From $80.000 COP",
-        srv_flyer_t:"📄 Flyers", srv_flyer_d:"Digital or print advertising flyers.", srv_flyer_p:"From $30.000 COP",
-        srv_cover_t:"📘 Book cover", srv_cover_d:"Professional cover + back cover.", srv_cover_p:"From $150.000 COP",
-        srv_ebook_t:"📕 eBook ready to sell", srv_ebook_d:"Design + layout (PDF ready to sell).", srv_ebook_p:"From $250.000 COP",
-        srv_ads_t:"📢 Ads campaigns (Meta)", srv_ads_d:"Create and manage Facebook & Instagram campaigns.", srv_ads_p:"From $80.000 COP",
-
-        tag_conv:"Conversion", tag_brand:"Brand", tag_social:"Social", tag_id:"Identity", tag_ads:"Promos", tag_rest:"Restaurants", tag_print:"Digital/Print", tag_editorial:"Editorial", tag_product:"Digital product", tag_meta:"Meta"
-      }
-    };
-
-    function getLang(){
-      const p = new URLSearchParams(location.search).get('lang');
-      return (['es','en','it','de'].includes(p)) ? p : 'es';
-    }
-
-    function applyLang(lang){
-      // activa bandera (visual)
-      $$('.lang a').forEach(a=>{
-        a.classList.toggle('active', a.search.includes(`lang=${lang}`));
-      });
-
-      // textos
-      const t = dict[lang] || {};
-      $$('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(t[key]){
-          // permite <b> en algunos textos
-          if(String(t[key]).includes('<')) el.innerHTML = t[key];
-          else el.textContent = t[key];
-        }
-      });
-
-      document.documentElement.lang = lang;
-    }
-
-    const lang = getLang();
-    applyLang(lang);
-
-    // Navegación suave preservando lang
-    $$('.menu a, .brand, footer a[href="#top"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        if(a.hash){
-          e.preventDefault();
-          history.replaceState(null, '', `?lang=${lang}${a.hash}`);
-          const target = $(a.hash);
-          if(target) target.scrollIntoView({behavior:'smooth'});
-        }
-      });
-    });
-  </script>
 </body>
 </html>
