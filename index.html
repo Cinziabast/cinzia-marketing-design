@@ -1122,15 +1122,15 @@
       });
     }
 
-    function applyPrices(lang){
-      const currency = getCurrency(lang);
-      document.querySelectorAll('[data-price]').forEach(el => {
-        const key = el.getAttribute('data-price');
-        if(prices[key]){
-          el.textContent = formatPrice(prices[key][currency], currency);
-        }
-      });
+   function applyPrices(lang){
+  const currency = getCurrency(lang);
+  document.querySelectorAll('[data-price]').forEach(el => {
+    const key = el.getAttribute('data-price');
+    if(prices[key]){
+      el.textContent = formatPrice(prices[key][currency], currency, lang);
     }
+  });
+}
 
     function setActiveFlag(lang){
       document.querySelectorAll('.lang a').forEach(a => {
