@@ -1087,28 +1087,31 @@
       catalog: { COP: 140000, EUR: 32, USD: 35 }
     };
 
-    function formatPrice(value, currency){
-      if(currency === 'COP'){
-        return 'Desde ' + new Intl.NumberFormat('es-CO', {
-          style:'currency',
-          currency:'COP',
-          maximumFractionDigits:0
-        }).format(value);
-      }
-      if(currency === 'EUR'){
-        return 'Desde ' + new Intl.NumberFormat('es-ES', {
-          style:'currency',
-          currency:'EUR',
-          maximumFractionDigits:0
-        }).format(value);
-      }
-      return 'From ' + new Intl.NumberFormat('en-US', {
-        style:'currency',
-        currency:'USD',
-        maximumFractionDigits:0
-      }).format(value);
-    }
+    function formatPrice(value, currency, lang){
+  if(currency === 'COP'){
+    return 'Desde ' + new Intl.NumberFormat('es-CO', {
+      style:'currency',
+      currency:'COP',
+      maximumFractionDigits:0
+    }).format(value);
+  }
 
+  if(currency === 'EUR'){
+    const formatted = new Intl.NumberFormat(lang === 'de' ? 'de-DE' : 'es-ES', {
+      style:'currency',
+      currency:'EUR',
+      maximumFractionDigits:0
+    }).format(value);
+
+    return lang === 'de' ? 'Ab ' + formatted : 'Desde ' + formatted;
+  }
+
+  return 'From ' + new Intl.NumberFormat('en-US', {
+    style:'currency',
+    currency:'USD',
+    maximumFractionDigits:0
+  }).format(value);
+}
     function applyTranslations(lang){
       const t = translations[lang] || translations.co;
       document.documentElement.lang = lang === 'co' ? 'es' : lang;
