@@ -1569,6 +1569,32 @@
   <span class="popup-close">&times;</span>
   <img id="popup-img" src="">
 </div>
+
+  <script>
+const popup = document.getElementById("popup");
+const popupImg = document.getElementById("popup-img");
+const closePopup = document.querySelector(".popup-close");
+
+// abrir popup
+document.querySelectorAll(".project-image-wrap img").forEach(img => {
+  img.addEventListener("click", () => {
+    popup.classList.remove("hidden");
+    popupImg.src = img.src;
+  });
+});
+
+// cerrar con X
+closePopup.addEventListener("click", () => {
+  popup.classList.add("hidden");
+});
+
+// cerrar al hacer clic fuera
+popup.addEventListener("click", (e) => {
+  if(e.target === popup){
+    popup.classList.add("hidden");
+  }
+});
+</script>
   
 </body>
 </html>
