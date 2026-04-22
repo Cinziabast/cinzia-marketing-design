@@ -169,3 +169,145 @@
     height: 42px;
   }
 }
+
+/* ===== PROYECTOS DESTACADOS ===== */
+
+.featured-projects {
+  padding: 90px 20px;
+  color: var(--text);
+}
+
+.featured-projects-container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.featured-projects-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+.featured-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.featured-projects-header h2 {
+  margin: 0 0 14px;
+  font-size: 2.2rem;
+}
+
+.featured-projects-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ===== CARRUSEL ===== */
+
+.projects-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.projects-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.projects-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+/* ===== CARD ===== */
+
+.project-card {
+  min-width: calc(33.333% - 12px);
+  margin-right: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.project-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.project-card-content {
+  padding: 18px;
+}
+
+.project-card-content h3 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+
+.project-card-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ===== BOTONES ===== */
+
+.project-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  border: 1px solid var(--line);
+}
+
+.project-btn:hover {
+  background: var(--brand1);
+}
+
+/* ===== DOTS ===== */
+
+.project-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.project-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.project-dot.active {
+  background: var(--brand1);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .project-card {
+    min-width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 600px) {
+  .project-card {
+    min-width: 100%;
+  }
+}
