@@ -234,9 +234,9 @@ header{
 }
 
 .project-card{
-  min-width:340px;
-  max-width:340px;
-  flex:0 0 340px;
+  min-width:calc((100% - 48px) / 3);
+  max-width:calc((100% - 48px) / 3);
+  flex:0 0 calc((100% - 48px) / 3);
   border-radius:26px;
   padding:14px;
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
