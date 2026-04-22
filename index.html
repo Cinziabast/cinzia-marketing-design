@@ -1421,50 +1421,50 @@
     }
 
     function applyTranslations(lang){
-      const t = translations[lang] || translations.co;
-      document.documentElement.lang = lang === 'co' ? 'es' : lang;
+  const t = translations[lang] || translations.co;
+  document.documentElement.lang = lang === 'co' ? 'es' : lang;
 
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if(t[key]) el.textContent = t[key];
-      });
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
 
-      let projectLang = 'es';
-      if(lang === 'en') projectLang = 'en';
-      if(lang === 'de') projectLang = 'de';
+  let projectLang = 'es';
+  if (lang === 'en') projectLang = 'en';
+  if (lang === 'de') projectLang = 'de';
 
-      document.querySelectorAll('[data-es]').forEach(el => {
-        const text = el.getAttribute(`data-${projectLang}`);
-        if(text) el.textContent = text;
-      });
+  document.querySelectorAll('[data-es]').forEach(el => {
+    const text = el.getAttribute(`data-${projectLang}`);
+    if (text) el.textContent = text;
+  });
+}
+
+function applyPrices(lang){
+  const currency = getCurrency(lang);
+  document.querySelectorAll('[data-price]').forEach(el => {
+    const key = el.getAttribute('data-price');
+    if (prices[key]) {
+      el.textContent = formatPrice(prices[key][currency], currency, lang);
     }
+  });
+}
 
-    function applyPrices(lang){
-      const currency = getCurrency(lang);
-      document.querySelectorAll('[data-price]').forEach(el => {
-        const key = el.getAttribute('data-price');
-        if(prices[key]){
-          el.textContent = formatPrice(prices[key][currency], currency, lang);
-        }
-      });
+function setActiveFlag(lang){
+  document.querySelectorAll('.lang a').forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === `?lang=${lang}`) {
+      a.classList.add('active');
     }
+  });
+}
 
-    function setActiveFlag(lang){
-      document.querySelectorAll('.lang a').forEach(a => {
-        a.classList.remove('active');
-        if(a.getAttribute('href') === `?lang=${lang}`){
-          a.classList.add('active');
-        }
-      });
-    }
+const lang = getLang();
+applyTranslations(lang);
+applyPrices(lang);
+setActiveFlag(lang);
+</script>
 
-    const lang = getLang();
-    applyTranslations(lang);
-    applyPrices(lang);
-    setActiveFlag(lang);
-  </script>
-
- <script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
   /* =========================
