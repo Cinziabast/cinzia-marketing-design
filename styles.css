@@ -235,9 +235,9 @@ header{
 }
 
 .project-card{
-  min-width:calc((100% - 48px) / 3);
-  max-width:calc((100% - 48px) / 3);
-  flex:0 0 calc((100% - 48px) / 3);
+  min-width:350px;
+  max-width:350px;
+  flex:0 0 350px;
   border-radius:26px;
   padding:14px;
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
@@ -342,9 +342,9 @@ header{
 
 @media (max-width:991px){
   .project-card{
-    min-width:calc((100% - 24px) / 2);
-    max-width:calc((100% - 24px) / 2);
-    flex:0 0 calc((100% - 24px) / 2);
+    min-width:320px;
+    max-width:320px;
+    flex:0 0 320px;
   }
 }
 
@@ -374,7 +374,6 @@ header{
     min-width:100%;
     max-width:100%;
     flex:0 0 100%;
-    margin-right:0;
     padding:0;
     border-radius:20px;
     transform:none;
@@ -382,6 +381,7 @@ header{
 
   .project-card:hover{
     transform:none;
+    box-shadow:0 16px 40px rgba(0,0,0,.28);
   }
 
   .project-card-inner{
@@ -417,11 +417,11 @@ header{
   }
 
   .project-btn.prev{
-    left:-4px;
+    left:0;
   }
 
   .project-btn.next{
-    right:-4px;
+    right:0;
   }
 
   .project-dots{
