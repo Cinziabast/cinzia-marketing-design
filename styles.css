@@ -331,9 +331,9 @@ header{
 
 @media (max-width:991px){
   .project-card{
-    min-width:300px;
-    max-width:300px;
-    flex:0 0 300px;
+    min-width:calc((100% - 24px) / 2);
+    max-width:calc((100% - 24px) / 2);
+    flex:0 0 calc((100% - 24px) / 2);
   }
 }
 
