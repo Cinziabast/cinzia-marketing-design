@@ -351,9 +351,9 @@ header{
   }
 
   .project-card{
-    min-width:calc(100vw - 90px);
-    max-width:calc(100vw - 90px);
-    flex:0 0 calc(100vw - 90px);
+    min-width:100%;
+    max-width:100%;
+    flex:0 0 100%;
   }
 
   .project-btn{
