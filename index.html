@@ -1033,15 +1033,24 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* FAQ (DESPLEGABLE) */
-  document.querySelectorAll(".faq-question").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const item = btn.parentElement;
-      item.classList.toggle("active");
-    });
-  });
+ document.querySelectorAll(".faq-question").forEach(btn => {
+  btn.addEventListener("click", () => {
 
+    const item = btn.parentElement;
+    const isActive = item.classList.contains("active");
+
+    // Cerrar todos
+    document.querySelectorAll(".faq-item").forEach(i => {
+      i.classList.remove("active");
+    });
+
+    // Si no estaba abierto, lo abrimos
+    if (!isActive) {
+      item.classList.add("active");
+    }
+
+  });
 });
-</script>
 
 <!-- POPUP -->
 <div id="popup" class="popup hidden">
