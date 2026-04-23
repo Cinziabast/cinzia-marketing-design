@@ -1053,5 +1053,17 @@
     <img id="popup-img" src="" alt="">
   </div>
 
+  /* =========================
+     FAQ (DESPLEGABLE)
+  ========================= */
+  document.querySelectorAll(".faq-question").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.parentElement;
+      item.classList.toggle("active");
+    });
+  });
+
+});
+
 </body>
 </html>
