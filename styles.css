@@ -491,3 +491,45 @@ footer{
   align-items:center;
   justify-content:center;
 }
+
+.faq{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.faq-item{
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--card);
+}
+
+.faq-question{
+  width:100%;
+  text-align:left;
+  padding:16px;
+  font-size:15px;
+  font-weight:600;
+  background:none;
+  border:none;
+  color:var(--text);
+  cursor:pointer;
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease;
+  padding:0 16px;
+}
+
+.faq-answer p{
+  margin:0;
+  padding-bottom:16px;
+  color:var(--muted);
+}
+
+.faq-item.active .faq-answer{
+  max-height:200px;
+}
