@@ -790,3 +790,10 @@ footer{
   margin:0; /* ← importante */
   display:block;
 }
+
+.hero-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+}
