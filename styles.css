@@ -66,6 +66,14 @@ header{
   font-weight:600;
 }
 
+.brand-logo{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  object-fit:cover;
+  flex-shrink:0;
+}
+
 .lang{
   display:flex;
   gap:8px;
