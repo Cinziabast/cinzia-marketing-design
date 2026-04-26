@@ -51,6 +51,9 @@ header{
 }
 
 .brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
   font-weight:800;
   font-size:18px;
   text-decoration:none;
