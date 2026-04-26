@@ -178,9 +178,9 @@ header{
 }
 
 .btn.ghost{
-  background:#1a1a1a;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.15);
   box-shadow:none;
-  border:1px solid rgba(255,255,255,.08);
 }
 
 .hero-card{
