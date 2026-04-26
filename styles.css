@@ -313,7 +313,10 @@ header{
 /* PROYECTOS DESTACADOS */
 .featured-projects{
   padding:90px 20px;
-  background:#090b10;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(139,92,246,.25), transparent 40%),
+    radial-gradient(circle at 80% 40%, rgba(59,130,246,.2), transparent 40%),
+    #05070d;
 }
 
 .featured-projects-container{
