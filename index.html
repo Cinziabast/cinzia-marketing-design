@@ -1385,7 +1385,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const closePopup = document.querySelector(".popup-close");
 
   if (popup && popupImg && closePopup) {
-    document.querySelectorAll(".project-image-wrap img").forEach(img => {
+    document.querySelectorAll(".project-image-wrap img, .project-image-wrap video").forEach(media => {
       img.addEventListener("click", () => {
         popup.classList.remove("hidden");
         popupImg.src = img.src;
