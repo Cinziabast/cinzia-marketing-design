@@ -1381,35 +1381,48 @@ document.addEventListener("DOMContentLoaded", function () {
   </video>
 </div>
 
-  // ===== POPUP VIDEO =====
-const videoPopup = document.getElementById("videoPopup");
-const videoPlayer = document.getElementById("videoPlayer");
-const videoClose = document.getElementById("videoClose");
+<!-- POPUP VIDEO -->
+<div id="videoPopup" class="popup hidden">
+  <span class="popup-close" id="videoClose">&times;</span>
 
-document.querySelectorAll(".project-image-wrap video").forEach(video => {
-  video.addEventListener("click", () => {
+  <video id="videoPlayer" controls playsinline>
+    <source src="" type="video/mp4">
+  </video>
+</div>
 
-    videoPopup.classList.remove("hidden");
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-    const source = video.querySelector("source");
-    videoPlayer.src = source ? source.src : video.src;
+  const videoPopup = document.getElementById("videoPopup");
+  const videoPlayer = document.getElementById("videoPlayer");
+  const videoClose = document.getElementById("videoClose");
 
-    videoPlayer.load();
-    videoPlayer.play();
+  document.querySelectorAll(".project-image-wrap video").forEach(video => {
+    video.addEventListener("click", () => {
+      videoPopup.classList.remove("hidden");
+
+      const source = video.querySelector("source");
+      videoPlayer.src = source ? source.src : video.src;
+
+      videoPlayer.load();
+      videoPlayer.play();
+    });
   });
-});
 
-videoClose.addEventListener("click", () => {
-  videoPopup.classList.add("hidden");
-  videoPlayer.pause();
-});
-
-videoPopup.addEventListener("click", (e) => {
-  if (e.target === videoPopup) {
+  videoClose.addEventListener("click", () => {
     videoPopup.classList.add("hidden");
     videoPlayer.pause();
-  }
+  });
+
+  videoPopup.addEventListener("click", (e) => {
+    if (e.target === videoPopup) {
+      videoPopup.classList.add("hidden");
+      videoPlayer.pause();
+    }
+  });
+
 });
-  
+</script>
+
 </body>
 </html>
