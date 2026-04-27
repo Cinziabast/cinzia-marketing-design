@@ -1298,7 +1298,16 @@ setActiveFlag(lang);
     });
   </script>
 
- <script>
+ <!-- POPUP GALERÍA -->
+<div id="galleryPopup" class="gallery-popup hidden">
+  <div class="gallery-box">
+    <span class="gallery-close">&times;</span>
+    <h3 id="galleryTitle"></h3>
+    <div id="galleryContent" class="gallery-content"></div>
+  </div>
+</div>
+
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
   // ===== CARRUSEL =====
@@ -1309,7 +1318,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const dotsContainer = document.querySelector(".project-dots");
 
   if (track && cards.length && nextBtn && prevBtn && dotsContainer) {
-
     let currentIndex = 0;
 
     function getCardsPerView() {
@@ -1318,62 +1326,48 @@ document.addEventListener("DOMContentLoaded", function () {
       return 3;
     }
 
-    let cardsPerView = getCardsPerView();
-    let maxIndex = Math.max(0, cards.length - cardsPerView);
-
-    function createDots() {
-      dotsContainer.innerHTML = "";
-      cardsPerView = getCardsPerView();
-      maxIndex = Math.max(0, cards.length - cardsPerView);
-
-      for (let i = 0; i <= maxIndex; i++) {
-        const dot = document.createElement("button");
-        dot.className = "project-dot";
-        if (i === currentIndex) dot.classList.add("active");
-
-        dot.addEventListener("click", () => {
-          currentIndex = i;
-          updateSlider();
-        });
-
-        dotsContainer.appendChild(dot);
-      }
-    }
-
     function updateSlider() {
-      cardsPerView = getCardsPerView();
-      maxIndex = Math.max(0, cards.length - cardsPerView);
-
+      const cardsPerView = getCardsPerView();
+      const maxIndex = Math.max(0, cards.length - cardsPerView);
       if (currentIndex > maxIndex) currentIndex = maxIndex;
 
       const cardWidth = cards[0].offsetWidth;
       const gap = parseInt(window.getComputedStyle(track).gap) || 0;
-      const moveX = currentIndex * (cardWidth + gap);
+      track.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
 
-      track.style.transform = `translateX(-${moveX}px)`;
-
-      const dots = dotsContainer.querySelectorAll(".project-dot");
-      dots.forEach((dot, index) => {
+      dotsContainer.querySelectorAll(".project-dot").forEach((dot, index) => {
         dot.classList.toggle("active", index === currentIndex);
       });
     }
 
+    function createDots() {
+      dotsContainer.innerHTML = "";
+      const maxIndex = Math.max(0, cards.length - getCardsPerView());
+
+      for (let i = 0; i <= maxIndex; i++) {
+        const dot = document.createElement("button");
+        dot.className = "project-dot";
+        dot.addEventListener("click", () => {
+          currentIndex = i;
+          updateSlider();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
     nextBtn.addEventListener("click", () => {
+      const maxIndex = Math.max(0, cards.length - getCardsPerView());
       currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
       updateSlider();
     });
 
     prevBtn.addEventListener("click", () => {
+      const maxIndex = Math.max(0, cards.length - getCardsPerView());
       currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
       updateSlider();
     });
 
     window.addEventListener("resize", () => {
-      cardsPerView = getCardsPerView();
-      maxIndex = Math.max(0, cards.length - cardsPerView);
-
-      if (currentIndex > maxIndex) currentIndex = maxIndex;
-
       createDots();
       updateSlider();
     });
@@ -1382,7 +1376,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSlider();
   }
 
-  // ===== POPUP =====
+  // ===== POPUP PROYECTOS DESTACADOS =====
   const popup = document.getElementById("popup");
   const popupImg = document.getElementById("popup-img");
   const closePopup = document.querySelector(".popup-close");
@@ -1401,9 +1395,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     popup.addEventListener("click", (e) => {
-      if (e.target === popup) {
-        popup.classList.add("hidden");
-      }
+      if (e.target === popup) popup.classList.add("hidden");
     });
   }
 
@@ -1420,122 +1412,91 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!isActive) item.classList.add("active");
     });
   });
-const galleries = {
-  logos: {
-    title: "Diseños de logo",
-    images: ["logo1.png", "logo2.png", "logo3.png"]
-  },
 
-  landing: {
-    title: "Landing pages",
-    images: ["landing1.png", "landing2.png", "landing3.png"]
-  },
-
-  banners: {
-    title: "Banners",
-    images: ["banner1.png", "banner2.png", "banner3.png"]
-  },
-
-  ebooks: {
-    title: "eBooks",
-    images: ["ebook1.png", "ebook2.png", "ebook3.png"]
-  },
-
-  catalogos: {
-    title: "Catálogos",
-    images: [],
-    video: ["Catalogo2.mp4", "Catalogo3.mp4"]
-  },
-
-  editorial: {
-  title: "Editorial",
-  images: ["editorial2.png"]
-}
-};
-
-const galleryPopup = document.getElementById("galleryPopup");
-const galleryContent = document.getElementById("galleryContent");
-const galleryTitle = document.getElementById("galleryTitle");
-const galleryClose = document.querySelector(".gallery-close");
-
-if (galleryPopup && galleryContent && galleryTitle && galleryClose) {
-  document.querySelectorAll(".gallery-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const type = btn.getAttribute("data-gallery");
-      const gallery = galleries[type];
-
-      galleryTitle.textContent = gallery.title;
-      galleryContent.innerHTML = "";
-
-      if (gallery.images && gallery.images.length > 0) {
-        gallery.images.forEach(src => {
-          const img = document.createElement("img");
-          img.src = src;
-          galleryContent.appendChild(img);
-        });
-      }
-
-     if (gallery.video) {
-
-  if (Array.isArray(gallery.video)) {
-
-    gallery.video.forEach(src => {
-      const video = document.createElement("video");
-      video.src = src;
-      video.controls = true;
-      video.autoplay = false;
-      video.loop = false;
-      video.muted = true;
-      video.playsInline = true;
-      video.style.width = "100%";
-      video.style.borderRadius = "12px";
-      video.style.marginBottom = "10px";
-
-      galleryContent.appendChild(video);
-    });
-
-  } else {
-
-    const video = document.createElement("video");
-    video.src = gallery.video;
-    video.controls = true;
-    video.autoplay = true;
-    video.loop = true;
-    video.muted = true;
-    video.playsInline = true;
-    video.style.width = "100%";
-    video.style.borderRadius = "12px";
-
-    galleryContent.appendChild(video);
-  }
-}
-
-      galleryPopup.classList.remove("hidden");
-    });
-  });
-
-  galleryClose.addEventListener("click", () => {
-    galleryPopup.classList.add("hidden");
-  });
-
-  galleryPopup.addEventListener("click", (e) => {
-    if (e.target === galleryPopup) {
-      galleryPopup.classList.add("hidden");
+  // ===== GALERÍAS PORTAFOLIO =====
+  const galleries = {
+    logos: {
+      title: "Diseños de logo",
+      images: ["logo1.png", "logo2.png", "logo3.png"]
+    },
+    landing: {
+      title: "Landing pages",
+      images: ["landing1.png", "landing2.png", "landing3.png"]
+    },
+    banners: {
+      title: "Banners",
+      images: ["banner1.png", "banner2.png", "banner3.png"]
+    },
+    ebooks: {
+      title: "eBooks",
+      images: ["ebook1.png", "ebook2.png", "ebook3.png"]
+    },
+    catalogos: {
+      title: "Catálogos",
+      images: [],
+      video: ["Catalogo2.mp4", "Catalogo3.mp4"]
+    },
+    editorial: {
+      title: "Editorial",
+      images: ["editorial2.png"]
     }
-  });
-}
+  };
+
+  const galleryPopup = document.getElementById("galleryPopup");
+  const galleryContent = document.getElementById("galleryContent");
+  const galleryTitle = document.getElementById("galleryTitle");
+  const galleryClose = document.querySelector(".gallery-close");
+
+  if (galleryPopup && galleryContent && galleryTitle && galleryClose) {
+    document.querySelectorAll(".gallery-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const type = btn.getAttribute("data-gallery");
+        const gallery = galleries[type];
+
+        if (!gallery) return;
+
+        galleryTitle.textContent = gallery.title;
+        galleryContent.innerHTML = "";
+
+        if (gallery.images && gallery.images.length > 0) {
+          gallery.images.forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = gallery.title;
+            galleryContent.appendChild(img);
+          });
+        }
+
+        if (gallery.video) {
+          gallery.video.forEach(src => {
+            const video = document.createElement("video");
+            video.src = src;
+            video.controls = true;
+            video.muted = true;
+            video.playsInline = true;
+            video.style.width = "100%";
+            video.style.borderRadius = "14px";
+            galleryContent.appendChild(video);
+          });
+        }
+
+        galleryPopup.classList.remove("hidden");
+      });
+    });
+
+    galleryClose.addEventListener("click", () => {
+      galleryPopup.classList.add("hidden");
+    });
+
+    galleryPopup.addEventListener("click", (e) => {
+      if (e.target === galleryPopup) {
+        galleryPopup.classList.add("hidden");
+      }
+    });
+  }
 
 });
- </script>
+</script>
 
-  <!-- POPUP GALERÍA -->
-<div id="galleryPopup" class="gallery-popup hidden">
-  <div class="gallery-box">
-    <span class="gallery-close">&times;</span>
-    <h3 id="galleryTitle"></h3>
-    <div id="galleryContent" class="gallery-content"></div>
-  </div>
-</div>
-  
 </body>
 </html>
