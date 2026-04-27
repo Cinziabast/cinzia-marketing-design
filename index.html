@@ -1257,13 +1257,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const closePopup = document.querySelector(".popup-close");
 
   if (popup && popupImg && closePopup) {
-    document.querySelectorAll(".project-image-wrap img, .project-image-wrap video").forEach(media => {
-      img.addEventListener("click", () => {
-        popup.classList.remove("hidden");
-        popupImg.src = img.src;
-        popupImg.alt = img.alt || "";
-      });
+  document.querySelectorAll(".project-image-wrap img").forEach(img => {
+    img.addEventListener("click", () => {
+      popup.classList.remove("hidden");
+      popupImg.src = img.src;
+      popupImg.alt = img.alt || "";
     });
+  });
 
     closePopup.addEventListener("click", () => {
       popup.classList.add("hidden");
