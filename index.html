@@ -1475,19 +1475,40 @@ if (galleryPopup && galleryContent && galleryTitle && galleryClose) {
         });
       }
 
-      if (gallery.video) {
-        const video = document.createElement("video");
-        video.src = gallery.video;
-        video.controls = true;
-        video.autoplay = true;
-        video.loop = true;
-        video.muted = true;
-        video.playsInline = true;
-        video.style.width = "100%";
-        video.style.borderRadius = "12px";
+     if (gallery.video) {
 
-        galleryContent.appendChild(video);
-      }
+  if (Array.isArray(gallery.video)) {
+
+    gallery.video.forEach(src => {
+      const video = document.createElement("video");
+      video.src = src;
+      video.controls = true;
+      video.autoplay = false;
+      video.loop = false;
+      video.muted = true;
+      video.playsInline = true;
+      video.style.width = "100%";
+      video.style.borderRadius = "12px";
+      video.style.marginBottom = "10px";
+
+      galleryContent.appendChild(video);
+    });
+
+  } else {
+
+    const video = document.createElement("video");
+    video.src = gallery.video;
+    video.controls = true;
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.style.width = "100%";
+    video.style.borderRadius = "12px";
+
+    galleryContent.appendChild(video);
+  }
+}
 
       galleryPopup.classList.remove("hidden");
     });
