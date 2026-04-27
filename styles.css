@@ -807,3 +807,49 @@ footer{
 .portfolio-card img{
   cursor: zoom-in;
 }
+
+.gallery-btn{
+  margin-top:14px;
+  padding:10px 18px;
+  border:0;
+  border-radius:999px;
+  background:linear-gradient(135deg,#ec4899,#8b5cf6,#3b82f6);
+  color:#fff;
+  font-weight:800;
+  font-size:14px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(139,92,246,.35);
+  transition:all .2s ease;
+}
+
+.gallery-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 35px rgba(139,92,246,.55);
+}
+
+.gallery-btn::after{
+  content:" →";
+}
+
+.gallery-btn{
+  margin-top:14px;
+  padding:10px 18px;
+  border:0;
+  border-radius:999px;
+  background:linear-gradient(135deg,#ec4899,#8b5cf6,#3b82f6);
+  color:#fff;
+  font-weight:800;
+  font-size:14px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(139,92,246,.35);
+  transition:all .2s ease;
+}
+
+.gallery-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 35px rgba(139,92,246,.55);
+}
+
+.gallery-btn::after{
+  content:" →";
+}
