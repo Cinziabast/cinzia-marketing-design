@@ -1288,16 +1288,96 @@ setActiveFlag(lang);
     });
   </script>
 
-  <script>
+ <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ===== POPUP IMÁGENES =====
+  // ===== CARRUSEL =====
+  const track = document.querySelector(".projects-track");
+  const cards = Array.from(document.querySelectorAll(".project-card"));
+  const nextBtn = document.querySelector(".project-btn.next");
+  const prevBtn = document.querySelector(".project-btn.prev");
+  const dotsContainer = document.querySelector(".project-dots");
+
+  if (track && cards.length && nextBtn && prevBtn && dotsContainer) {
+
+    let currentIndex = 0;
+
+    function getCardsPerView() {
+      if (window.innerWidth <= 640) return 1;
+      if (window.innerWidth <= 991) return 2;
+      return 3;
+    }
+
+    let cardsPerView = getCardsPerView();
+    let maxIndex = Math.max(0, cards.length - cardsPerView);
+
+    function createDots() {
+      dotsContainer.innerHTML = "";
+      cardsPerView = getCardsPerView();
+      maxIndex = Math.max(0, cards.length - cardsPerView);
+
+      for (let i = 0; i <= maxIndex; i++) {
+        const dot = document.createElement("button");
+        dot.className = "project-dot";
+        if (i === currentIndex) dot.classList.add("active");
+
+        dot.addEventListener("click", () => {
+          currentIndex = i;
+          updateSlider();
+        });
+
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateSlider() {
+      cardsPerView = getCardsPerView();
+      maxIndex = Math.max(0, cards.length - cardsPerView);
+
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+      const cardWidth = cards[0].offsetWidth;
+      const gap = parseInt(window.getComputedStyle(track).gap) || 0;
+      const moveX = currentIndex * (cardWidth + gap);
+
+      track.style.transform = `translateX(-${moveX}px)`;
+
+      const dots = dotsContainer.querySelectorAll(".project-dot");
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentIndex);
+      });
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+      updateSlider();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
+      updateSlider();
+    });
+
+    window.addEventListener("resize", () => {
+      cardsPerView = getCardsPerView();
+      maxIndex = Math.max(0, cards.length - cardsPerView);
+
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+      createDots();
+      updateSlider();
+    });
+
+    createDots();
+    updateSlider();
+  }
+
+  // ===== POPUP =====
   const popup = document.getElementById("popup");
   const popupImg = document.getElementById("popup-img");
   const closePopup = document.querySelector(".popup-close");
 
   if (popup && popupImg && closePopup) {
-
     document.querySelectorAll(".project-image-wrap img, .portfolio-card img").forEach(img => {
       img.addEventListener("click", () => {
         popup.classList.remove("hidden");
@@ -1315,11 +1395,24 @@ document.addEventListener("DOMContentLoaded", function () {
         popup.classList.add("hidden");
       }
     });
-
   }
 
   // ===== FAQ =====
   document.querySelectorAll(".faq-question").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.parentElement;
+      const isActive = item.classList.contains("active");
+
+      document.querySelectorAll(".faq-item").forEach(i => {
+        i.classList.remove("active");
+      });
+
+      if (!isActive) item.classList.add("active");
+    });
+  });
+
+});
+ </script>
     btn.addEventListener("click", () => {
       const item = btn.parentElement;
       const isActive = item.classList.contains("active");
