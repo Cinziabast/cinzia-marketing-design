@@ -1287,5 +1287,54 @@ setActiveFlag(lang);
 
     });
   </script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // ===== POPUP IMÁGENES =====
+  const popup = document.getElementById("popup");
+  const popupImg = document.getElementById("popup-img");
+  const closePopup = document.querySelector(".popup-close");
+
+  if (popup && popupImg && closePopup) {
+
+    document.querySelectorAll(".project-image-wrap img, .portfolio-card img").forEach(img => {
+      img.addEventListener("click", () => {
+        popup.classList.remove("hidden");
+        popupImg.src = img.src;
+        popupImg.alt = img.alt || "";
+      });
+    });
+
+    closePopup.addEventListener("click", () => {
+      popup.classList.add("hidden");
+    });
+
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) {
+        popup.classList.add("hidden");
+      }
+    });
+
+  }
+
+  // ===== FAQ =====
+  document.querySelectorAll(".faq-question").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const item = btn.parentElement;
+      const isActive = item.classList.contains("active");
+
+      document.querySelectorAll(".faq-item").forEach(i => {
+        i.classList.remove("active");
+      });
+
+      if (!isActive) {
+        item.classList.add("active");
+      }
+    });
+  });
+
+});
+  </script>
 </body>
 </html>
