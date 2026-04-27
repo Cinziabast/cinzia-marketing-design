@@ -1264,13 +1264,27 @@ setActiveFlag(lang);
       const popupImg = document.getElementById("popup-img");
       const closePopup = document.querySelector(".popup-close");
 
-      document.querySelectorAll(".project-image-wrap img, .portfolio-card img").forEach(img => {
-          img.addEventListener("click", () => {
-            popup.classList.remove("hidden");
-            popupImg.src = img.src;
-            popupImg.alt = img.alt || "";
-          });
-        });
+      document.querySelectorAll(".project-image-wrap img, .project-image-wrap video, .portfolio-card img").forEach(media => {
+  media.addEventListener("click", () => {
+
+    popup.classList.remove("hidden");
+
+    // SI ES VIDEO
+    if (media.tagName === "VIDEO") {
+      const source = media.querySelector("source");
+
+      if (source) {
+        popupImg.src = source.src;
+      }
+
+    } else {
+      // SI ES IMAGEN
+      popupImg.src = media.src;
+    }
+
+    popupImg.alt = media.alt || "";
+  });
+});
 
         closePopup.addEventListener("click", () => {
           popup.classList.add("hidden");
