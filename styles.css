@@ -902,3 +902,9 @@ footer{
   width:100%;
   border-radius:14px;
 }
+
+#videoPlayer{
+  max-width:90vw;
+  max-height:85vh;
+  border-radius:16px;
+}
