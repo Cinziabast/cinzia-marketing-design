@@ -414,6 +414,14 @@ header{
   cursor:zoom-in;
 }
 
+.project-card video{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:12px;
+  background:#000;
+}
+
 /* TEXTO */
 .project-card-content{
   padding:18px;
