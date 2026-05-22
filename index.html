@@ -1107,77 +1107,28 @@ wa_msg_float: "Hallo, ich möchte Informationen über deine Marketing- und Desig
   }
 };
     
-    const prices = {
-      landing: { COP: 220000, EUR: 50, USD: 55 },
-      digital: { COP: 350000, EUR: 80, USD: 85 },
-      posts:   { COP: 30000,  EUR: 20, USD: 22 },
-      logo:    { COP: 90000,  EUR: 20, USD: 22 },
-      banner:  { COP: 35000,  EUR: 20, USD: 22 },
-      menu:    { COP: 90000,  EUR: 20, USD: 22 },
-      flyer:   { COP: 40000,  EUR: 20, USD: 22 },
-      cover:   { COP: 160000, EUR: 35, USD: 38 },
-      ebook:   { COP: 300000, EUR: 70, USD: 75 },
-      ads:     { COP: 150000, EUR: 35, USD: 38 },
-      cv:      { COP: 40000,  EUR: 20, USD: 22 },
-      catalog: { COP: 140000, EUR: 55, USD: 58 }
-    };
-
-    function formatPrice(value, currency, lang){
-      if(currency === 'COP'){
-        return 'Desde ' + new Intl.NumberFormat('es-CO', {
-          style:'currency',
-          currency:'COP',
-          maximumFractionDigits:0
-        }).format(value);
-      }
-
-      if(currency === 'EUR'){
-        const formatted = new Intl.NumberFormat(lang === 'de' ? 'de-DE' : 'es-ES', {
-          style:'currency',
-          currency:'EUR',
-          maximumFractionDigits:0
-        }).format(value);
-
-        return lang === 'de' ? 'Ab ' + formatted : 'Desde ' + formatted;
-      }
-
-      return 'From ' + new Intl.NumberFormat('en-US', {
-        style:'currency',
-        currency:'USD',
-        maximumFractionDigits:0
-      }).format(value);
-    }
-
     function applyTranslations(lang){
-      const t = translations[lang] || translations.co;
-      document.documentElement.lang = lang === 'co' ? 'es' : lang;
+  const t = translations[lang] || translations.co;
+  document.documentElement.lang = lang === 'co' ? 'es' : lang;
 
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key]) el.textContent = t[key];
-      });
+  // textos normales
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
 
-      let projectLang = 'es';
-      if (lang === 'en') projectLang = 'en';
-      if (lang === 'de') projectLang = 'de';
+  // textos de proyectos (data-es, data-en, data-de)
+  let projectLang = 'es';
+  if (lang === 'en') projectLang = 'en';
+  if (lang === 'de') projectLang = 'de';
 
-      document.querySelectorAll('[data-es]').forEach(el => {
-        const text = el.getAttribute(`data-${projectLang}`);
-        if (text) el.textContent = text;
-      });
-    }
+  document.querySelectorAll('[data-es]').forEach(el => {
+    const text = el.getAttribute(`data-${projectLang}`);
+    if (text) el.textContent = text;
+  });
+}
 
-    function applyPrices(lang){
-      const currency = getCurrency(lang);
-      document.querySelectorAll('[data-price]').forEach(el => {
-        const key = el.getAttribute('data-price');
-        if (prices[key]) {
-          el.textContent = formatPrice(prices[key][currency], currency, lang);
-        }
-      });
-    }
-
-    function applyWhatsAppLinks(lang){
+function applyWhatsAppLinks(lang){
   const t = translations[lang] || translations.co;
   const phone = "573182960788";
 
@@ -1195,22 +1146,21 @@ wa_msg_float: "Hallo, ich möchte Informationen über deine Marketing- und Desig
   });
 }
 
-    function setActiveFlag(lang){
-      document.querySelectorAll('.lang a').forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href') === `?lang=${lang}`) {
-          a.classList.add('active');
-        }
-      });
+function setActiveFlag(lang){
+  document.querySelectorAll('.lang a').forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === `?lang=${lang}`) {
+      a.classList.add('active');
     }
+  });
+}
 
-   const lang = getLang();
+// INIT
+const lang = getLang();
 applyTranslations(lang);
-applyPrices(lang);
 applyWhatsAppLinks(lang);
 setActiveFlag(lang);
-  </script>
-
+    
  <!-- POPUP GALERÍA -->
 <div id="galleryPopup" class="gallery-popup hidden">
   <div class="gallery-box">
