@@ -1365,6 +1365,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  document.querySelectorAll(".gallery-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    console.log("Click en:", btn.dataset.gallery);
+  });
+});
+
 });
 </script>
 
