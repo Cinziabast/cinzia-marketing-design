@@ -916,3 +916,36 @@ footer{
   max-height:85vh;
   border-radius:16px;
 }
+
+.services-marquee{
+  margin-top:34px;
+  overflow:hidden;
+  padding:18px 0;
+}
+
+.services-marquee-track{
+  display:flex;
+  gap:16px;
+  width:max-content;
+  animation:servicesMove 28s linear infinite;
+}
+
+.services-marquee-track span{
+  white-space:nowrap;
+  padding:14px 22px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+
+@keyframes servicesMove{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+.services-marquee:hover .services-marquee-track{
+  animation-play-state:paused;
+}
