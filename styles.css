@@ -1038,3 +1038,45 @@ footer{
     transform:translateX(0);
   }
 }
+
+/* ===== BLOQUE DOBLE (AUDITORÍA + VALOR) ===== */
+
+.dual-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+.dual-card{
+  padding:40px;
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,78,205,.15), transparent 40%),
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  transition:.3s;
+}
+
+.dual-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+}
+
+.audit-list{
+  margin:20px 0;
+  line-height:1.8;
+}
+
+.mini-text{
+  margin-top:15px;
+  font-size:.9rem;
+  opacity:.8;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .dual-grid{
+    grid-template-columns:1fr;
+  }
+}
