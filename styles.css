@@ -1019,3 +1019,22 @@ footer{
 .premium-3{
   border-color:rgba(180,120,255,.28);
 }
+
+.hero-list-animated li{
+  opacity:0;
+  transform:translateX(18px);
+  animation:heroItemIn .7s ease forwards;
+}
+
+.hero-list-animated li:nth-child(1){ animation-delay:.3s; }
+.hero-list-animated li:nth-child(2){ animation-delay:.7s; }
+.hero-list-animated li:nth-child(3){ animation-delay:1.1s; }
+.hero-list-animated li:nth-child(4){ animation-delay:1.5s; }
+.hero-list-animated li:nth-child(5){ animation-delay:1.9s; }
+
+@keyframes heroItemIn{
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
