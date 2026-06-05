@@ -1176,3 +1176,24 @@ footer{
     flex-direction:column;
   }
 }
+
+.lang {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.lang a img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.lang a:hover img {
+  transform: scale(1.1);
+}
+
+.lang a.active img {
+  border: 2px solid #5b8cff;
+}
